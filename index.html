@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
   :root{
     --bg:#0A0C11;
@@ -117,25 +116,6 @@
   .upload-bar-label{ font-family:var(--font-display); font-size:10.5px; font-weight:700; color:var(--ink); white-space:nowrap; }
   .upload-bar-hint{ font-size:9.5px; color:var(--muted-2); flex:1 1 160px; text-align:right; }
 
-  .drive-panel{ margin-top:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
-  .drive-panel-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-  .drive-config{ display:flex; flex-direction:column; gap:8px; margin:8px 0 10px; padding:10px; background:var(--surface-2); border-radius:8px; }
-  .drive-config input{ width:100%; box-sizing:border-box; }
-  .drive-status{ font-size:11.5px; color:var(--muted-2); }
-  .drive-status.connected{ color:var(--ok); }
-  .drive-status.error{ color:var(--critical); }
-  .drive-actions{ display:flex; align-items:center; gap:10px; margin-top:8px; flex-wrap:wrap; }
-
-  .shared-banner{
-    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-    background:var(--link-soft); border:2px solid var(--link); border-radius:var(--radius);
-    padding:12px 15.5px; margin-bottom:12px;
-  }
-  .shared-banner-icon{ font-size:18.5px; flex-shrink:0; }
-  .shared-banner-text{ display:flex; flex-direction:column; flex:1 1 240px; gap:2px; }
-  .shared-banner-text b{ font-size:11px; color:var(--ink); }
-  .shared-banner-text span{ font-size:10px; color:var(--muted); }
-  .shared-status{ font-size:9px; color:var(--muted-2); margin-left:6px; }
   #crossCheckLiveBadge{ font-family:var(--font-mono); font-weight:700; margin-left:5px; }
   #crossCheckLiveBadge.has-matches{ color:var(--critical); }
 
@@ -335,6 +315,72 @@
   @media (max-width:900px){ .charts-grid{ grid-template-columns:1fr; } }
   .chart-card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:10px 12px; box-shadow:var(--shadow-sm); }
   .chart-card h3{ font-family:var(--font-display); font-size:11.5px; margin:0 0 2.5px; }
+
+  .fb-grid{ display:flex; gap:16px; flex-wrap:wrap; align-items:stretch; }
+  .fb-main{
+    flex:0 0 200px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; background:var(--surface-2); border-radius:10px; padding:14px 10px;
+  }
+  .fb-label{ font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:600; }
+  .fb-value{ font-family:var(--font-mono); font-size:28px; font-weight:700; margin-top:6px; }
+  .fb-value.fb-ok{ color:var(--ok); }
+  .fb-value.fb-bad{ color:var(--critical); }
+  .fb-meta{ font-size:9.5px; color:var(--muted-2); margin-top:4px; }
+  .fb-breakdown{ flex:1; min-width:260px; display:flex; flex-direction:column; gap:8px; justify-content:center; }
+  .fb-row{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:7px 10px; background:var(--surface-2); border-radius:7px; flex-wrap:wrap; }
+  .fb-row-label{ font-size:10.5px; color:var(--ink); max-width:340px; }
+  .fb-hint{ color:var(--muted-2); font-weight:400; }
+  .fb-row-value{ font-size:11px; color:var(--ink); white-space:nowrap; }
+  .fb-row-total{ border-top:1px solid var(--border); opacity:.85; }
+
+  .fb-base-summary{ border:1px solid var(--border); border-radius:8px; margin-bottom:10px; max-height:200px; overflow-y:auto; background:var(--surface-2); }
+  .fb-base-head{ position:sticky; top:0; background:var(--surface-2); padding:6px 10px; font-size:10px; font-weight:600; color:var(--muted); border-bottom:1px solid var(--border); }
+  .fb-base-head span{ font-weight:400; color:var(--muted-2); }
+  .fb-base-row{ display:flex; align-items:center; gap:10px; padding:6px 10px; font-size:11px; cursor:pointer; border-bottom:1px solid var(--border); }
+  .fb-base-row:last-child{ border-bottom:none; }
+  .fb-base-row:hover{ background:rgba(255,255,255,.04); }
+  .fb-base-row.selected{ background:var(--link-soft); }
+  .fb-base-name{ font-weight:600; min-width:130px; }
+  .fb-base-det{ flex:1; color:var(--muted-2); font-size:10px; }
+  .fb-base-n{ font-family:var(--font-mono); }
+
+  .rotas-head-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+  .rotas-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .rotas-actions .search-input{ min-width:190px; }
+  .rotas-summary{ font-size:10.5px; color:var(--muted-2); margin-bottom:8px; }
+  .rotas-list{ display:flex; flex-direction:column; gap:8px; }
+  .rota-item{ background:var(--surface-2); border:1px solid var(--border); border-radius:9px; overflow:hidden; }
+  .rota-head{
+    width:100%; display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:9px 12px;
+    background:none; border:none; color:var(--ink); cursor:pointer; text-align:left;
+  }
+  .rota-head:hover{ background:rgba(255,255,255,.03); }
+  .rota-caret{ color:var(--muted); font-size:10px; width:10px; flex-shrink:0; }
+  .rota-id{ font-family:var(--font-mono); font-weight:700; font-size:11.5px; }
+  .rota-meta{ font-size:10.5px; color:var(--muted); }
+  .rota-meta b{ color:var(--ink); }
+  .rota-docas{ font-size:9.5px; color:var(--accent); }
+  .rota-flag, .stop-flag{ font-size:9.5px; color:var(--warning); }
+  .rota-time{ margin-left:auto; font-size:9.5px; color:var(--muted-2); font-family:var(--font-mono); }
+  .rota-body{ padding:4px 14px 12px 26px; border-top:1px solid var(--border); }
+  .rota-body-actions{ display:flex; gap:8px; margin:8px 0 10px; flex-wrap:wrap; }
+  .rota-line{ position:relative; padding-left:20px; }
+  .rota-line::before{ content:''; position:absolute; left:5px; top:10px; bottom:10px; width:2px; background:var(--border-strong); }
+  .rota-stop{ position:relative; display:flex; align-items:center; gap:12px; padding:6px 0; flex-wrap:wrap; }
+  .rota-stop::before{
+    content:''; position:absolute; left:-20px; top:50%; width:12px; height:12px; margin-top:-6px;
+    border-radius:50%; background:var(--accent); border:2px solid var(--surface-2); box-sizing:border-box;
+  }
+  .rota-stop.rota-origin::before{ background:var(--ok); }
+  .rota-stop.rota-atipica::before{ background:var(--surface-2); border-color:var(--warning); }
+  .stop-name{ font-weight:600; font-size:11.5px; min-width:120px; }
+  .stop-doca{ font-size:9px; color:var(--muted-2); font-weight:400; margin-left:4px; }
+  .stop-bar{ flex:1; min-width:90px; max-width:260px; height:6px; background:var(--surface); border-radius:3px; overflow:hidden; }
+  .stop-bar i{ display:block; height:100%; background:var(--accent); border-radius:3px; }
+  .rota-atipica .stop-bar i{ background:var(--warning); }
+  .stop-nums{ font-size:10.5px; color:var(--muted); white-space:nowrap; }
+  .stop-nums b{ color:var(--ink); }
+  .rota-note{ font-size:9.5px; color:var(--muted-2); margin-top:8px; }
   .chart-card .desc{ font-size:9.5px; color:var(--muted-2); margin-bottom:7px; }
   .chart-card .canvas-wrap{ position:relative; height:220px; }
 
@@ -472,26 +518,6 @@
 
   .emoji-3d-wrap{ display:inline-block; line-height:0; }
   .emoji-3d{ width:1.4em; height:1.4em; vertical-align:-0.32em; object-fit:contain; }
-
-  .ai-chat-fab{
-    position:fixed; bottom:20px; right:20px; z-index:200;
-    width:52px; height:52px; border-radius:50%; background:var(--accent); border:none;
-    font-size:24px; box-shadow:0 6px 20px rgba(0,0,0,.4); cursor:pointer;
-  }
-  .ai-chat-panel{
-    position:fixed; bottom:84px; right:20px; z-index:200; width:360px; max-width:calc(100vw - 40px);
-    height:480px; max-height:calc(100vh - 120px); background:var(--surface); border:1px solid var(--border-strong);
-    border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.5); display:flex; flex-direction:column; overflow:hidden;
-  }
-  .ai-chat-head{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--border); background:var(--surface-2); flex-shrink:0; }
-  .ai-chat-head b{ font-size:12.5px; }
-  .ai-chat-head button{ background:none; border:none; color:var(--muted); font-size:16px; cursor:pointer; }
-  .ai-chat-messages{ flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:10px; }
-  .ai-chat-msg{ font-size:12px; line-height:1.5; padding:8px 11px; border-radius:9px; max-width:85%; white-space:pre-wrap; }
-  .ai-chat-msg-bot{ background:var(--surface-2); color:var(--ink); align-self:flex-start; }
-  .ai-chat-msg-user{ background:var(--accent); color:#14161C; align-self:flex-end; }
-  .ai-chat-input-row{ display:flex; gap:8px; padding:10px; border-top:1px solid var(--border); flex-shrink:0; }
-  .ai-chat-input-row input{ flex:1; }
   .dig-extra{ font-size:8.5px; color:var(--muted-2); }
   .risk-critico{ color:var(--critical); }
   .risk-atencao{ color:var(--warning); }
@@ -592,17 +618,24 @@
   }
   .all-codes-modal .modal-body{ flex:1; display:flex; flex-direction:column; min-height:0; padding:13.5px 17px 17px; }
   .all-codes-status{ font-size:10px; color:var(--muted); margin-bottom:12px; text-align:center; flex-shrink:0; }
+  .all-codes-cols-control{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-shrink:0; flex-wrap:wrap; font-size:11px; color:var(--muted); }
+  .all-codes-cols-hint{ font-size:9.5px; color:var(--muted-2); }
   .all-codes-grid{
     display:grid; grid-template-columns:repeat(4, 1fr); gap:12px;
     flex:1; min-height:0; overflow-y:auto; padding:7px; background:#fff; border-radius:8px;
   }
+  .all-codes-grid.cols-1{ grid-template-columns:repeat(1, 1fr); }
+  .all-codes-grid.cols-2{ grid-template-columns:repeat(2, 1fr); }
+  .all-codes-grid.cols-3{ grid-template-columns:repeat(3, 1fr); }
+  .all-codes-grid.cols-4{ grid-template-columns:repeat(4, 1fr); }
+  .all-codes-grid.cols-5{ grid-template-columns:repeat(5, 1fr); }
   .lote-code-card{ background:#fff; border:1px solid #e2e2e2; border-radius:8px; padding:12px 12px 13.5px; text-align:center; }
   .lcc-title{ font-family:var(--font-mono); font-size:13px; font-weight:700; color:#14161C; word-break:break-all; line-height:1.25; }
   .lcc-meta{ font-size:10px; color:#666; margin:2.5px 0 8.5px; }
   .lcc-barcode{ width:100%; height:auto; display:block; }
   .lcc-caption{ font-size:9px; color:#333; margin-top:5px; letter-spacing:.03em; word-break:break-all; }
   .lcc-date{ font-size:9px; color:#888; margin-top:3px; }
-  @media (max-width:900px){ .all-codes-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:900px){ .all-codes-grid.cols-3, .all-codes-grid.cols-4, .all-codes-grid.cols-5{ grid-template-columns:repeat(2, 1fr); } }
 
   @page{ margin:10mm; }
   @page ship-label-page{ size:100mm 150mm; margin:0; }
@@ -1026,15 +1059,6 @@
   </header>
 
   <main id="uploadZone" class="upload-bar-wrap">
-    <section class="shared-banner" id="sharedBanner" hidden>
-      <div class="shared-banner-icon">📡</div>
-      <div class="shared-banner-text">
-        <b>Dados compartilhados disponíveis</b>
-        <span id="sharedBannerDetail">—</span>
-      </div>
-      <button class="btn-primary btn-small" id="btnLoadShared">Carregar dados compartilhados</button>
-      <button class="btn-ghost btn-small" id="btnDismissShared">Enviar meu próprio arquivo</button>
-    </section>
     <section class="upload-bar" id="dropAll">
       <div class="upload-bar-label">📂 Carregar arquivos</div>
       <div class="upload-pill-row">
@@ -1049,27 +1073,6 @@
     <div class="upload-status-list" id="uploadStatusList"></div>
     <div class="upload-error" id="uploadError"></div>
     <p class="fs-api-note" id="fsApiNote" hidden>Atualização automática precisa de Chrome ou Edge no computador — nesse navegador não está disponível, mas o resto do painel funciona normal.</p>
-
-    <section class="drive-panel" id="drivePanel">
-      <div class="drive-panel-head">
-        <div class="upload-bar-label">☁️ Google Drive</div>
-        <button class="btn-ghost btn-small" id="btnToggleDriveConfig">⚙️ Configurar</button>
-      </div>
-      <div class="drive-config" id="driveConfig" hidden>
-        <p class="lote-code-hint" style="margin:0 0 10px;">Cole aqui o Client ID (Google Cloud Console) e o ID da pasta do Drive onde os 3 arquivos ficam. Isso fica salvo só neste navegador.</p>
-        <input type="text" class="search-input" id="driveClientIdInput" placeholder="Client ID (termina em .apps.googleusercontent.com)">
-        <input type="text" class="search-input" id="driveFolderIdInput" placeholder="ID da pasta do Drive, ou cole o link inteiro da pasta">
-        <button class="btn-primary btn-small" id="btnSaveDriveConfig">Salvar configuração</button>
-      </div>
-      <div class="drive-status" id="driveStatus">Não configurado ainda.</div>
-      <div class="drive-actions" id="driveActions" hidden>
-        <button class="btn-primary btn-small" id="btnConnectDrive">🔗 Conectar ao Google Drive</button>
-        <button class="btn-ghost btn-small" id="btnSyncDriveNow" hidden>🔄 Verificar pasta agora</button>
-        <label class="cc-chip-auto" id="driveAutoSyncWrap" hidden title="Verificar a pasta automaticamente a cada 5 minutos">
-          <input type="checkbox" id="driveAutoSyncToggle"><span>🔄 Auto (5 min)</span>
-        </label>
-      </div>
-    </section>
   </main>
 
   <main id="dashboard" class="dashboard" hidden>
@@ -1082,8 +1085,6 @@
         <button class="btn-ghost" id="btnReload" style="margin-left:8px;">↺ Carregar novo arquivo</button>
         <button class="btn-ghost btn-small" id="btnLimpezaGeral" title="Apaga tudo: Backlog, Lotes, lote pai, bipagem e o painel Sem Movimentação">🧹 Limpeza geral</button>
         <label class="inline-auto" id="autoWrapChegada" hidden><input type="checkbox" id="autoToggleChegada"><span>🔄 auto (30 min)</span></label>
-        <span class="shared-status" id="sharedSaveStatus"></span>
-        <button class="btn-ghost btn-small" id="btnCheckShared" title="Ver se alguém enviou dados mais novos">📡 Verificar dados compartilhados</button>
         <button class="btn-ghost btn-small" id="btnOpenCrossCheck" title="Cruza os pedidos críticos do Backlog com as remessas de 1-3 dias do Sem Movimentação">🔍 Críticos × Sem Movimentação<span id="crossCheckLiveBadge"></span></button>
       </div>
       <div class="thresholds">
@@ -1390,7 +1391,6 @@
       </section>
 
       <section class="table-toolbar">
-        <input type="text" class="search-input" id="digSearchInput" placeholder="Buscar digitalizador ou base destino...">
         <select class="select-input" id="filterDigitalizador"><option value="">Digitalizador: todos</option></select>
         <select class="select-input" id="filterDigBaseDestino"><option value="">Base Destino: todas</option></select>
         <select class="select-input" id="filterDigLote"><option value="">Lote: todos</option></select>
@@ -1459,6 +1459,47 @@
           <div class="value" id="expKpiCicloTotal">—</div>
           <div class="sub" id="expKpiCicloTotalSub">da chegada até a expedição confirmada</div>
         </div>
+      </section>
+
+      <section class="chart-card fb-card" style="margin-bottom:12px;">
+        <h3>📊 Indicador de falta de bipagem</h3>
+        <div class="desc">Compara chegada × lote × expedição — meta geral: 0,50%. Precisa dos 3 arquivos carregados pra ficar completo.</div>
+        <div class="fb-grid">
+          <div class="fb-main">
+            <div class="fb-label">Taxa geral de falta de bipagem</div>
+            <div class="fb-value" id="fbTaxaGeral">—</div>
+            <div class="fb-meta" id="fbMetaStatus">meta: 0,50%</div>
+          </div>
+          <div class="fb-breakdown">
+            <div class="fb-row">
+              <div class="fb-row-label">Falta de recebimento <span class="fb-hint">(está no lote ou na expedição, mas não chegou ao centro)</span></div>
+              <div class="fb-row-value"><b id="fbRecebimentoQtd">0</b> pedidos · <b id="fbRecebimentoTaxa">0,00%</b> <button class="btn-ghost btn-small" id="btnVerFaltaRecebimento">👁 Ver lista</button></div>
+            </div>
+            <div class="fb-row">
+              <div class="fb-row-label">Falta de bipagem na expedição <span class="fb-hint">(chegou, mas não foi confirmado na saída)</span></div>
+              <div class="fb-row-value"><b id="fbExpedicaoQtd">0</b> pedidos · <b id="fbExpedicaoTaxa">0,00%</b> <button class="btn-ghost btn-small" id="btnVerFaltaExpedicao">👁 Ver lista</button></div>
+            </div>
+            <div class="fb-row fb-row-total">
+              <div class="fb-row-label">Total de pedidos a bipar (chegada + lote + expedição, sem repetir)</div>
+              <div class="fb-row-value"><b id="fbTotalUniverso">0</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chart-card rotas-card" id="rotasCard" style="margin-bottom:12px;">
+        <div class="rotas-head-row">
+          <div>
+            <h3>🛣️ Rotas de expedição (linha secundária)</h3>
+            <div class="desc">Pedidos do Bipe de expedição agrupados pelo Número do ID de cada linha secundária — cada ID é uma rota, e as bases de destino são as paradas.</div>
+          </div>
+          <div class="rotas-actions">
+            <input type="text" class="search-input" id="rotasSearch" placeholder="Buscar rota ou base...">
+            <button class="btn-ghost btn-small" id="btnExportRotasCsv">⬇ Exportar resumo (CSV)</button>
+          </div>
+        </div>
+        <div class="rotas-summary" id="rotasSummary"></div>
+        <div class="rotas-list" id="rotasList"></div>
       </section>
 
       <section class="charts-grid">
@@ -1926,6 +1967,17 @@
     </div>
     <div class="modal-body">
       <div class="all-codes-status" id="allCodesStatus"></div>
+      <div class="all-codes-cols-control">
+        <span>Códigos por linha:</span>
+        <div class="chips" id="allCodesColsChips">
+          <button class="chip" data-cols="1">1</button>
+          <button class="chip" data-cols="2">2</button>
+          <button class="chip" data-cols="3">3</button>
+          <button class="chip active" data-cols="4">4</button>
+          <button class="chip" data-cols="5">5</button>
+        </div>
+        <span class="all-codes-cols-hint">quanto menor a quantidade, maior e mais nítido fica o código pra leitura no PDA</span>
+      </div>
       <div class="all-codes-grid" id="allCodesGrid"></div>
       <div class="copy-actions">
         <button class="btn-primary" id="btnPrintAllCodes">🖨 Imprimir todos</button>
@@ -2048,6 +2100,26 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="fbListModalOverlay" hidden>
+  <div class="modal" style="max-width:660px;">
+    <div class="modal-head">
+      <h3 id="fbListModalTitle">Lista de pedidos</h3>
+      <button id="btnCloseFbListModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="lote-code-hint" id="fbListModalDesc" style="margin:0 0 10px;"></p>
+      <div class="fb-base-summary" id="fbBaseSummary"></div>
+      <div class="copy-actions" style="margin-bottom:10px;">
+        <button class="btn-primary btn-small" id="btnCopyFbList">📋 Copiar todos os JMS</button>
+        <button class="btn-ghost btn-small" id="btnExportFbList">⬇ Exportar CSV</button>
+        <a class="btn-ghost btn-small" href="https://jmsbr.jtjms-br.com/app/operatingPlatformIndex/scanQueryConstantlyNew?title=Consulta%20das%20bipagens%20(tempo%20real)&moduleCode=&fineUrl=" target="_blank" rel="noopener noreferrer">🔗 Consultar no JMS</a>
+      </div>
+      <div class="pending-exped-list" id="fbListItems" style="max-height:320px;"></div>
+      <div class="lote-code-hint" id="fbListTruncatedNote" style="margin-top:8px;" hidden></div>
+    </div>
+  </div>
+</div>
+
 <div class="loading-overlay" id="loadingOverlay" hidden>
   <div class="spinner"></div>
   <div class="txt" id="loadingText">Lendo o arquivo...</div>
@@ -2123,7 +2195,7 @@
   var fileName1 = '';
   var digTally = Object.create(null); // digTally[digitalizador][baseDestino] = {count, peso}
   var currentView = 'backlog';
-  var digState = { digitalizador:'', baseDestino:'', lote:'', search:'', sortKey:'count', sortDir:'desc', page:1, pageSize:50 };
+  var digState = { digitalizador:'', baseDestino:'', lote:'', sortKey:'count', sortDir:'desc', page:1, pageSize:50 };
   var prodState = { sortKey:'intervaloMedioMin', sortDir:'asc' };
   var chartDigitalizador=null, chartDigDestino=null;
 
@@ -2248,169 +2320,6 @@
     return byName>=0 ? byName : 0;
   }
 
-  // ---------- Shared data (everyone who opens this artifact sees the same upload) ----------
-  // Only available when this file is opened as a published Claude artifact with the "db"
-  // capability granted — a plain hosted copy (Netlify, etc.) has no window.claude, so every
-  // call here degrades quietly instead of breaking the local flow.
-  // ---------- Persistent storage: Artifact "db" capability ----------
-  // Published pages don't have window.storage (that's preview-only) — shared, cross-viewer
-  // persistence here goes through claude.use("db") instead. Resolution is async (up to ~10s),
-  // so hasSharedStorage() reflects "resolved and available" rather than a live sync check;
-  // anything that ran its startup check before resolution finishes gets re-run once it lands.
-  var dbCapability = null;
-  var dbCapabilityReady = false;
-  var dbCapabilityWaiters = [];
-  var DB_CHUNK_SIZE = 500; // items per chunk doc, sized to stay well under the 256 KiB/doc cap
-
-  function onDbCapabilityResolved(){
-    checkSharedDataOnStartup();
-    loadBaseConfigFromStorage();
-    loadDocaConfigFromStorage();
-  }
-  (function initDbCapability(){
-    if (typeof window.claude === 'undefined' || !window.claude.use){
-      dbCapabilityReady = true;
-      return;
-    }
-    window.claude.use('db').then(function(db){
-      dbCapability = db; dbCapabilityReady = true;
-      dbCapabilityWaiters.forEach(function(cb){ cb(db); }); dbCapabilityWaiters = [];
-      onDbCapabilityResolved();
-    }).catch(function(){
-      dbCapability = null; dbCapabilityReady = true;
-      dbCapabilityWaiters.forEach(function(cb){ cb(null); }); dbCapabilityWaiters = [];
-      onDbCapabilityResolved();
-    });
-  })();
-  function hasSharedStorage(){ return dbCapabilityReady && dbCapability !== null; }
-
-  // Guards every db call against silently hanging forever — if a real answer doesn't come
-  // back in time, this rejects instead, so the existing .catch() handlers throughout the app
-  // can still show an error and clear the loading state, rather than the UI getting stuck on
-  // "Carregando..." with no way out.
-  function withTimeout(promise, ms, label){
-    return new Promise(function(resolve, reject){
-      var done = false;
-      var timer = setTimeout(function(){
-        if (done) return;
-        done = true;
-        reject(new Error('timeout: '+(label||'operação')+' não respondeu a tempo'));
-      }, ms);
-      promise.then(function(v){
-        if (done) return;
-        done = true; clearTimeout(timer); resolve(v);
-      }, function(err){
-        if (done) return;
-        done = true; clearTimeout(timer); reject(err);
-      });
-    });
-  }
-  function dbSetDoc(path, data){
-    return withTimeout(dbCapability.doc(path).set(data), 12000, 'salvar '+path);
-  }
-  function dbGetDoc(path){
-    return withTimeout(dbCapability.doc(path).get(), 12000, 'ler '+path).then(function(snap){ return snap.exists ? snap.data() : null; });
-  }
-
-  function saveShared(kind, items, extraMeta, onDone){
-    if (!hasSharedStorage()){ if (onDone) onDone(false); return; }
-    var chunks = [];
-    for (var i=0;i<items.length;i+=DB_CHUNK_SIZE) chunks.push(items.slice(i, i+DB_CHUNK_SIZE));
-    if (!chunks.length) chunks.push([]);
-    var meta = { totalItems:items.length, chunkCount:chunks.length, uploadedAt:new Date().toISOString() };
-    for (var k in (extraMeta||{})) meta[k] = extraMeta[k];
-    var puts = chunks.map(function(chunk, i){
-      return dbSetDoc('shared/'+kind+'/chunks/'+i, { items: chunk }).catch(function(){ return null; });
-    });
-    Promise.all(puts).then(function(results){
-      var ok = results.every(function(r){ return r!==null; });
-      if (!ok){ if (onDone) onDone(false); return; }
-      dbSetDoc('shared/'+kind, meta)
-        .then(function(){ if (onDone) onDone(true); })
-        .catch(function(){ if (onDone) onDone(false); });
-    }).catch(function(){ if (onDone) onDone(false); });
-  }
-
-  function loadShared(kind, onDone){
-    if (!hasSharedStorage()){ onDone(null); return; }
-    dbGetDoc('shared/'+kind).then(function(meta){
-      if (!meta){ onDone(null); return; }
-      var gets = [];
-      for (var i=0;i<(meta.chunkCount||0);i++){
-        gets.push(dbGetDoc('shared/'+kind+'/chunks/'+i).then(function(d){ return d ? (d.items||[]) : []; }).catch(function(){ return []; }));
-      }
-      Promise.all(gets).then(function(chunkArrays){
-        var items = [].concat.apply([], chunkArrays);
-        onDone({ meta:meta, items:items });
-      }).catch(function(){ onDone(null); });
-    }).catch(function(){ onDone(null); });
-  }
-
-
-  function compactChegadaPedido(g){
-    return {
-      j:g.jms, l:g.loteValues, tn:g.tempoMin?g.tempoMin.getTime():null, tx:g.tempoMax?g.tempoMax.getTime():null,
-      tl:g.tempoLote?g.tempoLote.getTime():null, be:g.baseEscaneamento, pp:g.paradaProxima, br:g.baseRemetente,
-      md:g.municipioDestino, ed:g.estadoDestino, bd:g.baseDestino, nc:g.nomeCliente, pf:g.pesoFaturado,
-      op:g.origemPedido, id:g.idsValues, nl:g.nLeituras, ld:g.loteDigitalizador, ldn:g.loteDigitalizadorNo
-    };
-  }
-  function expandChegadaPedido(c){
-    return {
-      jms:c.j, loteValues:c.l||[], tempoMin:c.tn?new Date(c.tn):null, tempoMax:c.tx?new Date(c.tx):null,
-      tempoLote:c.tl?new Date(c.tl):null, baseEscaneamento:c.be||'', paradaProxima:c.pp||'', baseRemetente:c.br||'',
-      municipioDestino:c.md||'', estadoDestino:c.ed||'', baseDestino:c.bd||'', nomeCliente:c.nc||'', pesoFaturado:c.pf||0,
-      origemPedido:c.op||'', idsValues:c.id||[], nLeituras:c.nl||0, loteDigitalizador:c.ld||null, loteDigitalizadorNo:c.ldn||null
-    };
-  }
-  // Encomenda inserida em lote, bipe de expedição and carregamento records share close enough
-  // shapes (jms -> lote/tempo/destino/etc.) that one compact/expand pair covers all three;
-  // fields a given kind doesn't have just stay undefined and drop out of the JSON.
-  function compactCrossCheckEntry(jms, rec){
-    return {
-      j:jms, l:rec.lote||'', t:rec.tempo?rec.tempo.getTime():null, bd:rec.baseDestino||'',
-      nc:rec.nomeCliente||undefined, pf:rec.pesoFaturado||undefined, op:rec.origemPedido||undefined,
-      md:rec.municipioDestino||undefined, be:rec.baseEscaneamento||undefined, pp:rec.paradaProxima||undefined,
-      dg:rec.digitalizador||undefined, dgn:rec.digitalizadorNo||undefined
-    };
-  }
-  function expandCrossCheckEntry(c){
-    return {
-      lote:c.l||'', tempo:c.t?new Date(c.t):null, baseDestino:c.bd||'', nomeCliente:c.nc||'',
-      pesoFaturado:c.pf||0, origemPedido:c.op||'', municipioDestino:c.md||'', baseEscaneamento:c.be||'',
-      paradaProxima:c.pp||'', digitalizador:c.dg||'', digitalizadorNo:c.dgn||''
-    };
-  }
-
-  var currentChegadaUploadedAt = null; // tracks what's currently on screen, local upload or shared
-
-  function saveSharedChegada(){
-    var ts = new Date().toISOString();
-    currentChegadaUploadedAt = ts;
-    saveShared('chegada', rawPedidos.map(compactChegadaPedido), { fileName:fileName1, uploadedAt:ts }, function(ok){
-      updateSharedBadge('chegada', ok);
-    });
-  }
-  function saveSharedCrossCheck(kind, map, fname){
-    var arr = [];
-    map.forEach(function(rec, jms){ arr.push(compactCrossCheckEntry(jms, rec)); });
-    saveShared(kind, arr, { fileName:fname }, function(ok){ updateSharedBadge(kind, ok); });
-  }
-
-  function updateSharedBadge(kind, ok){
-    // Best-effort visual confirmation only — failure here never blocks the local flow above.
-    var el = $('sharedSaveStatus');
-    if (!el) return;
-    if (ok) el.textContent = '📡 Dados compartilhados atualizados ('+new Date().toLocaleTimeString('pt-BR')+')';
-    else if (hasSharedStorage()) el.textContent = '⚠ Não consegui salvar nos dados compartilhados agora.';
-  }
-
-  function expandCrossCheckMap(items){
-    var map = new Map();
-    items.forEach(function(c){ map.set(c.j, expandCrossCheckEntry(c)); });
-    return map;
-  }
-
   // Single source of truth for the "quem inseriu no lote" tally — rebuilt from rawPedidos'
   // current loteDigitalizador/loteDigitalizadorNo whenever that attribution changes (a fresh
   // chegada load, or a lote file overriding it with its own authoritative value).
@@ -2428,23 +2337,6 @@
     });
   }
 
-  function expandAndShowSharedChegada(result, onComplete){
-    rawPedidos = result.items.map(expandChegadaPedido);
-    var conflitos = 0;
-    rawPedidos.forEach(function(g2){
-      if (g2.loteValues.length>1) conflitos++;
-    });
-    rebuildDigTally();
-    conflitoLoteCount = conflitos;
-    ignoredNonNumeric = 0; duplicatasExatasCount = 0;
-    fileName1 = (result.meta.fileName||'arquivo compartilhado') + ' · compartilhado';
-    currentChegadaUploadedAt = result.meta.uploadedAt;
-    file2Loaded=false; loteConfirmMap=null; lotesAbertosCount=0; file2OnlyCount=0; file2RemovidosCount=0; file2ScanRows=0; fileName2='';
-    expedicaoLoaded=false; expedicaoConfirmMap=null; lotesExpedidosCount=0; expedicaoScanRows=0; expedicaoOnlyCount=0; fileNameExped='';
-    carregamentoLoaded=false; carregamentoData=null; carregamentoViagens=null; carregamentoScanRows=0; fileNameCarga='';
-    showDashboardAfterChegada();
-    if (onComplete) onComplete();
-  }
 
   // "Encomenda inserida em lote" is the dedicated, authoritative source for who scanned a
   // pedido into its lote — its Digitalizador/Digitalizador No. replace whatever the chegada
@@ -2461,85 +2353,6 @@
       }
     });
     rebuildDigTally();
-  }
-
-  function loadAllSharedAndShow(){
-    showLoading('Carregando dados compartilhados...');
-    var watchdogFired = false;
-    var watchdog = setTimeout(function(){
-      watchdogFired = true;
-      hideLoading();
-      alert('A operação demorou demais e foi cancelada. Tenta de novo — se persistir, pode ser um problema temporário de conexão com os dados compartilhados.');
-    }, 20000);
-    function clearWatchdog(){ clearTimeout(watchdog); }
-    loadShared('chegada', function(result){
-      if (watchdogFired) return;
-      clearWatchdog();
-      hideLoading();
-      if (!result || !result.items.length){ alert('Não encontrei dados compartilhados no momento — pode ser que ninguém tenha enviado um arquivo ainda.'); return; }
-      expandAndShowSharedChegada(result, function(){
-        loadShared('lote', function(r){
-          if (r && r.items.length){
-            loteConfirmMap = expandCrossCheckMap(r.items);
-            lotesAbertosCount = new Set(r.items.map(function(c){return c.l;}).filter(Boolean)).size;
-            file2ScanRows = r.items.length; file2OnlyCount = 0; file2RemovidosCount = 0; file2Loaded = true; fileName2 = (r.meta.fileName||'')+' · compartilhado';
-            applyLoteDigitalizadorOverride();
-            updateCrosscheckUi(); refresh(true);
-          }
-        });
-        loadShared('exped', function(r){
-          if (r && r.items.length){
-            expedicaoConfirmMap = expandCrossCheckMap(r.items);
-            lotesExpedidosCount = new Set(r.items.map(function(c){return c.l;}).filter(Boolean)).size;
-            expedicaoScanRows = r.items.length; expedicaoOnlyCount = 0; expedicaoLoaded = true; fileNameExped = (r.meta.fileName||'')+' · compartilhado';
-            updateExpedCrosscheckUi(); refresh(true);
-            if (currentView==='expedicao') renderExpedView();
-          }
-        });
-        loadShared('carga', function(r){
-          if (r && r.items.length){
-            carregamentoData = expandCrossCheckMap(r.items);
-            carregamentoViagens = new Set(r.items.map(function(c){return c.l;}).filter(Boolean));
-            carregamentoScanRows = r.items.length; carregamentoLoaded = true; fileNameCarga = (r.meta.fileName||'')+' · compartilhado';
-            updateCargaCrosscheckUi();
-            if (currentView==='carregamento') renderCargaView();
-          }
-        });
-      });
-    });
-  }
-
-  function checkSharedDataOnStartup(){
-    if (!hasSharedStorage()) return;
-    loadShared('chegada', function(result){
-      if (!result || !result.items.length) return;
-      var meta = result.meta;
-      var when = meta.uploadedAt ? new Date(meta.uploadedAt).toLocaleString('pt-BR') : '—';
-      $('sharedBannerDetail').textContent = fmtInt(meta.totalItems)+' pedidos · enviado em '+when+(meta.fileName?(' · '+meta.fileName):'');
-      $('sharedBanner').hidden = false;
-    });
-  }
-
-  function checkForNewerSharedData(){
-    if (!hasSharedStorage()){
-      alert('Esse recurso só funciona quando o painel é aberto pelo link publicado do Claude, com a permissão de dados concedida — nessa cópia (Netlify, local, ou sem essa permissão) não tem onde guardar os dados compartilhados.');
-      return;
-    }
-    $('sharedSaveStatus').textContent = 'Verificando...';
-    loadShared('chegada', function(result){
-      if (!result || !result.items.length){ $('sharedSaveStatus').textContent = 'Nenhum dado compartilhado encontrado.'; return; }
-      if (result.meta.uploadedAt === currentChegadaUploadedAt){
-        $('sharedSaveStatus').textContent = 'Você já está com os dados mais recentes.';
-        return;
-      }
-      var when = new Date(result.meta.uploadedAt).toLocaleString('pt-BR');
-      if (confirm('Tem uma versão mais nova dos dados compartilhados (enviada em '+when+', '+fmtInt(result.meta.totalItems)+' pedidos). Carregar agora?')){
-        expandAndShowSharedChegada(result);
-        $('sharedSaveStatus').textContent = 'Atualizado com os dados compartilhados mais recentes.';
-      } else {
-        $('sharedSaveStatus').textContent = '';
-      }
-    });
   }
 
   function baseJmsOf(s){
@@ -2664,6 +2477,7 @@
     if (!file) return;
     showLoading('Lendo "Chegada ao centro" (' + (file.size/1024/1024).toFixed(1) + ' MB)...');
     readWorkbookRows(file, function(rows){
+      if (!validateFileKind(rows, 'chegada', file.name)){ hideLoading(); return; }
       showLoading('Agrupando pedidos...');
       setTimeout(function(){
         var ok = false;
@@ -2776,7 +2590,6 @@
     file2Loaded = false; loteConfirmMap=null; lotesAbertosCount=0; file2OnlyCount=0; file2RemovidosCount=0; file2ScanRows=0; fileName2='';
 
     showDashboardAfterChegada();
-    saveSharedChegada();
     return true;
   }
 
@@ -2813,6 +2626,7 @@
     if (!rawPedidos.length){ return; }
     showLoading('Lendo relatório de inserção em lote...');
     readWorkbookRows(file, function(rows){
+      if (!validateFileKind(rows, 'lote', file.name)){ hideLoading(); return; }
       setTimeout(function(){
         try{ processFile2Rows(rows, file.name); }
         catch(e){ showError('Erro ao processar o cruzamento: ' + e.message); }
@@ -2888,7 +2702,6 @@
     $('btnRemoveFile2').hidden = false;
     updateCrosscheckUi();
     refresh(true);
-    saveSharedCrossCheck('lote', loteConfirmMap, fname);
   }
 
   // ---------- Auto-refresh: re-read the same file from disk every 30 min ----------
@@ -3029,6 +2842,7 @@
     if (!rawPedidos.length){ return; }
     showLoading('Lendo relatório de bipe de expedição...');
     readWorkbookRows(file, function(rows){
+      if (!validateFileKind(rows, 'exped', file.name)){ hideLoading(); return; }
       setTimeout(function(){
         try{ processFile3Rows(rows, file.name); }
         catch(e){ showError('Erro ao processar o cruzamento de expedição: ' + e.message); }
@@ -3060,6 +2874,7 @@
       if (lote) lotesExpedidos.add(lote);
       loteByJms.set(baseJmsOf(s), {
         lote: lote,
+        numeroId: idx.numeroId>=0 ? String(r[idx.numeroId]||'').trim() : '',
         tempo: parseDateBR(idx.tempo>=0 ? r[idx.tempo] : ''),
         baseDestino: idx.baseDestino>=0 ? String(r[idx.baseDestino]||'').trim() : '',
         nomeCliente: idx.nomeCliente>=0 ? String(r[idx.nomeCliente]||'').trim() : '',
@@ -3084,7 +2899,6 @@
     updateExpedCrosscheckUi();
     refresh(true);
     if (currentView==='expedicao') renderExpedView();
-    saveSharedCrossCheck('exped', expedicaoConfirmMap, fname);
   }
 
   function updateExpedCrosscheckUi(){
@@ -3120,6 +2934,7 @@
     if (!rawPedidos.length){ return; }
     showLoading('Lendo relatório de carregamento...');
     readWorkbookRows(file, function(rows){
+      if (!validateFileKind(rows, 'carga', file.name)){ hideLoading(); return; }
       setTimeout(function(){
         try{ processFile4Rows(rows, file.name); }
         catch(e){ showError('Erro ao processar o cruzamento de carregamento: ' + e.message); }
@@ -3167,7 +2982,6 @@
     $('btnRemoveFile4').hidden = false;
     updateCargaCrosscheckUi();
     if (currentView==='carregamento') renderCargaView();
-    saveSharedCrossCheck('carga', carregamentoData, fname);
   }
 
   // A carregado pedido only counts as "não chegou" if it shows up in NONE of the three
@@ -3312,11 +3126,9 @@
     var digTotalByOperator = {};
     all.forEach(function(r){ digTotalByOperator[r.digitalizador] = (digTotalByOperator[r.digitalizador]||0)+r.count; });
     var d = digState.digitalizador, b = digState.baseDestino;
-    var s = digState.search.trim().toLowerCase();
     var filtered = all.filter(function(r){
       if (d && r.digitalizador!==d) return false;
       if (!digState.lote && b && r.baseDestino!==b) return false;
-      if (s && r.digitalizador.toLowerCase().indexOf(s)===-1 && r.baseDestino.toLowerCase().indexOf(s)===-1) return false;
       return true;
     });
     filtered.forEach(function(r){ r.pctDig = digTotalByOperator[r.digitalizador] ? (r.count/digTotalByOperator[r.digitalizador]*100) : 0; });
@@ -3568,7 +3380,317 @@
     return 0;
   }
 
+  var FALTA_BIPAGEM_META = 0.5; // percent
+
+  // Universe = every pedido seen in ANY of the 3 files (chegada ∪ lote ∪ expedição), not just
+  // the ones that arrived — a pedido can show up in the lote or expedição export without ever
+  // having a matching chegada row, and that gap ("falta de recebimento") is exactly half of
+  // what this indicator measures. The other half ("falta de bipagem na expedição") only looks
+  // at pedidos that DID arrive and checks whether they're confirmed as expedido.
+  function computeFaltaBipagemIndicador(){
+    var chegadaSet = new Set(rawPedidos.map(function(p){ return p.jms; }));
+    var loteSet = loteConfirmMap ? new Set(loteConfirmMap.keys()) : new Set();
+    var expedSet = expedicaoConfirmMap ? new Set(expedicaoConfirmMap.keys()) : new Set();
+
+    var universo = new Set(chegadaSet);
+    loteSet.forEach(function(j){ universo.add(j); });
+    expedSet.forEach(function(j){ universo.add(j); });
+
+    var faltaRecebimento = 0;
+    universo.forEach(function(j){ if (!chegadaSet.has(j)) faltaRecebimento++; });
+
+    var faltaExpedicao = 0;
+    chegadaSet.forEach(function(j){ if (!expedSet.has(j)) faltaExpedicao++; });
+
+    var total = universo.size;
+    var taxaRecebimento = total ? (faltaRecebimento/total*100) : 0;
+    var taxaExpedicao = total ? (faltaExpedicao/total*100) : 0;
+    var taxaGeral = (taxaRecebimento+taxaExpedicao)/2;
+
+    return {
+      total:total, faltaRecebimento:faltaRecebimento, taxaRecebimento:taxaRecebimento,
+      faltaExpedicao:faltaExpedicao, taxaExpedicao:taxaExpedicao, taxaGeral:taxaGeral
+    };
+  }
+  // Each entry carries its destination base (so the list can be analysed per base) and the
+  // stage(s) it actually shows up in. A pedido missing from chegada has no chegada row, so its
+  // base comes from the lote/expedição record where it does appear.
+  function cmpJmsItem(a, b){ return a.jms<b.jms ? -1 : (a.jms>b.jms ? 1 : 0); }
+  function getFaltaRecebimentoItems(){
+    var chegadaSet = new Set(rawPedidos.map(function(p){ return p.jms; }));
+    var loteMap = loteConfirmMap || new Map();
+    var expMap = expedicaoConfirmMap || new Map();
+    var seen = new Set(), items = [];
+    function add(j){
+      if (chegadaSet.has(j) || seen.has(j)) return;
+      seen.add(j);
+      var inL = loteMap.has(j), inE = expMap.has(j);
+      var recL = loteMap.get(j), recE = expMap.get(j);
+      var base = (recL && recL.baseDestino) || (recE && recE.baseDestino) || '(sem base)';
+      items.push({ jms:j, base:base, det: (inL && inE) ? 'lote + expedição' : (inL ? 'só no lote' : 'só na expedição') });
+    }
+    loteMap.forEach(function(_r, j){ add(j); });
+    expMap.forEach(function(_r, j){ add(j); });
+    return items.sort(cmpJmsItem);
+  }
+  function getFaltaExpedicaoItems(){
+    var expMap = expedicaoConfirmMap || new Map();
+    var stByJms = new Map();
+    derived.forEach(function(r){ stByJms.set(r.jms, r); });
+    var items = [];
+    rawPedidos.forEach(function(p){
+      if (expMap.has(p.jms)) return;
+      var r = stByJms.get(p.jms);
+      items.push({
+        jms:p.jms,
+        base:(r && r.baseDestino) || p.baseDestino || '(sem base)',
+        det:(r && r.status==='lote') ? 'em lote, aguardando expedição' : 'ainda sem lote'
+      });
+    });
+    return items.sort(cmpJmsItem);
+  }
+  function groupFbItemsByBase(items){
+    var m = new Map();
+    items.forEach(function(it){
+      var g = m.get(it.base);
+      if (!g){ g = { base:it.base, n:0, dets:new Map() }; m.set(it.base, g); }
+      g.n++;
+      g.dets.set(it.det, (g.dets.get(it.det)||0)+1);
+    });
+    var out = Array.from(m.values());
+    out.sort(function(a, b){ return (b.n-a.n) || (a.base<b.base ? -1 : 1); });
+    out.forEach(function(g){
+      g.doca = g.base==='(sem base)' ? '' : docaOfBaseDestino(g.base);
+      g.detTxt = Array.from(g.dets.entries()).sort(function(x, y){ return y[1]-x[1]; })
+        .map(function(e){ return e[0]+' '+fmtInt(e[1]); }).join(' · ');
+    });
+    return out;
+  }
+
+  var FB_LIST_PREVIEW_LIMIT = 300; // cap on rendered rows so the modal stays responsive with big lists
+  var fbListAllItems = [];
+  var fbListBaseFilter = null;
+  var fbListTitleBase = '';
+  function fbListFiltered(){
+    return fbListBaseFilter===null ? fbListAllItems : fbListAllItems.filter(function(it){ return it.base===fbListBaseFilter; });
+  }
+  function renderFbListModal(){
+    var groups = groupFbItemsByBase(fbListAllItems);
+    var filtered = fbListFiltered();
+    var sumEl = $('fbBaseSummary');
+    var keepScroll = sumEl.scrollTop;
+    $('fbListModalTitle').textContent = fbListTitleBase + ' ('+fmtInt(fbListAllItems.length)+')';
+    sumEl.innerHTML =
+      '<div class="fb-base-head">Por base destino <span>— clique numa base pra filtrar a lista</span></div>' +
+      groups.map(function(g){
+        return '<div class="fb-base-row'+(fbListBaseFilter===g.base ? ' selected' : '')+'" data-fb-base="'+escapeHtml(g.base)+'">'+
+          '<div class="fb-base-name">'+escapeHtml(g.base)+(g.doca && g.doca!=='(sem doca)' ? '<span class="stop-doca">'+escapeHtml(g.doca)+'</span>' : '')+'</div>'+
+          '<div class="fb-base-det">'+escapeHtml(g.detTxt)+'</div>'+
+          '<div class="fb-base-n"><b>'+fmtInt(g.n)+'</b></div>'+
+        '</div>';
+      }).join('');
+    sumEl.scrollTop = keepScroll;
+    $('btnCopyFbList').textContent = fbListBaseFilter!==null ? '📋 Copiar JMS desta base ('+fmtInt(filtered.length)+')' : '📋 Copiar todos os JMS';
+    $('fbListItems').innerHTML = filtered.slice(0, FB_LIST_PREVIEW_LIMIT).map(function(it){
+      return '<div class="pending-exped-item"><span class="jms">'+escapeHtml(it.jms)+'</span>'+
+        '<span class="info">'+escapeHtml(it.base)+' · '+escapeHtml(it.det)+'</span>'+
+        '<button data-copy-jms="'+escapeHtml(it.jms)+'">📋 Copiar</button></div>';
+    }).join('');
+    var notes = [];
+    if (fbListBaseFilter!==null) notes.push('Filtrando pela base '+fbListBaseFilter+' — clique nela de novo pra ver todas.');
+    if (filtered.length > FB_LIST_PREVIEW_LIMIT) notes.push('Mostrando os primeiros '+fmtInt(FB_LIST_PREVIEW_LIMIT)+' de '+fmtInt(filtered.length)+' — "Copiar" e "Exportar CSV" pegam a lista completa'+(fbListBaseFilter!==null ? ' desta base' : '')+'.');
+    var noteEl = $('fbListTruncatedNote');
+    noteEl.hidden = !notes.length;
+    noteEl.textContent = notes.join(' ');
+  }
+  function openFbListModal(items, title, desc){
+    fbListAllItems = items;
+    fbListBaseFilter = null;
+    fbListTitleBase = title;
+    $('fbListModalDesc').textContent = desc;
+    $('fbListModalOverlay').hidden = false;
+    renderFbListModal();
+  }
+  function closeFbListModal(){ $('fbListModalOverlay').hidden = true; }
+  function exportFbListCsv(){
+    var items = fbListFiltered();
+    if (!items.length) return;
+    var lines = ['Numero_Pedido_JMS;Base_Destino;Doca;Situacao'];
+    items.forEach(function(it){
+      var doca = it.base==='(sem base)' ? '' : docaOfBaseDestino(it.base);
+      lines.push([it.jms, it.base, doca, it.det].map(csvCell).join(';'));
+    });
+    downloadCsvLines(lines, 'pedidos-'+csvStamp()+'.csv');
+  }
+  function pctBR(n){ return (isFinite(n)?n:0).toFixed(2).replace('.',','); }
+  function renderFaltaBipagemCard(){
+    var r = computeFaltaBipagemIndicador();
+    var atingiuMeta = r.taxaGeral <= FALTA_BIPAGEM_META;
+    var valEl = $('fbTaxaGeral');
+    valEl.textContent = r.total ? (pctBR(r.taxaGeral)+'%') : '—';
+    valEl.className = 'fb-value' + (r.total ? (atingiuMeta ? ' fb-ok' : ' fb-bad') : '');
+    $('fbMetaStatus').textContent = r.total ? ('meta: 0,50% · '+(atingiuMeta?'✓ dentro da meta':'⚠ acima da meta')) : 'meta: 0,50% — aguardando arquivos';
+    $('fbRecebimentoQtd').textContent = fmtInt(r.faltaRecebimento);
+    $('fbRecebimentoTaxa').textContent = pctBR(r.taxaRecebimento)+'%';
+    $('fbExpedicaoQtd').textContent = fmtInt(r.faltaExpedicao);
+    $('fbExpedicaoTaxa').textContent = pctBR(r.taxaExpedicao)+'%';
+    $('fbTotalUniverso').textContent = fmtInt(r.total);
+  }
+
+  // ---------- Rotas de expedição (linha secundária) ----------
+  // In the Bipe de expedição export, "Número do ID" carries the secondary-line trip ID
+  // (SRTR...): every pedido dispatched on the same ID travels on the same route, and the
+  // Base Destino values inside it are that route's stops. The file doesn't say what order
+  // the truck actually visits them in (scans of different stops are interleaved while loading),
+  // so stops are ordered by volume rather than pretending to know the driving sequence.
+  var rotasCache = [];
+  var rotasVisible = [];
+  var rotasOpenSet = new Set();
+
+  function buildRotasExpedicao(){
+    if (!expedicaoLoaded || !expedicaoConfirmMap) return [];
+    var byId = new Map();
+    expedicaoConfirmMap.forEach(function(rec, jms){
+      var id = rec.numeroId || '(sem ID)';
+      var rt = byId.get(id);
+      if (!rt){ rt = { id:id, n:0, stops:new Map(), lotes:new Set(), tMin:null, tMax:null }; byId.set(id, rt); }
+      rt.n++;
+      if (rec.lote) rt.lotes.add(rec.lote);
+      var base = rec.baseDestino || '(sem base)';
+      var st = rt.stops.get(base);
+      if (!st){ st = { base:base, n:0, lotes:new Set(), items:[] }; rt.stops.set(base, st); }
+      st.n++;
+      st.items.push({ jms:jms, lote:rec.lote||'', tempo:rec.tempo||null });
+      if (rec.lote) st.lotes.add(rec.lote);
+      if (rec.tempo){
+        if (!rt.tMin || rec.tempo<rt.tMin) rt.tMin = rec.tempo;
+        if (!rt.tMax || rec.tempo>rt.tMax) rt.tMax = rec.tempo;
+      }
+    });
+    var out = [];
+    byId.forEach(function(rt){
+      var stops = Array.from(rt.stops.values()).sort(function(a,b){ return b.n-a.n; });
+      stops.forEach(function(st){
+        st.share = rt.n ? st.n/rt.n : 0;
+        st.doca = st.base==='(sem base)' ? '' : docaOfBaseDestino(st.base);
+        // a stop with only a handful of pedidos next to much bigger ones is usually a
+        // pedido that got put on the wrong route — worth a look, not an automatic verdict.
+        // Judged against the route's own size: under 1% of it (and small in absolute terms),
+        // or a lone pedido on a route that has at least 10.
+        st.atipica = stops.length>1 && ((st.share<0.01 && st.n<=30) || (st.n===1 && rt.n>=10));
+      });
+      var docas = [];
+      stops.forEach(function(st){
+        if (!st.atipica && st.doca && st.doca!=='(sem doca)' && docas.indexOf(st.doca)===-1) docas.push(st.doca);
+      });
+      out.push({
+        id:rt.id, n:rt.n, stops:stops, nLotes:rt.lotes.size, tMin:rt.tMin, tMax:rt.tMax,
+        docas:docas, nAtipicas:stops.filter(function(s){ return s.atipica; }).length
+      });
+    });
+    out.sort(function(a,b){ return b.n-a.n; });
+    return out;
+  }
+
+  function renderRotasExpedicao(rebuild){
+    var list = $('rotasList');
+    if (!expedicaoLoaded){
+      rotasCache = []; rotasVisible = [];
+      $('rotasSummary').textContent = '';
+      list.innerHTML = '<div class="empty-state" style="padding:14px; display:block;">Carregue o arquivo de Bipe de expedição pra montar as rotas.</div>';
+      return;
+    }
+    if (rebuild!==false) rotasCache = buildRotasExpedicao();
+    var term = $('rotasSearch').value.trim().toLowerCase();
+    rotasVisible = rotasCache.filter(function(rt){
+      if (!term) return true;
+      if (rt.id.toLowerCase().indexOf(term)>-1) return true;
+      return rt.stops.some(function(st){ return st.base.toLowerCase().indexOf(term)>-1; });
+    });
+    var totalPed = rotasCache.reduce(function(a, rt){ return a+rt.n; }, 0);
+    $('rotasSummary').textContent = fmtInt(rotasCache.length)+' rota(s) · '+fmtInt(totalPed)+' pedido(s) expedido(s)'+(term ? ' · '+fmtInt(rotasVisible.length)+' no filtro' : '');
+    if (!rotasVisible.length){
+      list.innerHTML = '<div class="empty-state" style="padding:14px; display:block;">Nenhuma rota encontrada com essa busca.</div>';
+      return;
+    }
+    list.innerHTML = rotasVisible.map(function(rt){
+      var open = rotasOpenSet.has(rt.id);
+      var idAttr = escapeHtml(rt.id);
+      var head =
+        '<button class="rota-head" data-rota-toggle="'+idAttr+'">'+
+          '<span class="rota-caret">'+(open?'▾':'▸')+'</span>'+
+          '<span class="rota-id">'+idAttr+'</span>'+
+          '<span class="rota-meta"><b>'+fmtInt(rt.n)+'</b> pedidos · <b>'+fmtInt(rt.stops.length)+'</b> parada(s) · <b>'+fmtInt(rt.nLotes)+'</b> lote(s)</span>'+
+          (rt.docas.length ? '<span class="rota-docas">'+escapeHtml(rt.docas.join(' · '))+'</span>' : '')+
+          (rt.nAtipicas ? '<span class="rota-flag" title="Paradas com poucos pedidos perto das demais — vale conferir se foram pra rota certa">⚠ '+fmtInt(rt.nAtipicas)+' atípica(s)</span>' : '')+
+          '<span class="rota-time">'+(rt.tMin && rt.tMax ? fmtDateTime(rt.tMin)+' → '+fmtDateTime(rt.tMax) : '')+'</span>'+
+        '</button>';
+      if (!open) return '<div class="rota-item">'+head+'</div>';
+      var stopsHtml = rt.stops.map(function(st, si){
+        var w = Math.max(2, Math.round(st.share*100));
+        return '<div class="rota-stop'+(st.atipica?' rota-atipica':'')+'">'+
+          '<div class="stop-name">'+escapeHtml(st.base)+(st.doca && st.doca!=='(sem doca)' ? '<span class="stop-doca">'+escapeHtml(st.doca)+'</span>' : '')+'</div>'+
+          '<div class="stop-bar"><i style="width:'+w+'%"></i></div>'+
+          '<div class="stop-nums"><b>'+fmtInt(st.n)+'</b> pedidos · '+pctBR(st.share*100)+'% · '+fmtInt(st.lotes.size)+' lote(s)</div>'+
+          (st.atipica ? '<span class="stop-flag" title="Poucos pedidos comparado às demais paradas dessa rota — vale conferir se foi pra rota certa">⚠ atípica</span>' : '')+
+          '<button class="btn-ghost btn-small" data-copy-stop="'+idAttr+'" data-stop-idx="'+si+'">📋 Copiar JMS</button>'+
+        '</div>';
+      }).join('');
+      return '<div class="rota-item">'+head+
+        '<div class="rota-body">'+
+          '<div class="rota-body-actions">'+
+            '<button class="btn-ghost btn-small" data-copy-rota="'+idAttr+'">📋 Copiar JMS da rota</button>'+
+            '<button class="btn-ghost btn-small" data-csv-rota="'+idAttr+'">⬇ CSV da rota</button>'+
+          '</div>'+
+          '<div class="rota-line">'+
+            '<div class="rota-stop rota-origin"><div class="stop-name">PA MRB <span class="stop-doca">origem</span></div></div>'+
+            stopsHtml+
+          '</div>'+
+          '<div class="rota-note">Paradas ordenadas por volume — o arquivo não traz a sequência real de entrega do caminhão.</div>'+
+        '</div></div>';
+    }).join('');
+  }
+
+  function getRotaById(id){ return rotasCache.filter(function(rt){ return rt.id===id; })[0]; }
+  function csvCell(v){
+    v = (v===null||v===undefined) ? '' : String(v);
+    if (v.indexOf(';')>-1 || v.indexOf('"')>-1) v = '"'+v.replace(/"/g,'""')+'"';
+    return v;
+  }
+  function downloadCsvLines(lines, filename){
+    var csv = '\uFEFF' + lines.join('\r\n');
+    var blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  function csvStamp(){ return new Date().toISOString().slice(0,16).replace(/[:T]/g,'-'); }
+  function exportRotasResumoCsv(){
+    if (!rotasVisible.length) return;
+    var lines = ['Rota;Parada;Doca;Pedidos;Percentual_Da_Rota;Lotes;Atipica'];
+    rotasVisible.forEach(function(rt){
+      rt.stops.forEach(function(st){
+        lines.push([rt.id, st.base, st.doca||'', st.n, pctBR(st.share*100), st.lotes.size, st.atipica?'Sim':'Não'].map(csvCell).join(';'));
+      });
+    });
+    downloadCsvLines(lines, 'rotas-expedicao-'+csvStamp()+'.csv');
+  }
+  function exportRotaPedidosCsv(id){
+    var rt = getRotaById(id); if (!rt) return;
+    var lines = ['Rota;Parada;Doca;Numero_Pedido_JMS;Lote_Expedicao;Expedido_Em'];
+    rt.stops.forEach(function(st){
+      st.items.slice().sort(function(a,b){ return a.jms<b.jms?-1:(a.jms>b.jms?1:0); }).forEach(function(it){
+        lines.push([rt.id, st.base, st.doca||'', it.jms, it.lote, it.tempo?fmtDateTime(it.tempo):''].map(csvCell).join(';'));
+      });
+    });
+    downloadCsvLines(lines, 'rota-'+rt.id+'-'+csvStamp()+'.csv');
+  }
+
   function renderExpedView(){
+    renderRotasExpedicao();
+    renderFaltaBipagemCard();
     var allBatched = derived.filter(function(r){ return r.status==='lote' || r.status==='expedido'; });
     var nExpedido = allBatched.filter(function(r){ return r.status==='expedido'; }).length;
     var nPresos = allBatched.filter(function(r){ return r.status==='lote'; }).length;
@@ -4301,6 +4423,13 @@
     return { node: wrap.firstElementChild, barcodeValue: barcodeValue };
   }
 
+  var ALL_CODES_SIZE_BY_COLS = {
+    1:{ width:4.0, height:100 }, 2:{ width:3.2, height:80 }, 3:{ width:2.6, height:64 },
+    4:{ width:2.2, height:52 }, 5:{ width:1.8, height:42 }
+  };
+  var allCodesCols = 4;
+  var allCodesCurrentList = [];
+
   function openAllCodesModal(){
     var filtered = getLotesFiltered().slice().sort(loteCompareRows);
     var list = loteSelecionados.size>0
@@ -4313,18 +4442,25 @@
       alert(msg);
       return;
     }
-    $('allCodesCount').textContent = fmtInt(list.length);
+    allCodesCurrentList = list;
     $('allCodesModalTitle').textContent = loteSelecionados.size>0
       ? 'Códigos dos lotes selecionados'
       : 'Códigos de todos os lotes';
+    $('allCodesModalOverlay').hidden = false;
+    renderAllCodesGrid();
+  }
+
+  function renderAllCodesGrid(){
+    var list = allCodesCurrentList;
+    $('allCodesCount').textContent = fmtInt(list.length);
     var grid = $('allCodesGrid');
+    grid.className = 'all-codes-grid cols-'+allCodesCols;
     grid.innerHTML = '';
     var built = list.map(function(g){
       var b = buildCompactLoteCardNode(g);
       grid.appendChild(b.node);
       return b;
     });
-    $('allCodesModalOverlay').hidden = false;
     $('allCodesStatus').textContent = 'Gerando códigos...';
 
     ensureCodeLibs(function(ok){
@@ -4336,8 +4472,9 @@
         });
         return;
       }
+      var size = ALL_CODES_SIZE_BY_COLS[allCodesCols] || ALL_CODES_SIZE_BY_COLS[4];
       built.forEach(function(b){
-        renderBarcodeInto(b.node.querySelector('.lcc-barcode'), b.node.querySelector('.lote-code-error'), b.barcodeValue, { width:2.2, height:52 });
+        renderBarcodeInto(b.node.querySelector('.lcc-barcode'), b.node.querySelector('.lote-code-error'), b.barcodeValue, size);
       });
       $('allCodesStatus').textContent = fmtInt(list.length)+' código(s) gerado(s).';
     });
@@ -4502,27 +4639,27 @@
   // ---------- Editable "Sul do Pará e Tocantins" base list ----------
   function rebuildLocalBaseCodesNorm(){ LOCAL_BASE_CODES_NORM = LOCAL_BASE_CODES.map(normalizeBaseCode); }
 
-  var BASE_CONFIG_DB_PATH = 'config/base_codes';
+  // Settings edited here are kept in this browser's own localStorage — plain web-standard
+  // storage, no dependency on where the page is hosted. If the browser refuses (private mode,
+  // blocked storage), the change still applies for the session and the status says so.
+  function lsGet(key){ try{ return window.localStorage.getItem(key); } catch(e){ return null; } }
+  function lsSet(key, val){ try{ window.localStorage.setItem(key, val); return true; } catch(e){ return false; } }
+
+  var BASE_CONFIG_LS_KEY = 'painel_backlog:base_codes';
 
   function saveBaseConfigToStorage(){
-    if (!hasSharedStorage()){
-      $('baseConfigStatus').textContent = '⚠ Só dá pra salvar de vez quando esse painel é aberto pelo link publicado do Claude, com a permissão de dados concedida. Aqui a mudança vale só pra esta sessão — use "Exportar lista" pra guardar um arquivo.';
-      return;
-    }
-    dbSetDoc(BASE_CONFIG_DB_PATH, { codes: LOCAL_BASE_CODES })
-      .then(function(){ $('baseConfigStatus').textContent = '✓ Salvo — todo mundo com acesso a esse artefato já vê essa lista atualizada.'; })
-      .catch(function(){ $('baseConfigStatus').textContent = '⚠ Não consegui salvar agora.'; });
+    var ok = lsSet(BASE_CONFIG_LS_KEY, JSON.stringify(LOCAL_BASE_CODES));
+    $('baseConfigStatus').textContent = ok
+      ? '✓ Salvo neste navegador.'
+      : '⚠ Este navegador não deixou guardar — a mudança vale só nesta sessão. Use "Exportar lista" pra guardar um arquivo.';
   }
 
-  function loadBaseConfigFromStorage(onDone){
-    if (!hasSharedStorage()){ if (onDone) onDone(false); return; }
-    dbGetDoc(BASE_CONFIG_DB_PATH).then(function(data){
-      if (data){
-        var list = data.codes;
-        if (Array.isArray(list) && list.length){ LOCAL_BASE_CODES = list.map(String); rebuildLocalBaseCodesNorm(); }
-      }
-      if (onDone) onDone(true);
-    }).catch(function(){ if (onDone) onDone(false); });
+  function loadBaseConfigFromStorage(){
+    var raw = lsGet(BASE_CONFIG_LS_KEY); if (!raw) return;
+    try{
+      var list = JSON.parse(raw);
+      if (Array.isArray(list) && list.length){ LOCAL_BASE_CODES = list.map(String); rebuildLocalBaseCodesNorm(); }
+    } catch(e){}
   }
 
   function renderBaseConfigList(){
@@ -4533,8 +4670,7 @@
 
   function openBaseConfigModal(){
     renderBaseConfigList();
-    $('baseConfigStatus').textContent = hasSharedStorage() ? '' :
-      '⚠ Esse painel não está aberto pelo link publicado do Claude (ou a permissão de dados não foi concedida) — mudanças aqui valem só pra esta sessão. Use "Exportar lista" pra guardar.';
+    $('baseConfigStatus').textContent = 'As mudanças ficam salvas neste navegador. Pra levar pra outro computador, use "Exportar lista".';
     $('baseConfigModalOverlay').hidden = false;
   }
   function closeBaseConfigModal(){ $('baseConfigModalOverlay').hidden = true; }
@@ -4610,31 +4746,25 @@
   }
 
   // ---------- Editable Docas/Rotas ----------
-  var DOCA_CONFIG_DB_PATH = 'config/doca_groups';
+  var DOCA_CONFIG_LS_KEY = 'painel_backlog:doca_groups';
 
   function saveDocaConfigToStorage(){
-    if (!hasSharedStorage()){
-      $('docaConfigStatus').textContent = '⚠ Só dá pra salvar de vez quando esse painel é aberto pelo link publicado do Claude, com a permissão de dados concedida. Aqui a mudança vale só pra esta sessão — use "Exportar" pra guardar um arquivo.';
-      return;
-    }
     var payload = DOCA_GROUPS.map(function(g){ return { nome:g.nome, prefixos:g.prefixos }; });
-    dbSetDoc(DOCA_CONFIG_DB_PATH, { groups: payload })
-      .then(function(){ $('docaConfigStatus').textContent = '✓ Salvo — todo mundo com acesso a esse artefato já vê essas docas.'; })
-      .catch(function(){ $('docaConfigStatus').textContent = '⚠ Não consegui salvar agora.'; });
+    var ok = lsSet(DOCA_CONFIG_LS_KEY, JSON.stringify(payload));
+    $('docaConfigStatus').textContent = ok
+      ? '✓ Salvo neste navegador.'
+      : '⚠ Este navegador não deixou guardar — a mudança vale só nesta sessão. Use "Exportar" pra guardar um arquivo.';
   }
 
-  function loadDocaConfigFromStorage(onDone){
-    if (!hasSharedStorage()){ if (onDone) onDone(false); return; }
-    dbGetDoc(DOCA_CONFIG_DB_PATH).then(function(data){
-      if (data){
-        var list = data.groups;
-        if (Array.isArray(list) && list.length){
-          DOCA_GROUPS = list.map(function(g){ return { nome:String(g.nome), prefixos:(g.prefixos||[]).map(String) }; });
-          rebuildDocaNormMap();
-        }
+  function loadDocaConfigFromStorage(){
+    var raw = lsGet(DOCA_CONFIG_LS_KEY); if (!raw) return;
+    try{
+      var list = JSON.parse(raw);
+      if (Array.isArray(list) && list.length){
+        DOCA_GROUPS = list.map(function(g){ return { nome:String(g.nome), prefixos:(g.prefixos||[]).map(String) }; });
+        rebuildDocaNormMap();
       }
-      if (onDone) onDone(true);
-    }).catch(function(){ if (onDone) onDone(false); });
+    } catch(e){}
   }
 
   function recomputeDocasAndRefresh(){
@@ -4663,8 +4793,7 @@
 
   function openDocaConfigModal(){
     renderDocaConfigModal();
-    $('docaConfigStatus').textContent = hasSharedStorage() ? '' :
-      '⚠ Esse painel não está aberto pelo link publicado do Claude (ou a permissão de dados não foi concedida) — mudanças aqui valem só pra esta sessão. Use "Exportar" pra guardar.';
+    $('docaConfigStatus').textContent = 'As mudanças ficam salvas neste navegador. Pra levar pra outro computador, use "Exportar".';
     $('docaConfigModalOverlay').hidden = false;
   }
   function closeDocaConfigModal(){ $('docaConfigModalOverlay').hidden = true; }
@@ -4756,18 +4885,43 @@
     if (destinos.length > 1 && !mesmaDoca){
       if (!confirm('Os lotes selecionados têm '+destinos.length+' destinos principais diferentes e não são todos da mesma doca. Quer consolidar mesmo assim?')) return;
     }
+
+    // A lote (bag) can hold pedidos scanned by more than one digitalizador, or going to more
+    // than one base — the lote table's own Base Destino / Digitalizador columns just show
+    // whichever is most common in it. So sweeping in every pedido of the selected lote codes
+    // would wrongly pull in someone else's pedidos too. Instead, take the exact individual
+    // pedidos that belong to the selected lotes AND still match whatever Base Destino /
+    // Digitalizador filter is currently active — that's the actual, precise set the person
+    // meant to consolidate.
+    var loteCodesSelected = loteSelecionados;
+    var bdSet = loteViewState.baseDestinos, dgSet = loteViewState.digitalizadores;
+    var matchingPedidos = derived.filter(function(r){
+      if (!r.lote) return false;
+      var lotesDoRow = r.lote.split(' / ').map(function(c){ return c.trim(); }).filter(Boolean);
+      if (!lotesDoRow.some(function(lc){ return loteCodesSelected.has(lc); })) return false;
+      if (bdSet.size>0 && !bdSet.has(r.baseDestino)) return false;
+      if (dgSet.size>0 && !dgSet.has(r.digitalizador)) return false;
+      return true;
+    });
+    if (!matchingPedidos.length){
+      alert('Nenhum pedido dos lotes selecionados bate com o filtro de Base Destino / Digitalizador ativo agora. Ajuste o filtro ou a seleção.');
+      return;
+    }
+
     var now = new Date();
     var destinoPrincipal = mesmaDoca ? (docas[0]+' — '+destinos.length+' destino(s)') : (destinos.length===1 ? destinos[0] : destinos.length+' destinos');
     var baseNome = mesmaDoca ? docas[0].replace(/\s+/g,'-') : (destinos.length===1 ? destinos[0] : 'MULTI');
     var codigo = baseNome;
     var n = 2;
     while (lotesPaiList.some(function(lp){ return lp.codigo===codigo; })){ codigo = baseNome+'-'+n; n++; }
-    var totalPedidos = 0, totalPeso = 0;
-    childRows.forEach(function(g){ totalPedidos += g.nPedidos; totalPeso += g.peso; });
+    var totalPeso = 0;
+    matchingPedidos.forEach(function(r){ totalPeso += r.pesoFaturado||0; });
 
     var lotePai = {
       codigo: codigo, criadoEm: now, destinoPrincipal: destinoPrincipal,
-      childLotes: childRows.map(function(g){ return g.lote; }), nPedidos: totalPedidos, peso: totalPeso
+      childLotes: childRows.map(function(g){ return g.lote; }),
+      childJms: matchingPedidos.map(function(r){ return r.jms; }),
+      nPedidos: matchingPedidos.length, peso: totalPeso
     };
     lotesPaiList.push(lotePai);
     loteSelecionados.clear();
@@ -4955,10 +5109,12 @@
   // doesn't have to click through every tab just to know what needs attention today.
   function updateDailySummary(){
     var items = [];
-    var nCritico = derived.filter(function(r){ return r.status==='critico'; }).length;
-    items.push({ icon:'🔴', label:'críticos parados', value:fmtInt(nCritico), tone: nCritico>0?'crit':'ok' });
+    if (derived.length){
+      var nCritico = derived.filter(function(r){ return r.status==='critico'; }).length;
+      items.push({ icon:'🔴', label:'críticos parados', value:fmtInt(nCritico), tone: nCritico>0?'crit':'ok' });
+    }
 
-    if (typeof window.__getSemMovimento14mais === 'function'){
+    if (typeof window.__getSemMovimentoTotal === 'function' && window.__getSemMovimentoTotal()>0 && typeof window.__getSemMovimento14mais === 'function'){
       var sm14 = window.__getSemMovimento14mais();
       items.push({ icon:'📡', label:'sem movimentação · 14+ dias', value:fmtInt(sm14), tone: sm14>0?'warn':'ok' });
     }
@@ -5336,6 +5492,20 @@
     return header.indexOf('Digitalizado por')>-1 ? 'carga' : null;
   }
 
+  // Fixed rule, doesn't depend on which button/slot the person used: whatever the file's own
+  // "Tipo de bipagem" content says it is, it can only go into that matching slot. Only blocks
+  // on a CONFIDENT mismatch (classifyFileContent returned some other definite kind) — an
+  // inconclusive read (null) isn't treated as a violation, since that's a structural problem
+  // the per-file column checks already report clearly on their own.
+  function validateFileKind(rows, expectedKind, fname){
+    var detected = classifyFileContent(rows);
+    if (detected && detected !== expectedKind){
+      showError('🚫 Arquivo bloqueado: "'+escapeHtml(fname)+'" tem conteúdo de "'+KIND_LABELS[detected]+'", mas foi enviado como "'+KIND_LABELS[expectedKind]+'". Essa checagem é fixa — envie o arquivo de "'+KIND_LABELS[expectedKind]+'" correto nesse campo.');
+      return false;
+    }
+    return true;
+  }
+
   var KIND_LABELS = { chegada:'Chegada ao centro', lote:'Encomenda inserida em lote', exped:'Bipe de expedição', carga:'Carregamento p/ MRB' };
   var KIND_ORDER = ['chegada','lote','exped','carga'];
   var KIND_PILL_ID = { chegada:'pillChegada', lote:'pillLote', exped:'pillExped', carga:'pillCarga' };
@@ -5461,8 +5631,7 @@
     document.querySelectorAll('#cargaStatusChips .chip').forEach(function(c){ c.classList.remove('active'); });
     document.querySelector('#cargaStatusChips .chip[data-status="naoChegou"]').classList.add('active');
     $('cargaSearchInput').value='';
-    digTally=Object.create(null); digState={digitalizador:'',baseDestino:'',lote:'',search:'',sortKey:'count',sortDir:'desc',page:1,pageSize:50};
-    $('digSearchInput').value='';
+    digTally=Object.create(null); digState={digitalizador:'',baseDestino:'',lote:'',sortKey:'count',sortDir:'desc',page:1,pageSize:50};
     currentView='backlog';
     document.querySelectorAll('.view-tab').forEach(function(b){ b.classList.remove('active'); });
     document.querySelector('.view-tab[data-view="backlog"]').classList.add('active');
@@ -5479,6 +5648,8 @@
     state.status='pendentes'; state.baseDestino=''; state.origemPedido=''; state.numeroIds=new Set(); state.search=''; state.bipagem='todos'; state.segmento=''; state.page=1;
     $('filterNumeroIdPanel').hidden=true;
     $('pendingExpedCard').hidden=true;
+    $('fbListModalOverlay').hidden=true; fbListAllItems=[]; fbListBaseFilter=null;
+    rotasOpenSet.clear(); $('rotasSearch').value=''; renderRotasExpedicao();
     $('searchInput').value='';
     document.querySelectorAll('#statusChips .chip').forEach(function(c){ c.classList.remove('active'); });
     document.querySelector('#statusChips .chip[data-status="pendentes"]').classList.add('active');
@@ -5493,9 +5664,8 @@
     fileInputAll.value=''; fileInputPill.value=''; fileInput2.value=''; fileInput3.value=''; fileInput4.value='';
     $('uploadStatusList').innerHTML='';
     document.querySelectorAll('.upload-pill').forEach(function(p){ p.classList.remove('done'); p.removeAttribute('title'); });
-    currentChegadaUploadedAt = null;
-    $('sharedSaveStatus').textContent = '';
-    checkSharedDataOnStartup();
+    $('fileNameLabel').textContent = '—';
+    $('loadedCountLabel').textContent = '0 pedidos';
     clearError();
   }
 
@@ -5698,8 +5868,8 @@
     var codigo = stripDateSuffix(s);
     var lotePai = lotesPaiList.filter(function(lp){ return lp.codigo===codigo || lp.codigo===s; })[0];
     if (lotePai){
-      var jmsPai = [];
-      lotePai.childLotes.forEach(function(lc){ jmsPai = jmsPai.concat(jmsDoLote(lc)); });
+      var jmsPai = lotePai.childJms || [];
+      if (!lotePai.childJms){ lotePai.childLotes.forEach(function(lc){ jmsPai = jmsPai.concat(jmsDoLote(lc)); }); }
       var novosPai = markPedidosBipados(jmsPai);
       $('scanCount').textContent = fmtInt(bipadosSet.size);
       input.classList.add('ok');
@@ -5756,6 +5926,60 @@
   });
   $('btnExportPendingExped').addEventListener('click', exportPendingExpedCsv);
   $('btnClosePendingExped').addEventListener('click', function(){ $('pendingExpedCard').hidden = true; });
+
+  $('btnVerFaltaRecebimento').addEventListener('click', function(){
+    openFbListModal(getFaltaRecebimentoItems(), 'Falta de recebimento',
+      'Pedidos que aparecem no lote ou na expedição, mas não têm registro de chegada ao centro. Ao lado de cada base está em qual etapa eles apareceram: só no lote, só na expedição, ou nos dois.');
+  });
+  $('btnVerFaltaExpedicao').addEventListener('click', function(){
+    openFbListModal(getFaltaExpedicaoItems(), 'Falta de bipagem na expedição',
+      'Pedidos que chegaram ao centro, mas ainda não têm confirmação de expedição — separados entre os que já estão em lote (aguardando o bipe de expedição) e os que ainda estão sem lote.');
+  });
+  $('fbBaseSummary').addEventListener('click', function(e){
+    var row = e.target.closest('[data-fb-base]'); if (!row) return;
+    var b = row.getAttribute('data-fb-base');
+    fbListBaseFilter = (fbListBaseFilter===b) ? null : b;
+    renderFbListModal();
+  });
+  $('btnCloseFbListModal').addEventListener('click', closeFbListModal);
+  $('fbListModalOverlay').addEventListener('click', function(e){ if (e.target===this) closeFbListModal(); });
+  $('fbListItems').addEventListener('click', function(e){
+    var btn = e.target.closest('[data-copy-jms]'); if (!btn) return;
+    copyTextToClipboard(btn.getAttribute('data-copy-jms'), function(ok){ flashButtonFeedback(btn, ok ? '✓ Copiado' : '⚠ Falhou'); });
+  });
+  $('btnCopyFbList').addEventListener('click', function(){
+    var text = fbListFiltered().map(function(it){ return it.jms; }).join('\n');
+    copyTextToClipboard(text, function(ok){ flashButtonFeedback($('btnCopyFbList'), ok ? '✓ Copiado' : '⚠ Falhou'); });
+  });
+  $('btnExportFbList').addEventListener('click', exportFbListCsv);
+
+  $('rotasSearch').addEventListener('input', function(){ renderRotasExpedicao(false); });
+  $('btnExportRotasCsv').addEventListener('click', exportRotasResumoCsv);
+  $('rotasList').addEventListener('click', function(e){
+    var toggle = e.target.closest('[data-rota-toggle]');
+    if (toggle){
+      var id = toggle.getAttribute('data-rota-toggle');
+      if (rotasOpenSet.has(id)) rotasOpenSet.delete(id); else rotasOpenSet.add(id);
+      renderRotasExpedicao(false);
+      return;
+    }
+    var copyRota = e.target.closest('[data-copy-rota]');
+    if (copyRota){
+      var rt = getRotaById(copyRota.getAttribute('data-copy-rota')); if (!rt) return;
+      var all = [];
+      rt.stops.forEach(function(st){ st.items.forEach(function(it){ all.push(it.jms); }); });
+      copyTextToClipboard(all.join('\n'), function(ok){ flashButtonFeedback(copyRota, ok ? '✓ Copiado' : '⚠ Falhou'); });
+      return;
+    }
+    var csvRota = e.target.closest('[data-csv-rota]');
+    if (csvRota){ exportRotaPedidosCsv(csvRota.getAttribute('data-csv-rota')); return; }
+    var copyStop = e.target.closest('[data-copy-stop]');
+    if (copyStop){
+      var rt2 = getRotaById(copyStop.getAttribute('data-copy-stop')); if (!rt2) return;
+      var st = rt2.stops[parseInt(copyStop.getAttribute('data-stop-idx'), 10)]; if (!st) return;
+      copyTextToClipboard(st.items.map(function(it){ return it.jms; }).join('\n'), function(ok){ flashButtonFeedback(copyStop, ok ? '✓ Copiado' : '⚠ Falhou'); });
+    }
+  });
 
   var searchDebounce;
   $('searchInput').addEventListener('input', function(){
@@ -5876,12 +6100,6 @@
     });
   });
 
-  var digSearchDebounce;
-  $('digSearchInput').addEventListener('input', function(){
-    clearTimeout(digSearchDebounce);
-    var val = this.value;
-    digSearchDebounce = setTimeout(function(){ digState.search=val; renderDigTable(); }, 180);
-  });
   $('filterDigitalizador').addEventListener('change', function(){ digState.digitalizador=this.value; renderDigView(); });
   $('filterDigBaseDestino').addEventListener('change', function(){ digState.baseDestino=this.value; digState.page=1; renderDigTable(); });
   $('filterDigLote').addEventListener('change', function(){ digState.lote=this.value; digState.page=1; renderDigView(); });
@@ -6133,10 +6351,14 @@
   $('btnCloseAllCodesModal').addEventListener('click', closeAllCodesModal);
   $('allCodesModalOverlay').addEventListener('click', function(e){ if (e.target===this) closeAllCodesModal(); });
   $('btnPrintAllCodes').addEventListener('click', function(){ window.print(); });
+  $('allCodesColsChips').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip'); if (!btn) return;
+    document.querySelectorAll('#allCodesColsChips .chip').forEach(function(c){ c.classList.remove('active'); });
+    btn.classList.add('active');
+    allCodesCols = parseInt(btn.getAttribute('data-cols'), 10);
+    renderAllCodesGrid();
+  });
 
-  $('btnLoadShared').addEventListener('click', loadAllSharedAndShow);
-  $('btnDismissShared').addEventListener('click', function(){ $('sharedBanner').hidden = true; });
-  $('btnCheckShared').addEventListener('click', checkForNewerSharedData);
   $('btnOpenCrossCheck').addEventListener('click', openCrossCheckModal);
   $('btnCloseCrossCheckModal').addEventListener('click', closeCrossCheckModal);
   $('crossCheckModalOverlay').addEventListener('click', function(e){ if (e.target===this) closeCrossCheckModal(); });
@@ -6204,6 +6426,8 @@
   });
 
   initAutoRefreshUi();
+  loadBaseConfigFromStorage();
+  loadDocaConfigFromStorage();
 
   // ---------- Ícones 3D (troca os emojis por imagens 3D estilo Fluent, com fallback) ----------
   // Se uma imagem específica não carregar (nome não bate no acervo), o onerror devolve o
@@ -6267,161 +6491,6 @@
   });
   emoji3DObserver.observe(document.body, {childList:true, subtree:true});
 
-  // ---------- Google Drive integration ----------
-  // Reads Client ID / Folder ID from this browser's own localStorage (not shared storage —
-  // each person authenticates with their own Google account, so this is inherently a
-  // per-browser setting). Downloaded files are wrapped as real File objects and handed to
-  // handleMultiFiles, the exact same entry point drag-and-drop uses, so the whole
-  // classify/process/render pipeline is reused as-is.
-  var DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.readonly';
-  var driveTokenClient = null;
-  var driveAccessToken = null;
-  var driveAutoSyncTimer = null;
-
-  function getDriveConfig(){
-    return {
-      clientId: localStorage.getItem('drive_client_id') || '',
-      folderId: localStorage.getItem('drive_folder_id') || ''
-    };
-  }
-  function extractDriveFolderId(input){
-    input = input.trim();
-    var m = input.match(/\/folders\/([a-zA-Z0-9_-]+)/);
-    if (m) return m[1];
-    m = input.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (m) return m[1];
-    return input;
-  }
-  function setDriveStatus(text, cls){
-    var el = $('driveStatus');
-    el.textContent = text;
-    el.className = 'drive-status' + (cls ? ' '+cls : '');
-  }
-  function updateDriveUi(){
-    var cfg = getDriveConfig();
-    if (!cfg.clientId || !cfg.folderId){
-      setDriveStatus('Não configurado ainda — clique em "⚙️ Configurar" e cole o Client ID e o ID da pasta.');
-      $('driveActions').hidden = true;
-      return;
-    }
-    $('driveActions').hidden = false;
-    if (driveAccessToken){
-      setDriveStatus('✓ Conectado ao Google Drive.', 'connected');
-      $('btnConnectDrive').textContent = '🔗 Reconectar';
-      $('btnSyncDriveNow').hidden = false;
-      $('driveAutoSyncWrap').hidden = false;
-    } else {
-      setDriveStatus('Configurado — clique em "Conectar" pra autorizar o acesso.');
-      $('btnConnectDrive').textContent = '🔗 Conectar ao Google Drive';
-      $('btnSyncDriveNow').hidden = true;
-      $('driveAutoSyncWrap').hidden = true;
-    }
-  }
-  function initDriveTokenClient(){
-    var cfg = getDriveConfig();
-    if (!cfg.clientId || typeof google==='undefined' || !google.accounts || !google.accounts.oauth2) return null;
-    return google.accounts.oauth2.initTokenClient({
-      client_id: cfg.clientId,
-      scope: DRIVE_SCOPE,
-      callback: function(resp){
-        if (resp.error){
-          setDriveStatus('⚠ Não consegui conectar: ' + resp.error, 'error');
-          return;
-        }
-        driveAccessToken = resp.access_token;
-        updateDriveUi();
-        syncFromDrive();
-      }
-    });
-  }
-  function connectToDrive(){
-    var cfg = getDriveConfig();
-    if (!cfg.clientId || !cfg.folderId){ alert('Preencha o Client ID e o ID da pasta antes de conectar.'); return; }
-    if (typeof google==='undefined' || !google.accounts){
-      alert('A biblioteca do Google ainda não carregou — verifique sua internet e tente de novo em alguns segundos.');
-      return;
-    }
-    if (!driveTokenClient) driveTokenClient = initDriveTokenClient();
-    if (!driveTokenClient){ alert('Não consegui iniciar a conexão com o Google — confirme o Client ID.'); return; }
-    driveTokenClient.requestAccessToken({ prompt: driveAccessToken ? '' : 'consent' });
-  }
-  function listDriveFiles(cb, errCb){
-    var cfg = getDriveConfig();
-    var q = encodeURIComponent("'"+cfg.folderId+"' in parents and trashed=false");
-    fetch('https://www.googleapis.com/drive/v3/files?q='+q+'&fields=files(id,name,modifiedTime)&pageSize=50', {
-      headers: { 'Authorization': 'Bearer ' + driveAccessToken }
-    }).then(function(r){ if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-      .then(function(data){ cb(data.files||[]); }).catch(errCb);
-  }
-  function downloadDriveFile(fileId, cb, errCb){
-    fetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media', {
-      headers: { 'Authorization': 'Bearer ' + driveAccessToken }
-    }).then(function(r){ if (!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); })
-      .then(cb).catch(errCb);
-  }
-  function syncFromDrive(){
-    if (!driveAccessToken) return;
-    setDriveStatus('🔄 Verificando a pasta...');
-    listDriveFiles(function(files){
-      var relevant = files.filter(function(f){ return classifyFileByName(f.name); });
-      if (!relevant.length){
-        setDriveStatus('⚠ Nenhum arquivo reconhecível encontrado nessa pasta — os nomes precisam ser os exports originais do JMS.', 'error');
-        return;
-      }
-      var downloaded = [];
-      var remaining = relevant.length;
-      relevant.forEach(function(f){
-        downloadDriveFile(f.id, function(buf){
-          downloaded.push(new File([buf], f.name, { type:'application/octet-stream' }));
-          remaining--;
-          if (remaining===0) finishDriveSync(downloaded);
-        }, function(){
-          remaining--;
-          if (remaining===0) finishDriveSync(downloaded);
-        });
-      });
-    }, function(err){
-      var msg = '⚠ Não consegui acessar a pasta agora.';
-      if (String(err).indexOf('401')>-1 || String(err).indexOf('403')>-1){
-        msg = '⚠ Acesso expirado ou negado — clique em "Reconectar".';
-        driveAccessToken = null;
-      }
-      setDriveStatus(msg, 'error');
-      updateDriveUi();
-    });
-  }
-  function finishDriveSync(files){
-    if (!files.length){ setDriveStatus('⚠ Não consegui baixar os arquivos dessa pasta agora.', 'error'); return; }
-    setDriveStatus('✓ '+fmtInt(files.length)+' arquivo(s) baixado(s) — processando...', 'connected');
-    handleMultiFiles(files);
-    setTimeout(function(){ setDriveStatus('✓ Sincronizado com o Drive às '+new Date().toLocaleTimeString('pt-BR')+'.', 'connected'); }, 900);
-  }
-
-  $('btnToggleDriveConfig').addEventListener('click', function(){
-    var cfg = getDriveConfig();
-    $('driveClientIdInput').value = cfg.clientId;
-    $('driveFolderIdInput').value = cfg.folderId;
-    $('driveConfig').hidden = !$('driveConfig').hidden;
-  });
-  $('btnSaveDriveConfig').addEventListener('click', function(){
-    var clientId = $('driveClientIdInput').value.trim();
-    var folderRaw = $('driveFolderIdInput').value.trim();
-    if (!clientId || !folderRaw){ alert('Preencha os dois campos.'); return; }
-    localStorage.setItem('drive_client_id', clientId);
-    localStorage.setItem('drive_folder_id', extractDriveFolderId(folderRaw));
-    driveTokenClient = null;
-    driveAccessToken = null;
-    $('driveConfig').hidden = true;
-    updateDriveUi();
-  });
-  $('btnConnectDrive').addEventListener('click', connectToDrive);
-  $('btnSyncDriveNow').addEventListener('click', syncFromDrive);
-  $('driveAutoSyncToggle').addEventListener('change', function(){
-    clearInterval(driveAutoSyncTimer);
-    if (this.checked) driveAutoSyncTimer = setInterval(syncFromDrive, 5*60*1000);
-  });
-  updateDriveUi();
-
   // Bridge for the Backlog x Sem Movimentação cross-check — read-only snapshot of the
   // current critical pedidos, keyed by base JMS (same numbering the "Remessa" field uses
   // in the Sem Movimentação export, just under a different column name).
@@ -6434,72 +6503,6 @@
     });
   };
   window.__refreshCrossCheckLiveBadge = function(){ updateCrossCheckLiveBadge(); updateDailySummary(); };
-
-  // Bridge for the AI chat widget (a separate script/IIFE, no direct access to this closure's
-  // variables) — builds a fresh, compact text summary of whatever is currently loaded, read
-  // straight off the same data every other render in this tab uses.
-  window.__buildDashboardContextForAI = function(){
-    var lines = [];
-    lines.push('Você é um assistente dentro de um painel de backlog de crossdocking (J&T Express, PA Marabá). Responda a pergunta do usuário com base SOMENTE no resumo de dados abaixo, em português, de forma direta e objetiva. Se o resumo não tiver a informação pra responder, diga isso claramente em vez de inventar.');
-    lines.push('');
-    if (!derived || !derived.length){
-      lines.push('Nenhum arquivo de Chegada ao centro foi carregado ainda no painel.');
-      return lines.join('\n');
-    }
-    var nCritico=0, nAtencao=0, nNormal=0, nEmLote=0, nExpedido=0;
-    derived.forEach(function(r){
-      if (r.status==='critico') nCritico++;
-      else if (r.status==='atencao') nAtencao++;
-      else if (r.status==='normal') nNormal++;
-      else if (r.status==='lote') nEmLote++;
-      else if (r.status==='expedido') nExpedido++;
-    });
-    lines.push('=== Backlog (chegada ao centro) ===');
-    lines.push('Total de pedidos chegados: '+derived.length);
-    lines.push('Críticos (perderam a janela de expedição): '+nCritico);
-    lines.push('Atenção (perto de perder a janela): '+nAtencao);
-    lines.push('Normal (dentro do prazo, ainda sem lote): '+nNormal);
-    lines.push('Em lote (já inserido, aguardando expedição): '+nEmLote);
-    lines.push('Expedidos (ciclo completo): '+nExpedido);
-
-    var destCount = {};
-    derived.forEach(function(r){ if (r.status==='critico'||r.status==='atencao'){ var d=r.baseDestino||'(sem destino)'; destCount[d]=(destCount[d]||0)+1; } });
-    var topDest = Object.keys(destCount).sort(function(a,b){ return destCount[b]-destCount[a]; }).slice(0,10);
-    if (topDest.length){
-      lines.push('');
-      lines.push('Bases destino com mais pedidos em atenção/crítico (maior backlog):');
-      topDest.forEach(function(d){ lines.push('- '+d+': '+destCount[d]+' pedidos'); });
-    }
-
-    if (rawPedidos.length){
-      var lotesAgg = getLotesAggregated();
-      var abertos = lotesAgg.filter(function(g){ return g.status!=='expedido'; });
-      lines.push('');
-      lines.push('=== Lotes ===');
-      lines.push('Lotes formados: '+lotesAgg.length+' | Lotes abertos (não totalmente expedidos): '+abertos.length);
-      var piores = abertos.filter(function(g){ return g.nCritico>0; }).sort(function(a,b){ return b.nCritico-a.nCritico; }).slice(0,8);
-      if (piores.length){
-        lines.push('Lotes abertos com mais pedidos críticos (maior risco de KPI):');
-        piores.forEach(function(g){ lines.push('- Lote '+g.lote+': '+g.nCritico+' críticos de '+g.nPedidos+' pedidos, destino principal '+(g.baseDestinoPrincipal||'—')+', doca '+(g.doca||'—')+', digitalizador '+(g.digitalizador||'—')); });
-      }
-    }
-
-    var prod = computeProdutividade().filter(function(p){ return p.intervaloMedioMin!==null; }).sort(function(a,b){ return a.intervaloMedioMin-b.intervaloMedioMin; });
-    if (prod.length){
-      lines.push('');
-      lines.push('=== Produtividade dos digitalizadores (inserção em lote) ===');
-      lines.push('Ordenado do mais rápido pro mais lento (intervalo médio entre bipes):');
-      prod.forEach(function(p){ lines.push('- '+p.digitalizador+': '+p.intervaloMedioMin.toFixed(1)+' min de intervalo médio, '+p.count+' pedidos inseridos'); });
-    }
-
-    if (typeof window.__getSemMovimento14mais === 'function'){
-      lines.push('');
-      lines.push('=== Sem Movimentação ===');
-      lines.push('Remessas sem movimentação há 14+ dias: '+window.__getSemMovimento14mais());
-    }
-
-    return lines.join('\n');
-  };
 
 })();
 </script>
@@ -7354,89 +7357,9 @@ window.__getSemMovimento1a3 = function(){
 window.__getSemMovimento14mais = function(){
   return allData.filter(function(r){ return agingBucketFor(daysParado(r.dt)).key==='b4'; }).length;
 };
+window.__getSemMovimentoTotal = function(){ return allData.length; };
 })();
 
-</script>
-
-<button id="aiChatFab" class="ai-chat-fab" title="Perguntar sobre os dados do painel">🤖</button>
-<div id="aiChatPanel" class="ai-chat-panel" hidden>
-  <div class="ai-chat-head">
-    <b>🤖 Pergunte sobre os dados</b>
-    <button id="aiChatClose">✕</button>
-  </div>
-  <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-chat-msg ai-chat-msg-bot">Oi! Pode perguntar sobre os números do painel — críticos, lotes, digitalizadores, docas, o que quiser. Respondo com base no que está carregado agora.</div>
-  </div>
-  <div class="ai-chat-input-row">
-    <input type="text" id="aiChatInput" placeholder="Ex: quais bases têm mais pedidos críticos?">
-    <button id="aiChatSend" class="btn-primary btn-small">Enviar</button>
-  </div>
-</div>
-
-<script>
-(function(){
-  function $id(id){ return document.getElementById(id); }
-  var aiChatSample = null; // null = not checked yet, false = unavailable, function = ready
-  var aiChatBusy = false;
-
-  function ensureAiSample(cb){
-    if (aiChatSample !== null){ cb(aiChatSample || null); return; }
-    if (typeof window.claude === 'undefined' || !window.claude.use){ aiChatSample = false; cb(null); return; }
-    window.claude.use('sample').then(function(s){ aiChatSample = s || false; cb(aiChatSample || null); })
-      .catch(function(){ aiChatSample = false; cb(null); });
-  }
-
-  function appendAiChatMessage(role, text){
-    var div = document.createElement('div');
-    div.className = 'ai-chat-msg ai-chat-msg-' + (role==='user' ? 'user' : 'bot');
-    div.textContent = text;
-    $id('aiChatMessages').appendChild(div);
-    $id('aiChatMessages').scrollTop = $id('aiChatMessages').scrollHeight;
-    return div;
-  }
-
-
-  function sendAiChatQuestion(){
-    var input = $id('aiChatInput');
-    var question = input.value.trim();
-    if (!question || aiChatBusy) return;
-    input.value = '';
-    appendAiChatMessage('user', question);
-    aiChatBusy = true;
-    $id('aiChatSend').disabled = true;
-
-    ensureAiSample(function(sample){
-      if (!sample){
-        appendAiChatMessage('bot', '⚠ Esse recurso só funciona quando o painel é aberto pelo link publicado do Claude, com a permissão de IA concedida nesta sessão.');
-        aiChatBusy = false; $id('aiChatSend').disabled = false;
-        return;
-      }
-      var context = (typeof window.__buildDashboardContextForAI === 'function')
-        ? window.__buildDashboardContextForAI()
-        : 'Nenhum dado disponível.';
-      var thinkingEl = appendAiChatMessage('bot', 'Pensando...');
-      sample(context + '\n\nPergunta do usuário: ' + question, { modelTier:'quick', onText:function(ev){
-        thinkingEl.textContent = ev.text;
-        $id('aiChatMessages').scrollTop = $id('aiChatMessages').scrollHeight;
-      }}).then(function(res){
-        thinkingEl.textContent = res.text;
-      }).catch(function(err){
-        var code = err && err.code;
-        var msg = '⚠ Não consegui responder agora.';
-        if (code==='not_granted') msg = '⚠ Esse recurso precisa da permissão de IA — abra o painel pelo link publicado do Claude e aceite quando for perguntado.';
-        else if (code==='rate_limited') msg = '⚠ Muitas perguntas em pouco tempo — espera um instante e tenta de novo.';
-        thinkingEl.textContent = msg;
-      }).finally(function(){
-        aiChatBusy = false; $id('aiChatSend').disabled = false;
-      });
-    });
-  }
-
-  $id('aiChatFab').addEventListener('click', function(){ $id('aiChatPanel').hidden = false; $id('aiChatInput').focus(); });
-  $id('aiChatClose').addEventListener('click', function(){ $id('aiChatPanel').hidden = true; });
-  $id('aiChatSend').addEventListener('click', sendAiChatQuestion);
-  $id('aiChatInput').addEventListener('keydown', function(e){ if (e.key==='Enter') sendAiChatQuestion(); });
-})();
 </script>
 </body>
 </html>
