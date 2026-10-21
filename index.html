@@ -163,6 +163,65 @@
   }
   .upload-pill:hover{ color:var(--ink); border-color:var(--accent-2); }
   .upload-pill.done{ background:var(--ok); border-color:var(--ok); color:#14161C; }
+  .upload-pill.opcional:not(.done){ border-style:dashed; }
+  /* ---------- Varredura detalhada de falta de bipagem ---------- */
+  .modal.varr-modal{ max-width:1180px; }
+  .varr-resumo{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-bottom:8px; }
+  @media (max-width:760px){ .varr-resumo{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  .varr-tile{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; gap:2px; min-width:0; }
+  .varr-tile > span{ font-size:9px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600; }
+  .varr-tile > b{ font-family:var(--font-mono); font-size:22px; color:var(--ink); }
+  .varr-tile > em{ font-style:normal; font-size:10px; color:var(--muted); }
+  .varr-tile.ok > b{ color:var(--ok); }
+  .varr-tile.bad > b{ color:var(--critical); }
+  .varr-nota, .varr-leg{ font-size:10px; color:var(--muted); margin:6px 0; line-height:1.5; }
+  .varr-vazio{ padding:26px 10px; text-align:center; color:var(--muted); font-size:12px; }
+  .varr-acoes{ flex-wrap:wrap; margin:8px 0 6px; }
+  .varr-sec{ margin:18px 0; }
+  .varr-sec h4{ font-family:var(--font-display); font-size:12.5px; margin:0 0 8px; color:var(--ink); }
+  .varr-sec h4 small{ font-family:var(--font-body); font-weight:400; color:var(--muted); font-size:10px; margin-left:6px; }
+  .varr-plano{ display:flex; flex-direction:column; gap:8px; }
+  .varr-acao{ border:1px solid var(--border); border-left:4px solid var(--muted-2); border-radius:9px; padding:10px 12px; background:var(--surface-2); }
+  .varr-acao.n-urgente{ border-left-color:var(--critical); }
+  .varr-acao.n-alta{ border-left-color:var(--warning); }
+  .varr-acao.n-media{ border-left-color:var(--ok); }
+  .va-top{ display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; font-size:11.5px; color:var(--ink); }
+  .va-nivel{ font-size:8.5px; font-weight:700; letter-spacing:.06em; white-space:nowrap; }
+  .va-det{ font-size:10.5px; color:var(--muted); margin:5px 0 6px; line-height:1.55; }
+  .va-meta{ display:flex; gap:6px 14px; flex-wrap:wrap; align-items:center; font-size:10px; color:var(--ink); }
+  .va-ganho{ color:var(--ok); font-weight:700; }
+  .varr-achados{ margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; font-size:11px; line-height:1.55; color:var(--ink); }
+  .varr-wrap{ overflow-x:auto; }
+  .varr-table{ width:100%; border-collapse:collapse; font-size:10.5px; min-width:640px; }
+  .varr-table th{ text-align:right; font-size:8.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600; padding:5px 8px; border-bottom:1px solid var(--border-strong); white-space:nowrap; }
+  .varr-table td{ text-align:right; padding:6px 8px; border-bottom:1px solid var(--border); font-family:var(--font-mono); white-space:nowrap; color:var(--ink); }
+  .varr-table th.l, .varr-table td.l, .varr-table th:first-child, .varr-table td:first-child{ text-align:left; }
+  .varr-table td:first-child{ font-weight:600; }
+  .varr-table td.l{ font-family:var(--font-body); font-weight:400; }
+  .varr-table td small{ color:var(--muted); font-size:9px; }
+  .varr-table tr.tot td{ font-weight:700; border-top:1px solid var(--border-strong); background:rgba(255,255,255,0.03); }
+  .varr-table tr.prio td:first-child{ border-left:3px solid var(--accent); }
+  .varr-table tr.semturno td:first-child{ border-left:3px solid var(--critical); }
+  .varr-table tr.crit td{ background:rgba(232,72,79,0.07); }
+  .varr-table td.ok{ color:var(--ok); } .varr-table td.warn{ color:var(--warning); } .varr-table td.bad{ color:var(--critical); }
+  .varr-table .tag{ font-family:var(--font-body); font-size:8px; text-transform:uppercase; letter-spacing:.05em; background:var(--accent-soft); color:var(--accent); border-radius:4px; padding:1px 5px; margin-left:6px; font-weight:600; }
+  .varr-table .tag.sec{ background:rgba(255,255,255,0.08); color:var(--muted); }
+  .varr-table .tag.crit{ background:rgba(232,72,79,0.18); color:var(--critical); }
+  .varr-cel{ display:inline-flex; align-items:center; gap:6px; justify-content:flex-end; }
+  .varr-bar{ width:54px; height:5px; border-radius:3px; background:rgba(255,255,255,0.10); overflow:hidden; display:inline-block; vertical-align:middle; }
+  .varr-bar > i{ display:block; height:100%; background:var(--muted); }
+  .varr-bar.ok > i{ background:var(--ok); } .varr-bar.warn > i{ background:var(--warning); } .varr-bar.bad > i{ background:var(--critical); }
+  .varr-table td.l .varr-bar{ width:120px; }
+  .varr-cfg{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:10.5px; color:var(--muted); margin-bottom:8px; }
+  .varr-cfg .sep{ margin:0 4px; }
+  .varr-cfg input{ background:var(--surface-2); color:var(--ink); border:1px solid var(--border-strong); border-radius:6px; padding:4px 6px; font-family:var(--font-mono); font-size:11px; color-scheme:dark; }
+  .varr-duas{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; }
+  .varr-duas > .varr-sec, .varr-sec, .varr-modal .modal-body{ min-width:0; }
+  @media (max-width:900px){ .varr-duas{ grid-template-columns:minmax(0,1fr); } }
+  .varr-pill{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--muted); }
+  .varr-pill.warn{ background:var(--warning); } .varr-pill.bad{ background:var(--critical); } .varr-pill.info{ background:#4FA3F7; }
+  .varr-ver{ padding:2px 8px; font-size:9.5px; }
+
   .upload-status-list{ margin:0 0 10px; display:flex; flex-direction:column; gap:7px; }
   .upload-status-item{
     display:flex; align-items:center; gap:8.5px; background:var(--surface); border:1px solid var(--border);
@@ -331,7 +390,43 @@
   .toast-alerta{ position:fixed; right:16px; bottom:16px; z-index:80; display:flex; align-items:center; gap:10px; background:#1B1114; border:1px solid var(--critical-border); border-left:4px solid var(--critical); color:var(--ink); border-radius:10px; padding:10px 12px; font-size:11px; box-shadow:var(--shadow-md); max-width:min(440px, calc(100vw - 32px)); }
   .toast-alerta[hidden]{ display:none; }
   .toast-alerta .cc-chip-x{ border-left:none; padding:4px 8px; border-radius:6px; }
-  .lote-alerta.pulse{ animation:alertaPulso 1.1s ease-in-out 5; }
+  .lote-alerta.pulse, .piso-card.pulse{ animation:alertaPulso 1.1s ease-in-out 5; }
+  .toast-alerta.toast-piso{ bottom:76px; border-left-color:var(--warning); border-color:var(--warning-border); background:#1B1710; }
+  .piso-card{ border:1px solid var(--border-strong); background:var(--surface); border-radius:12px; padding:13px 16px; margin-bottom:12px; }
+  .piso-card.nivel-critico{ border-color:var(--critical-border); background:linear-gradient(var(--critical-soft),var(--critical-soft)), var(--surface); }
+  .piso-card.nivel-atencao{ border-color:var(--warning-border); background:linear-gradient(var(--warning-soft),var(--warning-soft)), var(--surface); }
+  .piso-card.nivel-normal{ border-color:var(--direto-border); background:linear-gradient(var(--direto-soft),var(--direto-soft)), var(--surface); }
+  .piso-card.nivel-ok{ border-color:var(--ok-border); background:linear-gradient(var(--ok-soft),var(--ok-soft)), var(--surface); }
+  .piso-head{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .piso-icon{ font-size:26px; line-height:1; }
+  .piso-titles{ flex:1; min-width:240px; }
+  .piso-titles h3{ margin:0; font-size:14px; }
+  .piso-card.nivel-critico .piso-titles h3{ color:var(--critical); }
+  .piso-card.nivel-atencao .piso-titles h3{ color:var(--warning); }
+  .piso-card.nivel-ok .piso-titles h3{ color:var(--ok); }
+  .piso-sub{ font-size:10.5px; color:var(--muted); margin-top:3px; line-height:1.5; }
+  .piso-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+  .piso-detail{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .piso-detail .pd-chip{ font-size:10px; padding:4px 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--muted); }
+  .piso-detail .pd-chip b{ color:var(--ink); font-family:var(--font-mono); }
+  .piso-detail .pd-chip.venc{ border-color:var(--critical-border); } .piso-detail .pd-chip.aten{ border-color:var(--warning-border); }
+  .piso-trips-wrap{ margin-top:10px; overflow-x:auto; }
+  .piso-table{ width:100%; border-collapse:collapse; font-size:10.5px; min-width:760px; }
+  .piso-table th{ text-align:right; font-size:8.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600; padding:5px 8px; border-bottom:1px solid var(--border-strong); white-space:nowrap; }
+  .piso-table td{ text-align:right; padding:6px 8px; border-bottom:1px solid var(--border); font-family:var(--font-mono); white-space:nowrap; }
+  .piso-table th:first-child, .piso-table td:first-child{ text-align:left; }
+  .piso-table td:first-child{ font-family:var(--font-mono); font-weight:600; color:var(--ink); }
+  .piso-table td.sit{ text-align:left; font-family:var(--font-body); }
+  .piso-table tr.tot td{ font-weight:700; color:var(--ink); border-top:1px solid var(--border-strong); background:rgba(255,255,255,0.03); }
+  .piso-table td.col-saiu{ color:var(--ink); font-weight:600; }
+  .piso-table .tag{ font-family:var(--font-body); font-size:8px; text-transform:uppercase; letter-spacing:.05em; background:var(--accent-soft); color:var(--accent); border-radius:4px; padding:1px 5px; margin-left:6px; }
+  .piso-table .sla-cel{ display:inline-flex; align-items:center; gap:6px; justify-content:flex-end; }
+  .piso-table .sla-bar{ width:46px; height:4px; border-radius:2px; background:rgba(255,255,255,0.10); overflow:hidden; display:inline-block; }
+  .piso-table .sla-bar > i{ display:block; height:100%; background:#F5A623; }
+  .piso-fora{ font-size:10px; color:var(--muted); margin-top:9px; line-height:1.6; }
+  .piso-fora .btn-small{ margin-left:6px; }
+  .piso-feedback{ font-size:10px; color:var(--ok); min-height:12px; margin-top:4px; }
+  .piso-more{ margin-top:8px; }
   @keyframes alertaPulso{ 0%,100%{ box-shadow:0 0 0 0 rgba(232,72,79,0); } 50%{ box-shadow:0 0 0 6px rgba(232,72,79,0.45); } }
   @media (prefers-reduced-motion:reduce){ .lote-alerta.pulse{ animation:none; outline:2px solid var(--critical); } }
   .turno-lbl{ display:block; font-size:9.5px; color:var(--muted); margin:0 0 4px; text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
@@ -595,6 +690,9 @@
   .pending-exped-card{ background:var(--surface); border:1px solid var(--warning-border); border-radius:10px; padding:12px 14px; margin-bottom:12px; }
   .falta-receb-alert{ border:1.5px solid var(--critical-border); background:var(--critical-soft); }
   .falta-receb-alert .pending-exped-head b{ color:var(--critical); }
+  .ids-cell{ line-height:1.35; }
+  .ids-cell .id-chip{ display:block; white-space:nowrap; font-size:11px; }
+  .ids-cell .id-chip i{ font-style:normal; color:var(--muted); }
   .pending-exped-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
   .pending-exped-head b{ color:var(--warning); font-size:12.5px; }
   .pending-exped-sub{ font-size:10.5px; color:var(--muted-2); margin-top:2px; max-width:520px; }
@@ -871,6 +969,33 @@
   .all-codes-grid.pager .lcc-date{ font-size:11px; margin-top:6px; }
   .all-codes-pager-bar{ flex-shrink:0; margin-top:10px; text-align:center; font-size:11px; color:var(--muted); }
   .all-codes-pager-bar b{ color:var(--ink); font-size:15px; }
+  .drive-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; background:#6b7280; vertical-align:middle; }
+  .drive-dot.ok{ background:var(--ok); box-shadow:0 0 6px var(--ok); } .drive-dot.warn{ background:var(--warning); } .drive-dot.err{ background:var(--critical); }
+  .upload-drive-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px; }
+  .upload-drive-hint{ font-size:10.5px; color:var(--muted); }
+  .drive-modal{ max-width:720px; }
+  .drive-field{ display:block; font-size:11px; color:var(--muted); margin-top:10px; }
+  .drive-field input[type=text], .drive-field select{ display:block; width:100%; margin-top:4px; padding:8px 10px; font-size:12px; color:var(--ink); background:var(--surface-2); border:1px solid var(--border-strong); border-radius:8px; font-family:var(--font-mono); }
+  .drive-field.drive-inline{ display:flex; align-items:center; gap:10px; } .drive-field.drive-inline select{ width:auto; margin-top:0; }
+  .drive-aviso{ margin:0 0 10px; padding:8px 10px; font-size:11px; line-height:1.5; border-radius:8px; border:1px solid var(--warning-border); background:var(--warning-soft); color:var(--ink); }
+  .drive-msg{ margin-top:10px; font-size:11.5px; min-height:16px; color:var(--muted); line-height:1.5; }
+  .drive-msg.ok{ color:var(--ok); } .drive-msg.warn{ color:var(--warning); } .drive-msg.err{ color:var(--critical); }
+  .drive-tabela{ margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+  .drive-linha{ display:grid; grid-template-columns:150px 1fr auto; gap:4px 10px; align-items:center; padding:7px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); font-size:11px; }
+  .drive-linha .dl-tipo{ font-weight:600; color:var(--ink); } .drive-linha .dl-arq{ color:var(--muted); font-family:var(--font-mono); font-size:10px; overflow-wrap:anywhere; min-width:0; }
+  .drive-linha .dl-est{ font-size:10.5px; white-space:nowrap; } .drive-linha .dl-est.ok{ color:var(--ok); } .drive-linha .dl-est.warn{ color:var(--warning); } .drive-linha .dl-est.err{ color:var(--critical); }
+  .drive-ajuda{ margin-top:12px; font-size:11px; color:var(--muted); line-height:1.55; } .drive-ajuda summary{ cursor:pointer; color:var(--ink); } .drive-ajuda ol{ padding-left:18px; margin:8px 0; } .drive-ajuda code{ font-family:var(--font-mono); font-size:10.5px; }
+  @media (max-width:640px){ .drive-linha{ grid-template-columns:1fr; } .drive-linha .dl-est{ white-space:normal; } }
+  .all-codes-auto{ flex-shrink:0; display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-top:10px; padding:10px 12px; border:1px solid var(--border-strong); border-radius:10px; background:var(--surface-2); }
+  .all-codes-auto[hidden]{ display:none; }
+  .all-codes-auto .auto-ctl{ display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted); flex:1 1 220px; min-width:0; }
+  .all-codes-auto .auto-ctl input[type=range]{ flex:1 1 90px; min-width:0; accent-color:var(--accent); }
+  .all-codes-auto .auto-ctl b{ color:var(--ink); font-family:var(--font-mono); font-size:11px; min-width:62px; text-align:right; }
+  .all-codes-auto .auto-loop{ display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); cursor:pointer; }
+  .all-codes-auto .auto-info{ flex:1 1 100%; font-size:10.5px; color:var(--muted); }
+  .all-codes-auto .auto-progress{ flex:1 1 100%; height:3px; border-radius:2px; background:rgba(255,255,255,.08); overflow:hidden; }
+  .all-codes-auto .auto-progress i{ display:block; height:100%; width:0; background:var(--accent); }
+  #btnAutoPlay.rodando{ background:var(--warning); border-color:var(--warning); color:#1a1200; }
   @media (max-width:900px){ .all-codes-grid.cols-3, .all-codes-grid.cols-4, .all-codes-grid.cols-5{ grid-template-columns:repeat(2, 1fr); } }
 
   /* ---------- Avarias/Extravios (RESP MRB), escopado em #viewRespMrb ---------- */
@@ -1187,7 +1312,7 @@
     .lote-code-modal, .all-codes-modal{ position:fixed; top:0; left:0; width:100%; max-width:100%; max-height:none; }
     .all-codes-grid{ max-height:none; overflow:visible; }
     /* "Imprimir todos" no modo Passar imprime todos os códigos (não só o da tela) */
-    .code-nav, .all-codes-pager-bar{ display:none !important; }
+    .code-nav, .all-codes-pager-bar, .all-codes-auto{ display:none !important; }
     .all-codes-grid.pager{ display:grid; grid-template-columns:repeat(4, 1fr); }
     .all-codes-grid.pager .lote-code-card{ display:block !important; max-width:none; }
     .all-codes-grid.pager .lcc-barcode, .all-codes-grid.cols-1 .lcc-barcode{ width:100%; }
@@ -1626,8 +1751,10 @@
         <button class="upload-pill" id="pillLote" data-kind="lote">📦 Inserido em lote</button>
         <button class="upload-pill" id="pillExped" data-kind="exped">🚚 Bipe de expedição</button>
         <button class="upload-pill" id="pillCarga" data-kind="carga" title="Digitalização de carregamento — mostra os pedidos que foram direto na viagem sem passar pelo lote">🚛 Carregamento</button>
+        <button class="upload-pill opcional" id="pillDescarga" data-kind="descarga" title="Opcional — Digitalização de descarga da linha troncal. Diz em qual viagem e a que horas o pedido foi descarregado; a varredura de falta de bipagem usa isso para achar a viagem dos pedidos sem bipe de chegada">📤 Descarga (opcional)</button>
       </div>
-      <div class="upload-bar-hint">arraste e solte vários de uma vez — só o de chegada é obrigatório · o de carregamento revela os pedidos que saíram direto na viagem, sem bipe de lote · o que você enviar aqui fica visível pra quem mais abrir este link</div>
+      <div class="upload-bar-hint">arraste e solte vários de uma vez — só o de chegada é obrigatório · o de descarga (opcional) mostra em qual viagem cada pedido sem bipe de chegada foi descarregado · o de carregamento revela os pedidos que saíram direto na viagem, sem bipe de lote · o que você enviar aqui fica visível pra quem mais abrir este link</div>
+      <div class="upload-drive-row"><button class="btn-ghost btn-small" id="btnDriveLanding" title="Lê sozinho a pasta do Google Drive onde você salva os exports do JMS">☁ Carregar do Google Drive</button><span class="upload-drive-hint" id="driveLandingHint">pega o arquivo mais recente de cada tipo e atualiza sozinho</span></div>
       <input type="file" id="fileInputPill" accept=".xlsx,.xls" hidden>
       <input type="file" id="fileInputAll" accept=".xlsx,.xls" multiple hidden>
     </section>
@@ -1644,6 +1771,7 @@
         <span>·</span>
         <span id="loadedCountLabel">0 pedidos</span>
         <button class="btn-ghost" id="btnReload" style="margin-left:8px;">↺ Carregar novo arquivo</button>
+        <button class="btn-ghost btn-small" id="btnDrive" title="Sincronizar com o Google Drive"><span class="drive-dot off" id="driveDot"></span>☁ Google Drive</button>
         <button class="btn-ghost btn-small" id="btnLimpezaGeral" title="Apaga tudo: Backlog, Lotes, lote pai, bipagem e o painel Sem Movimentação">🧹 Limpeza geral</button>
         <label class="inline-auto" id="autoWrapChegada" hidden><input type="checkbox" id="autoToggleChegada"><span>🔄 auto (30 min)</span></label>
         <button class="btn-ghost btn-small" id="btnOpenCrossCheck" title="Cruza os pedidos críticos do Backlog com as remessas de 1-3 dias do Sem Movimentação">🔍 Críticos × Sem Movimentação<span id="crossCheckLiveBadge"></span></button>
@@ -1683,7 +1811,7 @@
           <button class="btn-ghost btn-small" id="btnCopyFaltaRecebimentoAlert">📋 Copiar todos os JMS</button>
           <button class="btn-ghost btn-small" id="btnExportFaltaRecebimentoAlert">⬇ Exportar CSV</button>
           <a class="btn-ghost btn-small" href="https://jmsbr.jtjms-br.com/app/operatingPlatformIndex/scanQueryConstantlyNew?title=Consulta%20das%20bipagens%20(tempo%20real)&moduleCode=&fineUrl=" target="_blank" rel="noopener noreferrer">🔗 Consultar no JMS</a>
-          <button class="cc-chip-x" id="btnCloseFaltaRecebimentoAlert" title="Fechar">✕</button>
+          <button class="btn-ghost btn-small" id="btnCloseFaltaRecebimentoAlert" title="Fechar" aria-label="Fechar aviso">✕ Fechar</button>
         </div>
       </div>
       <div id="faltaRecebimentoBody" hidden>
@@ -1811,7 +1939,28 @@
       <button class="btn-ghost" id="btnSituacaoWhats" title="Abre o WhatsApp já com a situação de agora (SLA, backlog, lotes…) — é só tocar em enviar">📲 Situação no WhatsApp</button>
       <button class="btn-ghost" id="btnComparativo" title="Compara os números deste dia com os dias anteriores">📈 Comparativo entre dias</button>
       <button class="btn-ghost" id="btnConferencia" title="Bipe os pedidos na hora do carregamento e veja se estão na viagem certa">🚛 Conferir carregamento</button>
-      <label class="alerta-toggle" title="Toca um aviso e pisca a aba quando aparecer lote novo em estado crítico"><input type="checkbox" id="chkAlertaSom"><span>🔔 Alerta sonoro de lote crítico</span></label>
+      <label class="alerta-toggle" title="Toca um aviso e pisca a aba quando aparecer lote novo em estado crítico ou quando a janela de expedição estiver chegando com pedido no piso"><input type="checkbox" id="chkAlertaSom"><span>🔔 Alerta sonoro (lote crítico e piso)</span></label>
+    </section>
+
+    <section class="piso-card nivel-info" id="pisoCard" hidden>
+      <div class="piso-head">
+        <div class="piso-icon" id="pisoIcon">🧹</div>
+        <div class="piso-titles">
+          <h3 id="pisoTitle">Piso a limpar</h3>
+          <div class="piso-sub" id="pisoSub"></div>
+        </div>
+        <div class="piso-actions" id="pisoActions">
+          <button class="btn-primary btn-small" id="btnPisoBuscar" title="Lista dos pedidos que chegaram e ainda não saíram, por base e doca">🔎 Buscar no piso</button>
+          <button class="btn-ghost btn-small" id="btnPisoVenc" title="Só os que já passaram da janela de expedição">🔴 Só vencidos</button>
+          <button class="btn-ghost btn-small" id="btnPisoCopiar" title="Copia o resumo por viagem e por doca">📋 Copiar resumo</button>
+          <button class="btn-ghost btn-small" id="btnPisoWhats" title="Abre o WhatsApp com o alerta do piso pronto">📲 Alerta no WhatsApp</button>
+          <button class="btn-ghost btn-small" id="btnVarredura2" title="Falta de bipagem (meta 0,50%) por viagem de chegada, turno e horário, com plano de ação">🔬 Varredura de falta de bipe</button>
+        </div>
+      </div>
+      <div class="piso-detail" id="pisoDetail"></div>
+      <div class="piso-trips-wrap" id="pisoTripsWrap"></div>
+      <div class="piso-fora" id="pisoFora"></div>
+      <div class="piso-feedback" id="pisoFeedback"></div>
     </section>
 
     <section class="fluxo-card" id="fluxoCard" hidden>
@@ -1898,7 +2047,7 @@
           <button class="btn-ghost btn-small" id="btnCopyPendingExped">📋 Copiar JMS</button>
           <button class="btn-ghost btn-small" id="btnExportPendingExped">⬇ Exportar CSV</button>
           <a class="btn-ghost btn-small" id="btnConsultarJmsPending" href="https://jmsbr.jtjms-br.com/app/operatingPlatformIndex/scanQueryConstantlyNew?title=Consulta%20das%20bipagens%20(tempo%20real)&moduleCode=&fineUrl=" target="_blank" rel="noopener noreferrer">🔗 Consultar no JMS</a>
-          <button class="cc-chip-x" id="btnClosePendingExped" title="Fechar">✕</button>
+          <button class="btn-ghost btn-small" id="btnClosePendingExped" title="Fechar" aria-label="Fechar">✕ Fechar</button>
         </div>
       </div>
       <div class="pending-exped-list" id="pendingExpedList"></div>
@@ -2138,6 +2287,7 @@
       <section class="chart-card fb-card" style="margin-bottom:12px;">
         <h3>📊 Indicador de falta de bipagem</h3>
         <div class="desc">Compara chegada × lote × expedição (e carregamento, se enviado) — meta geral: 0,50%. Precisa dos arquivos carregados pra ficar completo.</div>
+        <div class="copy-actions" style="margin:2px 0 10px;"><button class="btn-primary btn-small" id="btnVarredura" title="Abre o indicador por viagem de chegada (troncal e secundárias), por turno e por horário, com plano de ação">🔬 Varredura detalhada — por viagem, turno e horário</button></div>
         <div class="fb-grid">
           <div class="fb-main">
             <div class="fb-label">Taxa geral de falta de bipagem</div>
@@ -2179,7 +2329,7 @@
       <section class="charts-grid">
         <div class="chart-card">
           <h3>Funil chegada → lote → expedição</h3>
-          <div class="desc">Quantos pedidos chegaram, quantos entraram em lote e quantos foram confirmados na expedição</div>
+          <div class="desc">Quantos pedidos chegaram, quantos entraram em lote, quantos foram expedidos e quantos saíram direto na viagem, sem lote</div>
           <div class="canvas-wrap"><canvas id="chartFunil"></canvas></div>
         </div>
         <div class="chart-card">
@@ -3113,6 +3263,45 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="driveModalOverlay" hidden>
+  <div class="modal drive-modal">
+    <div class="modal-head">
+      <h3>☁ Sincronizar com o Google Drive</h3>
+      <button id="btnCloseDriveModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="lote-code-hint" style="margin:0 0 10px;">O painel entra no Google com a sua conta (somente leitura), olha a pasta onde você salva os exports do JMS e carrega sozinho o arquivo <b>mais recente de cada tipo</b> — chegada, lote, expedição e carregamento. A cada checagem só baixa o que mudou. Os arquivos vão direto do Google para o seu navegador.</p>
+      <div class="drive-aviso" id="driveAviso" hidden></div>
+      <label class="drive-field">ID do cliente do Google (OAuth)
+        <input type="text" id="driveClientId" placeholder="123456789-abc123.apps.googleusercontent.com" autocomplete="off" spellcheck="false">
+      </label>
+      <label class="drive-field">Pasta do Drive (cole o link ou o ID)
+        <input type="text" id="drivePasta" placeholder="https://drive.google.com/drive/folders/..." autocomplete="off" spellcheck="false">
+      </label>
+      <label class="drive-field drive-inline">Checar a cada
+        <select id="driveMin"><option value="1">1 min</option><option value="2">2 min</option><option value="5" selected>5 min</option><option value="10">10 min</option><option value="15">15 min</option><option value="30">30 min</option></select>
+      </label>
+      <div class="copy-actions" style="margin-top:12px;">
+        <button class="btn-primary" id="btnDriveConectar">☁ Entrar com Google e sincronizar</button>
+        <button class="btn-ghost" id="btnDriveAgora" disabled>🔄 Sincronizar agora</button>
+        <button class="btn-ghost" id="btnDriveDesligar" hidden>⏹ Desconectar</button>
+      </div>
+      <div class="drive-msg" id="driveMsg"></div>
+      <div class="drive-tabela" id="driveTabela"></div>
+      <details class="drive-ajuda">
+        <summary>Como criar o ID do cliente do Google (uma vez só, ~10 min)</summary>
+        <ol>
+          <li>Entre em <b>console.cloud.google.com</b>, crie um projeto e, em <b>APIs e serviços → Biblioteca</b>, ative a <b>Google Drive API</b>.</li>
+          <li>Em <b>Tela de consentimento OAuth</b>: tipo <b>Externo</b>, e em <b>Usuários de teste</b> adicione o e-mail de quem vai usar o painel. O escopo usado é só leitura (<code>drive.readonly</code>).</li>
+          <li>Em <b>Credenciais → Criar credenciais → ID do cliente OAuth</b>, tipo <b>Aplicativo da Web</b>. Em <b>Origens JavaScript autorizadas</b> coloque o endereço https onde o painel está publicado (sem barra no final).</li>
+          <li>Copie o <b>ID do cliente</b> e cole acima. Quem entrar precisa ter acesso à pasta do Drive.</li>
+        </ol>
+        <p>O login do Google dura cerca de 1 hora; quando vence, o painel pede para renovar no próximo clique. A atualização só acontece com o painel aberto no navegador.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="allCodesModalOverlay" hidden>
   <div class="modal all-codes-modal">
     <div class="modal-head">
@@ -3139,6 +3328,18 @@
         <button type="button" class="code-nav" id="btnCodeNext" aria-label="Próximo código" title="Próximo (→)">›</button>
       </div>
       <div class="all-codes-pager-bar" id="allCodesPagerBar" hidden><b id="allCodesPagerPos">0</b> de <span id="allCodesPagerTotal">0</span> · use ‹ › ou as setas ← → do teclado</div>
+      <div class="all-codes-auto" id="allCodesAutoBar" hidden>
+        <button type="button" class="btn-primary btn-small" id="btnAutoPlay" title="Passa os códigos sozinho (barra de espaço)">▶ Automático</button>
+        <label class="auto-ctl" title="Tempo que cada código fica na tela">Velocidade
+          <input type="range" id="autoVel" min="0.5" max="10" step="0.1" value="2">
+          <b id="autoVelVal">2,0 s</b></label>
+        <label class="auto-ctl" title="Em quantos segundos o ritmo vai do lento (3× a velocidade) até a velocidade escolhida">Aceleração
+          <input type="range" id="autoAcc" min="0" max="120" step="5" value="0">
+          <b id="autoAccVal">sem rampa</b></label>
+        <label class="auto-loop"><input type="checkbox" id="autoLoop"> Repetir ao chegar no fim</label>
+        <div class="auto-info" id="autoInfo">Passa os códigos sozinho na velocidade escolhida.</div>
+        <div class="auto-progress"><i id="autoProgress"></i></div>
+      </div>
       <div class="copy-actions">
         <button class="btn-primary" id="btnPrintAllCodes">🖨 Imprimir todos</button>
       </div>
@@ -3261,6 +3462,13 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="varrOverlay" hidden>
+  <div class="modal varr-modal">
+    <div class="modal-head"><h3>🔬 Varredura detalhada — falta de bipagem</h3><button id="btnVarrFechar" aria-label="Fechar">✕</button></div>
+    <div class="modal-body" id="varrBody"></div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="fbListModalOverlay" hidden>
   <div class="modal" style="max-width:660px;">
     <div class="modal-head">
@@ -3344,6 +3552,12 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="toast-alerta toast-piso" id="toastPiso" hidden>
+  <span id="toastPisoTxt"></span>
+  <button class="btn-ghost btn-small" id="btnToastPisoVer">Buscar no piso</button>
+  <button class="cc-chip-x" id="btnToastPisoFechar" title="Fechar">✕</button>
 </div>
 
 <div class="toast-alerta" id="toastAlerta" hidden>
@@ -3462,6 +3676,7 @@
   var fileNameExped = '';
   var expedicaoConfirmMap = null; // Map<string,string> base JMS -> lote code, from the expedition scan log
   var lotesExpedidosCount = 0;    // distinct lote codes seen in the expedition file
+  var lotesExpedidosSet = null;   // the same codes as a Set (to merge with lotes carried on the trip)
   var expedicaoScanRows = 0;
   var expedicaoOnlyCount = 0;
   var expedState = { status:'presos', baseDestino:'', sortKey:'tempoLote', sortDir:'desc', page:1, pageSize:50 };
@@ -3479,6 +3694,14 @@
   var loteSelecionados = new Set(); // codes of child lotes currently checked, for building a lote pai
   var lotesPaiList = []; // { codigo, criadoEm, destinoPrincipal, childLotes:[...], nPedidos, peso }
   var pendingFile4 = null;
+
+  // Descarga da linha troncal (OPCIONAL): em qual viagem e a que horas cada pedido foi descarregado.
+  // Só alimenta a varredura de falta de bipagem — não muda KPI, SLA nem classificação.
+  var descargaLoaded = false;
+  var fileNameDescarga = '';
+  var descargaMap = null;       // Map<jms base, {viagem, tempo, parada, n}> — o 1º bipe de descarga de cada pedido
+  var descargaViagens = null;   // Map<id da viagem, {n, ini, fim}>
+  var descargaScanRows = 0;
 
   // Carregamento de SAÍDA (MRB → viagens secundárias): pedidos que foram bipados no carregamento da
   // viagem. Quem está aqui e NÃO tem bipe de "encomenda inserida em lote" saiu direto na viagem.
@@ -3798,17 +4021,20 @@
       var g = groups[base];
       if (!g){
         g = groups[base] = {
-          jms: base, tempoMin: null, tempoMax: null, tempoLote: null, loteValues: [], loteAtual: '', idsValues: [], nLeituras: 0,
+          jms: base, tempoMin: null, tempoMax: null, tempoLote: null, loteValues: [], loteAtual: '', idsValues: [], idChegada: '', paradaChegada: '', nLeituras: 0,
           loteDigitalizador: null, loteDigitalizadorNo: null,
           baseEscaneamento:'', paradaProxima:'', baseRemetente:'', municipioDestino:'',
           estadoDestino:'', baseDestino:'', nomeCliente:'', pesoFaturado:0, origemPedido:''
         };
       }
       g.nLeituras++;
+      var vidLinha = idx.numeroId>=0 ? String(r[idx.numeroId]||'').trim() : '';
       if (tempo){
-        if (!g.tempoMin || tempo<g.tempoMin) g.tempoMin = tempo;
+        // a viagem de chegada do pedido é o ID do PRIMEIRO bipe dele (é por ela que o SLA é contado)
+        if (!g.tempoMin || tempo<g.tempoMin){ g.tempoMin = tempo; if (vidLinha) g.idChegada = vidLinha; if (idx.paradaProxima>=0) g.paradaChegada = String(r[idx.paradaProxima]||'').trim(); }
         if (!g.tempoMax || tempo>g.tempoMax) g.tempoMax = tempo;
       }
+      if (!g.idChegada && vidLinha) g.idChegada = vidLinha;
       if (lote){
         if (g.loteValues.indexOf(lote)===-1) g.loteValues.push(lote);
         if (!g.loteAtual) g.loteAtual = lote;
@@ -4227,7 +4453,7 @@
     loteByJms.forEach(function(_rec, b){ if (!pedidosSet[b]) onlyInExped++; });
 
     expedicaoConfirmMap = loteByJms;
-    lotesExpedidosCount = lotesExpedidos.size;
+    lotesExpedidosCount = lotesExpedidos.size; lotesExpedidosSet = lotesExpedidos;
     expedicaoScanRows = scanRows;
     expedicaoOnlyCount = onlyInExped;
     expedicaoLoaded = true;
@@ -4279,6 +4505,56 @@
         hideLoading();
       }, 30);
     }, function(err){ hideLoading(); showError('Não foi possível ler o relatório de carregamento. Detalhe: ' + err.message); });
+  }
+
+  // ---------- Descarga da linha troncal (opcional) ----------
+  function handleDescargaFile(file){
+    if (!file) return;
+    clearError();
+    showLoading('Lendo digitalização de descarga...');
+    readWorkbookRows(file, function(rows){
+      if (!validateFileKind(rows, 'descarga', file.name)){ hideLoading(); return; }
+      setTimeout(function(){
+        try{ processDescargaRows(rows, file.name); }
+        catch(e){ showError('Erro ao processar a descarga: ' + e.message); }
+        hideLoading();
+      }, 30);
+    }, function(err){ hideLoading(); showError('Não foi possível ler o arquivo de descarga. Detalhe: ' + err.message); });
+  }
+  function processDescargaRows(rows, fname){
+    if (!rows || rows.length<2){ showError('Arquivo de descarga vazio.'); return; }
+    var header = rows[0], idx = {};
+    for (var k in COLS1) idx[k] = findColIndex(header, COLS1[k]);
+    idx.jms = findJmsColIndex(header, COLS1.jms);
+    if (idx.jms<0 || idx.tempo<0){ showError('O arquivo de descarga "'+escapeHtml(fname)+'" não tem as colunas "Número de pedido JMS" e "Tempo de digitalização".'); return; }
+    var map = new Map(), viagens = new Map(), nRows = 0;
+    for (var i=1;i<rows.length;i++){
+      var r = rows[i], raw = r[idx.jms];
+      if (raw===undefined || raw==='') continue;
+      var sj = String(raw).trim();
+      if (!/^\d/.test(sj)) continue;
+      var base = baseJmsOf(sj);
+      var tempo = parseDateBR(r[idx.tempo]);
+      var viagem = idx.numeroId>=0 ? String(r[idx.numeroId]||'').trim() : '';
+      var parada = idx.paradaProxima>=0 ? String(r[idx.paradaProxima]||'').trim() : '';
+      nRows++;
+      var prev = map.get(base);
+      if (!prev) map.set(base, { viagem:viagem, tempo:tempo, parada:parada, n:1 });
+      else {
+        prev.n++;
+        if (tempo && (!prev.tempo || tempo<prev.tempo)){ prev.tempo = tempo; prev.viagem = viagem || prev.viagem; prev.parada = parada || prev.parada; }
+      }
+      if (viagem){
+        var v = viagens.get(viagem);
+        if (!v){ v = { n:0, ini:null, fim:null }; viagens.set(viagem, v); }
+        v.n++;
+        if (tempo){ if (!v.ini || tempo<v.ini) v.ini = tempo; if (!v.fim || tempo>v.fim) v.fim = tempo; }
+      }
+    }
+    if (!map.size){ showError('Nenhum pedido válido no arquivo de descarga "'+escapeHtml(fname)+'".'); return; }
+    descargaMap = map; descargaViagens = viagens; descargaScanRows = nRows; descargaLoaded = true; fileNameDescarga = fname;
+    renderFaltaBipagemCard();
+    if (typeof varrAtualizarSeAberta === 'function') varrAtualizarSeAberta();
   }
 
   // Base própria = a base onde os scans acontecem (a que mais aparece em "Base de escaneamento" na
@@ -4667,7 +4943,7 @@
       options:{
         indexAxis:'y', responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return fmtInt(c.parsed.x) + ' pedidos'; } } } },
-        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9}} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
+        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9},precision:0} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
       }
     });
 
@@ -4684,7 +4960,7 @@
       options:{
         indexAxis:'y', responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return fmtInt(c.parsed.x) + ' pedidos'; } } } },
-        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9}} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
+        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9},precision:0} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
       }
     });
 
@@ -5093,38 +5369,61 @@
   // Built from the same route aggregation as the Rotas card, so both always agree on counts.
   function dayKey(d){ return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate(); }
   // The card's single tile: the expedição date, shown as a range when the expedição crossed midnight.
-  function tileDataExpedicao(tMin, tMax, semDado){
+  function tileDataExpedicao(tMin, tMax, semDado, rotulo){
+    rotulo = rotulo || 'Data da expedição';
     if (!tMin){
-      return '<div class="viagem-tile destaque"><div class="vt-label">Data da expedição</div><div class="vt-value">—</div><div class="vt-sub">'+escapeHtml(semDado)+'</div></div>';
+      return '<div class="viagem-tile destaque"><div class="vt-label">'+escapeHtml(rotulo)+'</div><div class="vt-value">—</div><div class="vt-sub">'+escapeHtml(semDado)+'</div></div>';
     }
     var data = dayKey(tMin)===dayKey(tMax) ? fmtData(tMin) : fmtData(tMin)+' → '+fmtData(tMax);
-    return '<div class="viagem-tile destaque"><div class="vt-label">Data da expedição</div><div class="vt-value'+(data.length>12?' menor':'')+'">'+escapeHtml(data)+'</div></div>';
+    return '<div class="viagem-tile destaque"><div class="vt-label">'+escapeHtml(rotulo)+'</div><div class="vt-value'+(data.length>12?' menor':'')+'">'+escapeHtml(data)+'</div></div>';
+  }
+  // Viagens que o filtro oferece: as rotas do Bipe de expedição; sem esse arquivo, as viagens do
+  // Carregamento (a saída na viagem também carrega o ID e o horário). Sem nenhum dos dois, lista vazia.
+  function viagensFonte(){
+    if (expedicaoLoaded && rotasCache.length) return { lista: rotasCache, origem: 'expedicao' };
+    if (saidaCargaLoaded && saidaCargaData){
+      var porId = new Map();
+      saidaCargaData.forEach(function(rec){
+        var id = rec && rec.numeroId; if (!id) return;
+        var v = porId.get(id); if (!v){ v = { id:id, n:0, tMin:null, tMax:null }; porId.set(id, v); }
+        v.n++;
+        if (rec.tempo){ if (!v.tMin || rec.tempo<v.tMin) v.tMin = rec.tempo; if (!v.tMax || rec.tempo>v.tMax) v.tMax = rec.tempo; }
+      });
+      return { lista: Array.from(porId.values()), origem: 'carregamento' };
+    }
+    return { lista: [], origem: '' };
   }
   function renderViagemCard(){
     var sel = $('viagemSelect'), tiles = $('viagemTiles');
-    if (!expedicaoLoaded || !rotasCache.length){
-      sel.innerHTML = '<option value="">Todas as viagens</option>';
-      sel.disabled = true;
-      $('troncalSelect').innerHTML = '<option value="">Todos os IDs</option>';
-      $('troncalSelect').disabled = true;
-      $('troncalHead').hidden = true; $('troncalTiles').innerHTML = '';
+    var fonte = viagensFonte(), lista = fonte.lista;
+    // O ID troncal vem do arquivo de CHEGADA: funciona mesmo sem o Bipe de expedição.
+    // (Antes os dois filtros ficavam travados e vazios sem o arquivo de expedição.)
+    if (!lista.length){
+      var algumArquivo = expedicaoLoaded || saidaCargaLoaded;
+      sel.innerHTML = '<option value="">'+(algumArquivo ? 'Nenhuma viagem no arquivo' : 'Carregue expedição ou carregamento')+'</option>';
+      sel.disabled = true; viagemSel = '';
       $('viagemHead').textContent = '';
-      tiles.innerHTML = '<div class="viagem-vazio">Carregue o arquivo de Bipe de expedição pra ver a data da expedição de cada viagem.</div>';
+      tiles.innerHTML = '<div class="viagem-vazio">'+(algumArquivo
+        ? 'Nenhuma viagem com ID encontrada nos arquivos carregados.'
+        : 'Carregue o arquivo de Bipe de expedição (ou o de Carregamento) pra ver a data de saída de cada viagem.')+'</div>';
+      renderTroncal();
       return;
     }
+    if (viagemSel && !lista.some(function(rt){ return rt.id===viagemSel; })) viagemSel = ''; // sumiu após recarregar
+    var rotulo = fonte.origem==='carregamento' ? 'Data de saída (carregamento)' : 'Data da expedição';
     // newest trip first — the one being worked on is usually the most recent
-    var porData = rotasCache.slice().sort(function(a, b){
+    var porData = lista.slice().sort(function(a, b){
       var ta = a.tMin ? a.tMin.getTime() : 0, tb = b.tMin ? b.tMin.getTime() : 0;
       return (tb-ta) || (b.n-a.n);
     });
     sel.disabled = false;
-    sel.innerHTML = '<option value="">Todas as viagens ('+fmtInt(rotasCache.length)+')</option>' + porData.map(function(rt){
+    sel.innerHTML = '<option value="">Todas as viagens ('+fmtInt(lista.length)+')</option>' + porData.map(function(rt){
       return '<option value="'+escapeHtml(rt.id)+'"'+(rt.id===viagemSel ? ' selected' : '')+'>'+
         escapeHtml(rt.id)+' · '+(rt.tMin ? fmtData(rt.tMin) : 'sem data')+' · '+fmtInt(rt.n)+(rt.n===1 ? ' pedido' : ' pedidos')+'</option>';
     }).join('');
     sel.value = viagemSel;
 
-    var rts = viagemSel ? rotasCache.filter(function(rt){ return rt.id===viagemSel; }) : rotasCache;
+    var rts = viagemSel ? lista.filter(function(rt){ return rt.id===viagemSel; }) : lista;
     var tMin = null, tMax = null;
     rts.forEach(function(rt){
       if (rt.tMin && (!tMin || rt.tMin<tMin)) tMin = rt.tMin;
@@ -5132,8 +5431,8 @@
     });
     $('viagemHead').innerHTML = viagemSel
       ? 'ID de viagem: <b>'+escapeHtml(viagemSel)+'</b>'
-      : 'Todas as viagens <span>('+fmtInt(rotasCache.length)+' no arquivo)</span>';
-    tiles.innerHTML = tileDataExpedicao(tMin, tMax, 'sem data no arquivo');
+      : 'Todas as viagens <span>('+fmtInt(lista.length)+' no arquivo'+(fonte.origem==='carregamento' ? ' de carregamento' : '')+')</span>';
+    tiles.innerHTML = tileDataExpedicao(tMin, tMax, 'sem data no arquivo', rotulo);
 
     renderTroncal();
   }
@@ -5164,15 +5463,19 @@
     var dMin = null, dMax = null;
     rawPedidos.forEach(function(p){
       if ((p.idsValues||[]).indexOf(troncalSel)===-1) return;
-      var er = expedicaoConfirmMap.get(p.jms);
-      if (er && er.tempo){
-        if (!dMin || er.tempo<dMin) dMin = er.tempo;
-        if (!dMax || er.tempo>dMax) dMax = er.tempo;
+      var er = (expedicaoLoaded && expedicaoConfirmMap) ? expedicaoConfirmMap.get(p.jms) : null;
+      var sr = (saidaCargaLoaded && saidaCargaData) ? saidaCargaData.get(p.jms) : null;
+      var tp = (er && er.tempo) || (sr && sr.tempo) || null;
+      if (tp){
+        if (!dMin || tp<dMin) dMin = tp;
+        if (!dMax || tp>dMax) dMax = tp;
       }
     });
     head.hidden = false;
     head.innerHTML = 'ID troncal: <b>'+escapeHtml(troncalSel)+'</b> <span>— data de expedição dos pedidos que chegaram por esse ID</span>';
-    tt.innerHTML = tileDataExpedicao(dMin, dMax, 'nenhum pedido desse ID foi expedido ainda');
+    tt.innerHTML = tileDataExpedicao(dMin, dMax, (expedicaoLoaded || saidaCargaLoaded)
+      ? 'nenhum pedido desse ID foi expedido ainda'
+      : 'carregue o Bipe de expedição ou o Carregamento pra ver a data');
   }
 
   function getRotaById(id){ return rotasCache.filter(function(rt){ return rt.id===id; })[0]; }
@@ -5222,8 +5525,26 @@
     var nDivergencia = allBatched.filter(function(r){ return r.divergenciaLote; }).length;
 
     $('expKpiLotesFormados').textContent = fmtInt(lotesAbertosCount);
-    $('expKpiLotesExpedidos').textContent = fmtInt(lotesExpedidosCount);
-    $('expKpiLotesExpedidosSub').textContent = lotesAbertosCount ? (fmtPct(lotesExpedidosCount/lotesAbertosCount*100)+' dos lotes formados') : 'carregue os relatórios de lote e expedição';
+    // Lotes expedidos = lotes com bipe de expedição + lotes que provadamente saíram na viagem (carregamento).
+    // Sem nenhum dos dois arquivos o número não existe — mostrar "0 · 0%" ao lado de milhares de pedidos expedidos enganava.
+    var lotesExpSet = new Set();
+    if (expedicaoLoaded && lotesExpedidosSet) lotesExpedidosSet.forEach(function(l){ lotesExpSet.add(l); });
+    var nLotesViaCarga = 0;
+    if (saidaCargaLoaded){
+      var viaCargaSet = new Set();
+      allBatched.forEach(function(r){ if (r.expedidoViaCarga){ var l = r.loteExpedicao || r.loteAtual || ''; if (l && !lotesExpSet.has(l)) viaCargaSet.add(l); } });
+      nLotesViaCarga = viaCargaSet.size;
+      viaCargaSet.forEach(function(l){ lotesExpSet.add(l); });
+    }
+    if (!expedicaoLoaded && !saidaCargaLoaded){
+      $('expKpiLotesExpedidos').textContent = '—';
+      $('expKpiLotesExpedidosSub').textContent = 'carregue o relatório de expedição ou de carregamento';
+    } else {
+      $('expKpiLotesExpedidos').textContent = fmtInt(lotesExpSet.size);
+      $('expKpiLotesExpedidosSub').textContent = lotesAbertosCount
+        ? (fmtPct(Math.min(100, lotesExpSet.size/lotesAbertosCount*100))+' dos lotes formados'+(nLotesViaCarga ? ' · '+fmtInt(nLotesViaCarga)+' via carregamento' : ''))
+        : 'carregue o relatório de lote';
+    }
     $('expKpiPedidos').textContent = fmtInt(nExpedido);
     $('expKpiPedidosSub').textContent = allBatched.length ? (fmtPct(nExpedido/allBatched.length*100)+' dos pedidos em lote') : '\u00a0';
     $('expKpiPresos').textContent = fmtInt(nPresos);
@@ -5247,14 +5568,19 @@
 
     var totalChegou = derived.length;
     var totalLote = allBatched.length;
+    // Saída direta (foi embora na viagem sem bipe de lote) também é pedido expedido: sem essa barra o funil
+    // parecia "perder" pedidos entre Chegou e Em lote.
+    var nDiretoFunil = derived.filter(function(r){ return r.status==='direto'; }).length;
+    var funilLabels = ['Chegou','Em lote',['Expedido','via lote']], funilData = [totalChegou, totalLote, nExpedido], funilCores = [COLORS.accent2, COLORS.lote, COLORS.expedido];
+    if (nDiretoFunil>0){ funilLabels.push(['Saída direta','(sem lote)']); funilData.push(nDiretoFunil); funilCores.push(COLORS.direto); }
     var ctxF = $('chartFunil').getContext('2d');
     chartFunil = upsertChart(chartFunil, ctxF, {
       type:'bar',
-      data:{ labels:['Chegou','Em lote','Expedido'], datasets:[{ data:[totalChegou, totalLote, nExpedido], backgroundColor:[COLORS.accent2, COLORS.lote, COLORS.expedido], borderRadius:5, maxBarThickness:70 }] },
+      data:{ labels:funilLabels, datasets:[{ data:funilData, backgroundColor:funilCores, borderRadius:5, maxBarThickness:70 }] },
       options:{
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return fmtInt(c.parsed.y) + ' pedidos'; } } } },
-        scales:{ x:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:10}} }, y:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9}} } }
+        scales:{ x:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:10}} }, y:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9},precision:0} } }
       }
     });
 
@@ -5271,7 +5597,7 @@
       options:{
         indexAxis:'y', responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return fmtInt(c.parsed.x) + ' pedidos presos'; } } } },
-        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9}} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
+        scales:{ x:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9},precision:0} }, y:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:8.5}} } }
       }
     });
 
@@ -5305,7 +5631,7 @@
           '<td class="mono">'+escapeHtml(r.jms)+'</td>'+
           '<td>'+escapeHtml(r.nomeCliente||'—')+'</td>'+
           '<td>'+escapeHtml(r.baseDestino||'—')+'</td>'+
-          '<td class="mono">'+escapeHtml((r.ids||[]).join(' > ')||'—')+'</td>'+
+          '<td class="mono ids-cell">'+((r.ids&&r.ids.length)?r.ids.map(function(id,ix){ return '<span class="id-chip">'+(ix?'<i>→</i> ':'')+escapeHtml(id)+'</span>'; }).join(''):'—')+'</td>'+
           '<td class="mono">'+escapeHtml(r.lote||'—')+'</td>'+
           '<td class="mono">'+fmtDateTime(r.tempoLote)+'</td>'+
           '<td class="mono">'+(escapeHtml(r.loteExpedicao)||'—')+'</td>'+
@@ -5461,7 +5787,7 @@
       options:{
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return fmtInt(c.parsed.y) + ' pedidos'; } } } },
-        scales:{ x:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:10}} }, y:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9}} } }
+        scales:{ x:{ grid:{display:false}, ticks:{color:COLORS.ink,font:{size:10}} }, y:{ beginAtZero:true, grid:{color:COLORS.grid}, ticks:{color:COLORS.ink,font:{size:9},precision:0} } }
       }
     });
 
@@ -6165,6 +6491,7 @@
     }
     allCodesCurrentList = list;
     allCodesIdx = 0;
+    autoParar(); autoRestaurar();
     var savedMode = lsGet(ALL_CODES_MODE_KEY);
     if (savedMode==='pager'){ allCodesPager = true; }
     else if (/^[1-5]$/.test(savedMode||'')){ allCodesPager = false; allCodesCols = parseInt(savedMode, 10); }
@@ -6181,6 +6508,8 @@
     var grid = $('allCodesGrid');
     grid.className = 'all-codes-grid ' + (allCodesPager ? 'pager' : 'cols-'+allCodesCols);
     $('allCodesStage').classList.toggle('pager', allCodesPager);
+    $('allCodesAutoBar').hidden = !allCodesPager;
+    if (!allCodesPager) autoParar();
     document.querySelectorAll('#allCodesColsChips .chip').forEach(function(c){
       var v = c.getAttribute('data-cols');
       c.classList.toggle('active', allCodesPager ? v==='pager' : v===String(allCodesCols));
@@ -6210,7 +6539,76 @@
       $('allCodesStatus').textContent = fmtInt(list.length)+' código(s) gerado(s).';
     });
   }
-  function closeAllCodesModal(){ $('allCodesModalOverlay').hidden = true; }
+  function closeAllCodesModal(){ autoParar(); $('allCodesModalOverlay').hidden = true; }
+
+  // ---------- Passagem automática dos códigos (modo "Passar") ----------
+  // Velocidade = segundos que cada código fica na tela. Aceleração = em quantos segundos o ritmo vai do lento
+  // (3× a velocidade, no máximo 10 s) até a velocidade escolhida; 0 = ritmo constante desde o primeiro código.
+  var AUTO_KEY = 'painelBacklog.codigosAuto';
+  var passoTimer = null, autoRunning = false, autoT0 = 0, wakeLock = null;
+  function fmtSeg(v){ return v.toFixed(1).replace('.',',')+' s'; }
+  function autoCfg(){
+    return { vel: Math.max(0.3, parseFloat($('autoVel').value)||2), acc: Math.max(0, parseInt($('autoAcc').value,10)||0), loop: $('autoLoop').checked };
+  }
+  function autoIni(c){ return Math.min(10, Math.max(c.vel, Math.round(c.vel*3*10)/10)); }
+  function autoIntervalo(c, elapsedMs){
+    if (!c.acc) return c.vel;
+    var ini = autoIni(c), f = Math.min(1, elapsedMs/(c.acc*1000));
+    return ini + (c.vel-ini)*f;
+  }
+  function autoRotulos(){
+    var c = autoCfg();
+    $('autoVelVal').textContent = fmtSeg(c.vel);
+    $('autoAccVal').textContent = c.acc ? c.acc+' s' : 'sem rampa';
+    return c;
+  }
+  function autoSalvar(){ var c = autoCfg(); lsSet(AUTO_KEY, JSON.stringify({ vel:c.vel, acc:c.acc, loop:c.loop })); }
+  function autoRestaurar(){
+    try { var o = JSON.parse(lsGet(AUTO_KEY)||'null'); if (o){ $('autoVel').value = o.vel; $('autoAcc').value = o.acc; $('autoLoop').checked = !!o.loop; } } catch(e){}
+    autoRotulos();
+  }
+  function autoBotao(){
+    var b = $('btnAutoPlay'); b.textContent = autoRunning ? '⏸ Pausar' : '▶ Automático'; b.classList.toggle('rodando', autoRunning);
+  }
+  function autoWake(on){
+    try {
+      if (on && navigator.wakeLock && !wakeLock){ navigator.wakeLock.request('screen').then(function(w){ wakeLock = w; w.addEventListener('release', function(){ if (wakeLock===w) wakeLock = null; }); }).catch(function(){}); }
+      else if (!on && wakeLock){ wakeLock.release(); wakeLock = null; }
+    } catch(e){}
+  }
+  function autoAgendar(){
+    clearTimeout(passoTimer); passoTimer = null;
+    if (!autoRunning) return;
+    var c = autoCfg(), el = Date.now()-autoT0, iv = autoIntervalo(c, el);
+    var bar = $('autoProgress'); bar.style.transition = 'none'; bar.style.width = '0%'; void bar.offsetWidth;
+    bar.style.transition = 'width '+iv.toFixed(2)+'s linear'; bar.style.width = '100%';
+    var rampa = c.acc && el < c.acc*1000 ? ' · acelerando até '+fmtSeg(c.vel)+' (faltam '+Math.ceil(c.acc-el/1000)+' s)' : '';
+    $('autoInfo').textContent = 'Passando sozinho — agora '+fmtSeg(iv)+' por código (≈ '+Math.round(60/iv)+' códigos/min)'+rampa+'.';
+    passoTimer = setTimeout(autoTick, Math.round(iv*1000));
+  }
+  function autoTick(){
+    if (!autoRunning) return;
+    var n = allCodesCurrentList.length;
+    if (allCodesIdx >= n-1){
+      if (autoCfg().loop && n>1){ allCodesIdx = 0; updateAllCodesPager(false); autoAgendar(); }
+      else autoParar('Chegou ao último código ('+fmtInt(n)+' de '+fmtInt(n)+') — passagem automática encerrada.');
+      return;
+    }
+    allCodesIdx++; updateAllCodesPager(false); autoAgendar();
+  }
+  function autoIniciar(){
+    if (!allCodesPager || !allCodesCurrentList.length) return;
+    if (allCodesIdx >= allCodesCurrentList.length-1 && allCodesCurrentList.length>1){ allCodesIdx = 0; updateAllCodesPager(false); }
+    autoRunning = true; autoT0 = Date.now(); autoBotao(); autoWake(true); autoAgendar();
+  }
+  function autoParar(msg){
+    autoRunning = false; clearTimeout(passoTimer); passoTimer = null;
+    var bar = $('autoProgress'); if (bar){ bar.style.transition = 'none'; bar.style.width = '0%'; }
+    if ($('btnAutoPlay')) autoBotao();
+    autoWake(false);
+    if (msg && $('autoInfo')) $('autoInfo').textContent = msg;
+    else if ($('autoInfo')) $('autoInfo').textContent = 'Passa os códigos sozinho na velocidade escolhida.';
+  }
 
   // Modo "Passar ‹ ›": os cartões já estão todos na grade; só o atual fica visível.
   function updateAllCodesPager(full){
@@ -6226,13 +6624,14 @@
     $('btnCodePrev').disabled = allCodesIdx <= 0;
     $('btnCodeNext').disabled = allCodesIdx >= n-1;
     if (full) $('allCodesHint').textContent = allCodesPager
-      ? 'um código por vez — passe com ‹ › ou com as setas do teclado'
+      ? 'um código por vez — passe com ‹ ›, com as setas do teclado ou no ▶ Automático'
       : 'quanto menor a quantidade, maior e mais nítido fica o código pra leitura no PDA';
   }
   function stepAllCodes(delta){
     if (!allCodesPager) return;
     allCodesIdx += delta;
     updateAllCodesPager(false);
+    if (autoRunning) autoAgendar();   // passou na mão: o relógio do próximo código recomeça
   }
 
   // ---------- Backlog x Sem Movimentação cross-check ----------
@@ -6908,8 +7307,8 @@
         jms:g.jms, lote:removidoDoLote ? '' : (g.loteValues.length?g.loteValues.join(' / '):loteViaScan), loteAtual:removidoDoLote ? '' : loteAtual,
         removidoDoLote:removidoDoLote, loteRemovido:loteRemovido, removidoMotivo:removidoMotivo,
         hasConflito:g.loteValues.length>1, nLeituras:g.nLeituras,
-        tempo:g.tempoMin, tempoLote:tempoLoteEfetivo, ids:g.idsValues, janelaAlvo:janelaAlvo, perdeuJanela:perdeuJanela,
-        baseEscaneamento:g.baseEscaneamento, paradaProxima:g.paradaProxima,
+        tempo:g.tempoMin, tempoLote:tempoLoteEfetivo, ids:g.idsValues, viagem:(g.idChegada || (g.idsValues.length ? g.idsValues[0] : '')), janelaAlvo:janelaAlvo, perdeuJanela:perdeuJanela,
+        baseEscaneamento:g.baseEscaneamento, paradaProxima:g.paradaProxima, origem:(g.paradaChegada || g.paradaProxima || ''),
         baseRemetente:g.baseRemetente, municipioDestino:g.municipioDestino, estadoDestino:g.estadoDestino,
         baseDestino:g.baseDestino, nomeCliente:g.nomeCliente, pesoFaturado:g.pesoFaturado, origemPedido:g.origemPedido,
         status:status, horasParado:horasParado, viaCruzamento:viaCruzamento, confirmadoAusenteScan:confirmadoAusenteScan,
@@ -6956,6 +7355,8 @@
     updateLoteAlerta();
     refreshKpisAndCharts();
     renderFluxo();
+    try { atualizarPiso(); } catch(e){}
+    try { varrAtualizarSeAberta(); } catch(e){}
     try { salvarSnapshotDoDia(); } catch(e){}
     if (resetPage) state.page = 1;
     renderTable();
@@ -7259,6 +7660,7 @@
   }
   function refreshSla(){
     refreshKpisAndCharts(); renderFluxo();
+    try { atualizarPiso(); } catch(e){}
     try { salvarSnapshotDoDia(); } catch(e){}
   }
   $('slaCicloSel').addEventListener('change', function(){ state.slaCiclo.key = this.value; refreshSla(); });
@@ -7858,8 +8260,9 @@
   }
 
   var KIND_LABELS = { chegada:'Chegada ao centro', lote:'Encomenda inserida em lote', exped:'Bipe de expedição', carga:'Carregamento', descarga:'Digitalização de descarga' };
-  var KIND_ORDER = ['chegada','lote','exped','carga'];
-  var KIND_PILL_ID = { chegada:'pillChegada', lote:'pillLote', exped:'pillExped', carga:'pillCarga' };
+  var KIND_ORDER = ['chegada','lote','exped','carga','descarga'];
+  var KIND_OPCIONAL = { descarga:true };
+  var KIND_PILL_ID = { chegada:'pillChegada', lote:'pillLote', exped:'pillExped', carga:'pillCarga', descarga:'pillDescarga' };
 
   function markPillDone(kind, filename){
     var el = $(KIND_PILL_ID[kind]);
@@ -7885,39 +8288,34 @@
     clearError();
     var slots = {};
     var unclassified = [];
-    var descartados = [];
     files.forEach(function(f){
       var kind = classifyFileByName(f.name);
-      if (kind==='descarga'){ descartados.push(f.name); return; }
       if (kind && !slots[kind]) slots[kind] = f; else unclassified.push(f);
     });
-    function avisoDescarga(){
-      if (descartados.length) showError('ℹ️ "'+escapeHtml(descartados.join('", "'))+'" é descarga da linha troncal (o que CHEGA), não carregamento — não é usado aqui. Para a saída direta, envie o arquivo de "Digitalização de carregamento".');
-    }
-    if (!unclassified.length){ renderUploadStatusList(slots); dispatchSlots(slots); avisoDescarga(); return; }
+    if (!unclassified.length){ renderUploadStatusList(slots); dispatchSlots(slots); return; }
     showLoading('Identificando arquivo(s)...');
     var remaining = unclassified.length;
     unclassified.forEach(function(f){
       readWorkbookRows(f, function(rows){
         var kind = classifyFileContent(rows);
-        if (kind==='descarga') descartados.push(f.name);
-        else if (kind && !slots[kind]) slots[kind] = f;
+        if (kind && !slots[kind]) slots[kind] = f;
         remaining--;
-        if (remaining===0){ hideLoading(); renderUploadStatusList(slots); dispatchSlots(slots); avisoDescarga(); }
+        if (remaining===0){ hideLoading(); renderUploadStatusList(slots); dispatchSlots(slots); }
       }, function(){
         remaining--;
-        if (remaining===0){ hideLoading(); renderUploadStatusList(slots); dispatchSlots(slots); avisoDescarga(); }
+        if (remaining===0){ hideLoading(); renderUploadStatusList(slots); dispatchSlots(slots); }
       });
     });
   }
 
   function dispatchSlots(slots){
-    if (!slots.chegada && !slots.lote && !slots.exped && !slots.carga){
+    if (!slots.chegada && !slots.lote && !slots.exped && !slots.carga && !slots.descarga){
       showError('Não consegui identificar nenhum arquivo reconhecível entre os que você soltou. Confirme que são exports do sistema JMS.');
       return;
     }
     var doneKinds = {};
     function markDone(k){ doneKinds[k]=true; renderUploadStatusList(slots, doneKinds); markPillDone(k, slots[k].name); }
+    if (slots.descarga){ handleDescargaFile(slots.descarga); markDone('descarga'); }
     if (slots.chegada){
       handleFile1(slots.chegada, function(){
         markDone('chegada');
@@ -7952,6 +8350,7 @@
     else if (kind==='lote'){ handleLoteFile(f); markPillDone('lote', f.name); }
     else if (kind==='exped'){ handleExpedFile(f); markPillDone('exped', f.name); }
     else if (kind==='carga'){ handleCargaFile(f); markPillDone('carga', f.name); }
+    else if (kind==='descarga'){ handleDescargaFile(f); markPillDone('descarga', f.name); }
   });
   fileInputAll.addEventListener('change', function(e){ handleMultiFiles(e.target.files); });
   ['dragenter','dragover'].forEach(function(evt){ dropAll.addEventListener(evt, function(e){ e.preventDefault(); dropAll.classList.add('dragover'); }); });
@@ -7978,9 +8377,11 @@
     rawPedidos=[]; derived=[]; file2Loaded=false; loteConfirmMap=null; loteRemovidos=null; pendingFile2=null;
     fileName1=''; fileName2=''; lotesAbertosCount=0; file2ScanRows=0; file2OnlyCount=0; file2RemovidosCount=0;
     ignoredNonNumeric=0; conflitoLoteCount=0; duplicatasExatasCount=0;
-    expedicaoLoaded=false; expedicaoConfirmMap=null; lotesExpedidosCount=0; expedicaoScanRows=0; expedicaoOnlyCount=0; fileNameExped=''; pendingFile3=null;
+    expedicaoLoaded=false; expedicaoConfirmMap=null; lotesExpedidosCount=0; lotesExpedidosSet=null; expedicaoScanRows=0; expedicaoOnlyCount=0; fileNameExped=''; pendingFile3=null;
     carregamentoLoaded=false; carregamentoData=null; carregamentoViagens=null; carregamentoScanRows=0; fileNameCarga=''; pendingFile4=null;
-    alertaInit=false; alertaPrev=new Set(); $('toastAlerta').hidden=true; _ultimoSnapTxt=''; conf.itens=[]; conf.vistos=new Set(); conf.cont={ok:0,dir:0,jaSaiu:0,errado:0,semChegada:0,dup:0}; conf.idxRef=null;
+    descargaLoaded=false; descargaMap=null; descargaViagens=null; descargaScanRows=0; fileNameDescarga='';
+    if (typeof varrFechar === 'function') varrFechar();
+    alertaInit=false; alertaPrev=new Set(); $('toastAlerta').hidden=true; $('toastPiso').hidden=true; pisoAlerta={ key:null, passo:0, ultimoTs:0, prevVenc:0 }; _ultimoSnapTxt=''; conf.itens=[]; conf.vistos=new Set(); conf.cont={ok:0,dir:0,jaSaiu:0,errado:0,semChegada:0,dup:0}; conf.idxRef=null;
     saidaCargaLoaded=false; saidaCargaData=null; saidaCargaViagens=null; saidaCargaScanRows=0; saidaCargaForaBase=0; saidaCargaOnlyCount=0; fileNameSaida=''; _basePropCache='';
     crossCheckMatched=[];
     expedState={status:'presos',baseDestino:'',sortKey:'tempoLote',sortDir:'desc',page:1,pageSize:50};
@@ -8016,7 +8417,7 @@
     document.querySelector('#statusChips .chip[data-status="pendentes"]').classList.add('active');
     document.querySelectorAll('#bipagemChips .chip').forEach(function(c){ c.classList.remove('active'); });
     document.querySelector('#bipagemChips .chip[data-bipagem="todos"]').classList.add('active');
-    bipadosSet.clear();
+    bipadosSet.clear(); driveReset();
     $('scanCount').textContent='0'; $('scanFeedback').textContent=''; $('scanFeedback').className='scan-feedback'; $('scanInput').value='';
     $('bmiBipados').textContent='0'; $('bmiNaoBipados').textContent='0';
     dashboard.hidden=true; clockBox.hidden=true;
@@ -8128,6 +8529,256 @@
     });
   })();
 
+
+  // ---------- 1b) SLA por ID de viagem + piso a limpar ----------
+  // Cada pedido pertence à viagem em que chegou (ID do primeiro bipe de chegada: DBGX…, JBGX…, SRTR…). O SLA é contado
+  // por viagem, dentro do ciclo (16:00 → janela das 05:00). "Piso" = recebido e ainda não movimentado: sem bipe de lote
+  // e sem saída (nem expedição nem carregamento). Crossdocking: nada pode dormir no piso depois da janela.
+  var pisoTripsTodas = false;
+  var pisoAlerta = { key:null, passo:0, ultimoTs:0, prevVenc:0 };
+  function pisoNoPiso(r){ var st = r.status; return st==='normal' || st==='atencao' || st==='critico' || st==='indefinido'; }
+  function pisoEmCiclo(r, ci){
+    if (!r.tempo || !ci.ini) return false;
+    var t = r.tempo.getTime(); return t>=ci.ini.getTime() && t<ci.fim.getTime();
+  }
+  function tipoViagem(id){ var u = String(id||'').toUpperCase(); return (u.indexOf('DBGX')===0 || u.indexOf('JBGX')===0) ? 'troncal' : 'outras'; }
+  function fmtDur(min){
+    var a = Math.abs(Math.round(min)), h = Math.floor(a/60), m = a%60;
+    return h ? (h+'h'+String(m).padStart(2,'0')) : (m+' min');
+  }
+  function hhmm(d){ return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+  function computePiso(){
+    var ci = cicloInfo(), now = new Date();
+    var d = { ci:ci, now:now, temFonte:!!(file2Loaded && (expedicaoLoaded || saidaCargaLoaded)),
+      total:0, venc:0, aten:0, normal:0, semHora:0, emLote:0, trips:[], fora:{ n:0, noPiso:0, venc:0 },
+      cicloN:0, cicloSaiu:0, minJanela: ci.fim ? Math.round((ci.fim.getTime()-now.getTime())/60000) : null };
+    var m = new Map();
+    for (var i=0;i<derived.length;i++){
+      var r = derived[i], st = r.status, noPiso = pisoNoPiso(r);
+      if (st==='lote') d.emLote++;
+      if (noPiso){
+        d.total++;
+        if (st==='critico') d.venc++; else if (st==='atencao') d.aten++; else if (st==='normal') d.normal++; else d.semHora++;
+      }
+      if (!pisoEmCiclo(r, ci)){
+        d.fora.n++; if (noPiso){ d.fora.noPiso++; if (st==='critico') d.fora.venc++; }
+        continue;
+      }
+      var id = r.viagem || '(sem ID de viagem)';
+      var g = m.get(id);
+      if (!g){ g = { id:id, tipo:tipoViagem(id), n:0, exp:0, dir:0, saiu:0, lote:0, piso:0, venc:0, aten:0, ini:null, fim:null, sla:0 }; m.set(id, g); }
+      g.n++;
+      if (st==='expedido') g.exp++; else if (st==='direto') g.dir++; else if (st==='lote') g.lote++;
+      else { g.piso++; if (st==='critico') g.venc++; else if (st==='atencao') g.aten++; }
+      var t = r.tempo.getTime();
+      if (g.ini===null || t<g.ini) g.ini = t;
+      if (g.fim===null || t>g.fim) g.fim = t;
+    }
+    m.forEach(function(g){ g.saiu = g.exp + g.dir; g.sla = g.n ? g.saiu/g.n*100 : 0; d.cicloN += g.n; d.cicloSaiu += g.saiu; });
+    d.trips = Array.from(m.values()).sort(function(a,b){ return (b.n-a.n) || a.id.localeCompare(b.id); });
+    return d;
+  }
+  function pisoNivel(d){ return !d.total ? 'ok' : (d.venc ? 'critico' : (d.aten ? 'atencao' : 'normal')); }
+  function pisoTextoJanela(d){
+    if (d.minJanela===null || !d.ci.fim) return '';
+    var rot = hhmm(d.ci.fim)+' de '+String(d.ci.fim.getDate()).padStart(2,'0')+'/'+String(d.ci.fim.getMonth()+1).padStart(2,'0');
+    return 'Janela de expedição '+rot+' — '+(d.minJanela>0 ? 'faltam '+fmtDur(d.minJanela) : 'venceu há '+fmtDur(d.minJanela));
+  }
+  function pisoItens(filtro){
+    var out = [], ci = cicloInfo();
+    derived.forEach(function(r){
+      if (!pisoNoPiso(r) || (filtro && !filtro(r, ci))) return;
+      var base = r.baseDestino || '(sem base)';
+      var det = (r.viagem||'sem ID de viagem')+' · chegou '+fmtDateTime(r.tempo)+(r.horasParado!==null && r.horasParado!==undefined ? ' · parado há '+fmtHoras(r.horasParado) : '')+' · '+(labels()[r.status]||r.status);
+      out.push({ jms:r.jms, base:base, det:det, doca:(base==='(sem base)' ? '' : (docaOfBaseDestino(base)||'')) });
+    });
+    return out.sort(function(a,b){ return (a.doca||'~').localeCompare(b.doca||'~','pt-BR',{numeric:true}) || a.base.localeCompare(b.base,'pt-BR') || (a.jms<b.jms?-1:1); });
+  }
+  function abrirListaPiso(titulo, desc, filtro){
+    var itens = pisoItens(filtro);
+    openFbListModal(itens, titulo, desc);
+  }
+  function renderPiso(d){
+    var card = $('pisoCard');
+    if (!derived.length){ card.hidden = true; return; }
+    card.hidden = false;
+    var nv = d.temFonte ? pisoNivel(d) : 'info';
+    card.className = 'piso-card nivel-'+nv+(card.classList.contains('pulse') ? ' pulse' : '');
+    var icones = { ok:'✅', normal:'🕒', atencao:'⚠️', critico:'🚨', info:'ℹ️' };
+    $('pisoIcon').textContent = icones[nv];
+    var temTrips = d.temFonte && d.trips.length;
+    $('pisoActions').hidden = !d.temFonte || !d.total;
+    $('btnPisoVenc').hidden = !d.venc;
+    if (!d.temFonte){
+      $('pisoTitle').textContent = 'Piso a limpar — aguardando arquivos';
+      $('pisoSub').textContent = 'Carregue o "Inserido em lote" e o "Bipe de expedição" para saber o que chegou e ainda não foi movimentado.';
+      $('pisoDetail').innerHTML = ''; $('pisoTripsWrap').innerHTML = ''; $('pisoFora').innerHTML = '';
+      return;
+    }
+    var jan = pisoTextoJanela(d);
+    if (!d.total){
+      $('pisoTitle').textContent = 'Piso limpo — nenhum pedido recebido aguardando movimentação';
+      $('pisoSub').textContent = (jan ? jan+'. ' : '')+'Tudo o que chegou já foi para lote ou saiu na viagem.'+(d.emLote ? ' Ainda há '+fmtInt(d.emLote)+' pedido(s) em lote aguardando a saída.' : '');
+    } else {
+      $('pisoTitle').textContent = fmtInt(d.total)+' pedido'+(d.total>1?'s':'')+' recebido'+(d.total>1?'s':'')+' ainda no piso (sem lote e sem saída)';
+      $('pisoSub').textContent = (jan ? jan+'. ' : '')+(d.venc ? 'Piso fora da regra: já passou o horário de expedição.' : (d.aten ? 'A janela está chegando — movimentar antes do horário.' : 'Dentro do prazo, mas tudo precisa sair até a janela.'));
+    }
+    var chips = [];
+    chips.push('<span class="pd-chip venc">🔴 Vencidos <b>'+fmtInt(d.venc)+'</b></span>');
+    chips.push('<span class="pd-chip aten">🟡 Perto da janela <b>'+fmtInt(d.aten)+'</b></span>');
+    chips.push('<span class="pd-chip">🟢 No prazo <b>'+fmtInt(d.normal)+'</b></span>');
+    if (d.semHora) chips.push('<span class="pd-chip">❔ Sem horário <b>'+fmtInt(d.semHora)+'</b></span>');
+    chips.push('<span class="pd-chip">📦 Em lote, aguardando saída <b>'+fmtInt(d.emLote)+'</b></span>');
+    $('pisoDetail').innerHTML = chips.join('');
+
+    // SLA por viagem (ID) — só o ciclo escolhido
+    if (!temTrips){ $('pisoTripsWrap').innerHTML = '<div class="piso-fora">Nenhum pedido recebido no ciclo '+escapeHtml(d.ci.rotulo||'')+'.</div>'; }
+    else {
+      var lim = pisoTripsTodas ? d.trips.length : 8;
+      var linhas = d.trips.slice(0, lim).map(function(g){
+        var sit;
+        if (!g.piso) sit = '✅ piso limpo';
+        else if (g.venc) sit = '🔴 '+fmtInt(g.venc)+' vencido'+(g.venc>1?'s':'');
+        else if (g.aten) sit = '🟡 '+fmtInt(g.aten)+' perto da janela';
+        else sit = '🟢 '+fmtInt(g.piso)+' no prazo';
+        var ch = g.ini!==null ? hhmm(new Date(g.ini))+' → '+hhmm(new Date(g.fim)) : '—';
+        return '<tr><td>'+escapeHtml(g.id)+(g.tipo==='troncal' ? '<span class="tag">troncal</span>' : '')+'</td>'+
+          '<td>'+ch+'</td><td>'+fmtInt(g.n)+'</td><td>'+fmtInt(g.exp)+'</td><td>'+fmtInt(g.dir)+'</td><td class="col-saiu">'+fmtInt(g.saiu)+'</td><td>'+fmtInt(g.lote)+'</td><td>'+fmtInt(g.piso)+'</td>'+
+          '<td><span class="sla-cel"><span class="sla-bar"><i style="width:'+Math.min(100,g.sla).toFixed(1)+'%"></i></span>'+pctBR(g.sla)+'%</span></td>'+
+          '<td class="sit">'+sit+(g.piso ? ' <button class="btn-ghost btn-small" data-piso-id="'+escapeHtml(g.id)+'">Buscar</button>' : '')+'</td></tr>';
+      }).join('');
+      var totSla = d.cicloN ? d.cicloSaiu/d.cicloN*100 : 0;
+      var totPiso = d.trips.reduce(function(s,g){ return s+g.piso; }, 0), totLote = d.trips.reduce(function(s,g){ return s+g.lote; }, 0);
+      var totExp = d.trips.reduce(function(s,g){ return s+g.exp; }, 0), totDir = d.trips.reduce(function(s,g){ return s+g.dir; }, 0);
+      linhas += '<tr class="tot"><td>Total do ciclo</td><td>'+escapeHtml((d.ci.rotulo||'').replace(/ → /,' → '))+'</td><td>'+fmtInt(d.cicloN)+'</td><td>'+fmtInt(totExp)+'</td><td>'+fmtInt(totDir)+'</td><td class="col-saiu">'+fmtInt(d.cicloSaiu)+'</td><td>'+fmtInt(totLote)+'</td><td>'+fmtInt(totPiso)+'</td>'+
+        '<td><span class="sla-cel"><span class="sla-bar"><i style="width:'+Math.min(100,totSla).toFixed(1)+'%"></i></span>'+pctBR(totSla)+'%</span></td><td class="sit"></td></tr>';
+      $('pisoTripsWrap').innerHTML = '<table class="piso-table"><thead><tr><th>Viagem (ID)</th><th>Chegada</th><th>Recebidos</th><th title="Chegaram, entraram em lote e saíram pelo bipe de expedição">Expedidos</th><th title="Chegaram e foram inseridos direto na viagem, sem bipe de lote">Saída direta</th><th title="Expedidos + saída direta">Saíram</th><th>Em lote</th><th>No piso</th><th title="(expedidos + saída direta) ÷ recebidos da viagem">SLA da viagem</th><th style="text-align:left">Situação</th></tr></thead><tbody>'+linhas+'</tbody></table><div class="piso-fora" style="margin-top:6px">SLA da viagem = (expedidos + saída direta) ÷ recebidos naquele ID. Saída direta = chegou e foi inserido direto na viagem de saída, sem bipe de lote — também conta como pedido que saiu.</div>'+
+        (d.trips.length>8 ? '<button class="btn-ghost btn-small piso-more" id="btnPisoTripsMais">'+(pisoTripsTodas ? 'Mostrar menos' : 'Mostrar as '+d.trips.length+' viagens')+'</button>' : '');
+    }
+    // pedidos de ciclos anteriores que ainda estão no piso (vencidos) — não entram no SLA, mas o piso precisa ficar limpo
+    var foraTxt = '';
+    if (d.fora.noPiso) foraTxt = '⚠️ <b>'+fmtInt(d.fora.noPiso)+'</b> pedido(s) de fora do ciclo ainda estão no piso ('+fmtInt(d.fora.venc)+' vencidos) — não entram no SLA, mas precisam sair.<button class="btn-ghost btn-small" id="btnPisoForaBuscar">Buscar</button>';
+    $('pisoFora').innerHTML = foraTxt;
+  }
+
+  // ---- alerta por horário de expedição ----
+  // Degraus antes da janela: o limite de "atenção" (padrão 4h), 2h, 1h, 30 min e a própria janela. A primeira leitura só
+  // memoriza (não apita ao abrir os arquivos); depois disso, cada degrau cruzado com pedido no piso avisa uma vez, pedido
+  // que acaba de vencer avisa, e enquanto houver vencido o painel reavisa a cada 30 min.
+  function pisoPassos(){
+    var buf = Math.max(0, Math.round((state.atencaoBufferH||4)*60));
+    var arr = [buf, 120, 60, 30, 0].filter(function(x){ return x<=buf; });
+    return Array.from(new Set(arr)).sort(function(a,b){ return b-a; });
+  }
+  function pisoPassoAtual(minJanela){
+    var n = 0; pisoPassos().forEach(function(x, i){ if (minJanela<=x) n = i+1; });
+    return n;
+  }
+  function piscarTitulo(msg){
+    if (!document.hidden) return;
+    var on = false;
+    if (tituloTimer) clearInterval(tituloTimer);
+    tituloTimer = setInterval(function(){ on = !on; document.title = on ? msg : tituloOriginal; }, 1000);
+  }
+  function dispararAlertaPiso(motivo, d, novosVenc){
+    var card = $('pisoCard');
+    card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');
+    setTimeout(function(){ card.classList.remove('pulse'); }, 6500);
+    var txt;
+    if (motivo==='novos') txt = '🚨 <b>'+fmtInt(novosVenc)+'</b> pedido'+(novosVenc>1?'s':'')+' venceu a janela de expedição — <b>'+fmtInt(d.venc)+'</b> vencido'+(d.venc>1?'s':'')+' no piso';
+    else if (motivo==='reaviso') txt = '🧹 O piso ainda não está limpo: <b>'+fmtInt(d.venc)+'</b> vencido'+(d.venc>1?'s':'')+' ('+fmtInt(d.total)+' no piso)';
+    else if (d.minJanela>0) txt = '⏰ Faltam <b>'+fmtDur(d.minJanela)+'</b> para a janela das '+hhmm(d.ci.fim)+' — <b>'+fmtInt(d.total)+'</b> pedido'+(d.total>1?'s':'')+' recebido'+(d.total>1?'s':'')+' ainda no piso';
+    else txt = '🚨 Janela de expedição vencida — <b>'+fmtInt(d.total)+'</b> pedido'+(d.total>1?'s':'')+' ainda no piso';
+    $('toastPisoTxt').innerHTML = txt;
+    $('toastPiso').hidden = false;
+    if (alertaSomLigado()) tocarSom('critico');
+    piscarTitulo(d.venc ? '🚨 '+d.venc+' vencido(s) no piso' : '⏰ '+d.total+' no piso');
+  }
+  function verificarAlertaPiso(d){
+    if (!d.temFonte || !d.ci.fim) return;
+    var key = d.ci.key+'|'+d.ci.fim.getTime(), passo = pisoPassoAtual(d.minJanela), agora = Date.now();
+    if (pisoAlerta.key!==key){ pisoAlerta = { key:key, passo:passo, ultimoTs:agora, prevVenc:d.venc }; return; }
+    if (!d.total){ pisoAlerta.passo = passo; pisoAlerta.prevVenc = 0; return; }
+    var motivo = null, novos = 0;
+    if (passo>pisoAlerta.passo) motivo = 'passo';
+    else if (d.venc>pisoAlerta.prevVenc){ motivo = 'novos'; novos = d.venc-pisoAlerta.prevVenc; }
+    else if (d.venc>0 && agora-pisoAlerta.ultimoTs>=30*60000) motivo = 'reaviso';
+    pisoAlerta.passo = passo; pisoAlerta.prevVenc = d.venc;
+    if (motivo){ pisoAlerta.ultimoTs = agora; dispararAlertaPiso(motivo, d, novos); }
+  }
+  function atualizarPiso(){
+    var d = computePiso();
+    renderPiso(d);
+    try { verificarAlertaPiso(d); } catch(e){}
+    return d;
+  }
+  function pisoDocas(){
+    var docas = new Map();
+    pisoItens().forEach(function(it){
+      var dk = it.doca || '(sem doca)';
+      var g = docas.get(dk); if (!g){ g = { doca:dk, n:0, bases:new Map() }; docas.set(dk, g); }
+      g.n++; g.bases.set(it.base, (g.bases.get(it.base)||0)+1);
+    });
+    return Array.from(docas.values()).sort(function(a,b){ return b.n-a.n; });
+  }
+  function montarTextoPiso(){
+    var d = computePiso(), now = new Date(), L = [];
+    L.push('*PISO A LIMPAR — '+BASE_PROPRIA_PADRAO+'*');
+    L.push(nomeDoDia(now)+' · '+hhmm(now));
+    if (!d.temFonte){ L.push('Carregue o "Inserido em lote" e o "Bipe de expedição" para calcular o piso.'); return L.join('\n'); }
+    var jan = pisoTextoJanela(d); if (jan) L.push(jan);
+    L.push('');
+    if (!d.total){ L.push('✅ Piso limpo: nenhum pedido recebido aguardando movimentação.'); }
+    else {
+      L.push('*'+fmtInt(d.total)+' pedido(s) recebido(s) ainda não movimentados*');
+      L.push('• Vencidos: '+fmtInt(d.venc)+' · Perto da janela: '+fmtInt(d.aten)+' · No prazo: '+fmtInt(d.normal));
+    }
+    if (d.emLote) L.push('• Em lote aguardando saída: '+fmtInt(d.emLote));
+    if (d.trips.length){
+      L.push(''); L.push('*SLA por viagem (ID)*');
+      d.trips.slice(0,6).forEach(function(g){ L.push('• '+g.id+': ('+fmtInt(g.exp)+' expedidos + '+fmtInt(g.dir)+' saída direta) ÷ '+fmtInt(g.n)+' recebidos = *'+pctBR(g.sla)+'%*'+(g.piso ? ' · '+fmtInt(g.piso)+' no piso' : ' ✅')); });
+      if (d.trips.length>6) L.push('• +'+(d.trips.length-6)+' viagem(ns) menores');
+    }
+    if (d.total){
+      var docas = pisoDocas();
+      L.push(''); L.push('*Buscar por doca*');
+      docas.slice(0,6).forEach(function(g){
+        var bs = Array.from(g.bases.entries()).sort(function(a,b){ return b[1]-a[1]; }).slice(0,4).map(function(e){ return e[0]+' '+fmtInt(e[1]); }).join(' · ');
+        L.push('• '+g.doca+' — '+fmtInt(g.n)+': '+bs+(g.bases.size>4 ? ' · +'+(g.bases.size-4)+' base(s)' : ''));
+      });
+    }
+    return L.join('\n');
+  }
+  $('btnPisoBuscar').addEventListener('click', function(){
+    abrirListaPiso('No piso — recebidos e ainda não movimentados', 'Pedidos que chegaram e ainda não têm bipe de lote nem saída (expedição ou carregamento). Use a lista por base/doca para ir buscar no piso; o CSV traz a viagem, a chegada e há quanto tempo está parado.');
+  });
+  $('btnPisoVenc').addEventListener('click', function(){
+    abrirListaPiso('No piso — vencidos', 'Pedidos que já passaram da janela de expedição e continuam no piso: são os primeiros a buscar.', function(r){ return r.status==='critico'; });
+  });
+  $('btnPisoCopiar').addEventListener('click', function(){
+    copyTextToClipboard(montarTextoPiso(), function(ok){
+      $('pisoFeedback').textContent = ok ? 'Resumo copiado ✓' : 'Não deu pra copiar — use o botão do WhatsApp.';
+      setTimeout(function(){ $('pisoFeedback').textContent = ''; }, 3000);
+    });
+  });
+  $('btnPisoWhats').addEventListener('click', function(){ window.open(whatsLink(montarTextoPiso()), '_blank', 'noopener'); });
+  $('pisoTripsWrap').addEventListener('click', function(e){
+    if (e.target.id==='btnPisoTripsMais'){ pisoTripsTodas = !pisoTripsTodas; renderPiso(computePiso()); return; }
+    var b = e.target.closest('[data-piso-id]'); if (!b) return;
+    var id = b.getAttribute('data-piso-id');
+    abrirListaPiso('No piso — viagem '+id, 'Pedidos recebidos nessa viagem que ainda não foram movimentados (sem lote e sem saída).', function(r, ci){ return (r.viagem||'(sem ID de viagem)')===id && pisoEmCiclo(r, ci); });
+  });
+  $('pisoFora').addEventListener('click', function(e){
+    if (e.target.id!=='btnPisoForaBuscar') return;
+    abrirListaPiso('No piso — fora do ciclo', 'Pedidos de ciclos anteriores (ou que chegaram depois da janela) que ainda estão no piso.', function(r, ci){ return !pisoEmCiclo(r, ci); });
+  });
+  $('btnToastPisoFechar').addEventListener('click', function(){ $('toastPiso').hidden = true; });
+  $('btnToastPisoVer').addEventListener('click', function(){
+    $('toastPiso').hidden = true;
+    var tabBacklog = document.querySelector('.view-tab[data-view="backlog"]'); if (tabBacklog) tabBacklog.click();
+    $('pisoCard').scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+
   // ---------- 2) passagem de turno ----------
   function nomeDoDia(d){ return d.toLocaleDateString('pt-BR', { weekday:'long', day:'2-digit', month:'2-digit', year:'numeric' }); }
   function montarTextoTurno(){
@@ -8147,6 +8798,12 @@
     if (f.sla.temFonte && f.sla.recebidos){ L.push('• *SLA total: '+pctBR(f.sla.pct)+'%* — ('+fmtInt(f.sla.expedido)+' expedidos + '+fmtInt(f.sla.direto)+' saída direta) ÷ '+fmtInt(f.sla.recebidos)+' recebidos no ciclo '+f.sla.ciclo.rotulo+(state.slaMode==='janela' ? ' · dentro da janela: '+pctBR(f.sla.pctPrazo)+'%' : '')); if (f.sla.fora) L.push('  (fora do ciclo, não entram no SLA: '+fmtInt(f.sla.fora)+')'); }
     if (f.nDireto) L.push('• Saída direta (sem bipe de lote): '+fmtInt(f.nDireto));
     L.push('• Ainda no centro: '+fmtInt(f.nPend+f.nLote)+' ('+fmtInt(f.nLote)+' em lote · '+fmtInt(f.nPend)+' backlog)');
+    var pz = computePiso();
+    if (pz.temFonte){
+      L.push('• *Piso a limpar: '+fmtInt(pz.total)+'*'+(pz.total ? ' ('+fmtInt(pz.venc)+' vencidos · '+fmtInt(pz.aten)+' perto da janela)' : ' ✅'));
+      var jz = pisoTextoJanela(pz); if (jz) L.push('  '+jz);
+      pz.trips.slice(0,3).forEach(function(g){ L.push('  – '+g.id+': SLA '+pctBR(g.sla)+'% ('+fmtInt(g.exp)+' exp. + '+fmtInt(g.dir)+' direta ÷ '+fmtInt(g.n)+')'+(g.piso ? ' · '+fmtInt(g.piso)+' no piso' : '')); });
+    }
     L.push('');
     L.push('*Backlog sem lote*');
     var jan = state.slaMode==='janela';
@@ -8169,6 +8826,14 @@
       L.push('');
       L.push('*Falta de bipagem*: '+pctBR(fb.taxaGeral)+'% (meta 0,50%) '+(fb.taxaGeral<=FALTA_BIPAGEM_META ? '✅' : '⚠️'));
       L.push('• Falta de recebimento: '+fmtInt(fb.faltaRecebimento)+' · Falta de saída: '+fmtInt(fb.faltaExpedicao));
+      try {
+        var vz = computeVarredura();
+        if (vz.pronto){
+          var pv = vz.viagens.filter(function(g){ return g.fe; }).sort(function(a,b){ return b.fe-a.fe; })[0];
+          if (pv) L.push('• Maior falta de saída: '+pv.id+' — '+fmtInt(pv.fe)+' ('+pctBR(pv.taxaFe)+'%)');
+          if (vz.janela) L.push('• Faixa crítica: '+varrDm(vz.janela.ini)+' → '+varrDm(vz.janela.fim)+' (taxa '+pctBR(vz.janela.taxa)+'%)');
+        }
+      } catch(e){}
     }
     if (typeof window.__getSemMovimentoTotal==='function' && window.__getSemMovimentoTotal()>0 && typeof window.__getSemMovimento14mais==='function'){
       L.push('');
@@ -8209,6 +8874,608 @@
       $('turnoFeedback').textContent = ok ? 'Copiado! ✓' : 'Não deu pra copiar — selecione o texto e use Ctrl+C.';
       setTimeout(function(){ $('turnoFeedback').textContent=''; }, 3000);
     });
+  });
+
+  // ============================================================================
+  // VARREDURA DETALHADA DA FALTA DE BIPAGEM
+  // Indicador oficial (meta 0,50%) = falta de recebimento + falta de bipe de expedição. Aqui o MESMO universo do card
+  // é aberto por VIAGEM de chegada (troncal × linhas secundárias), por TURNO e por HORÁRIO, com a causa provável de cada
+  // pedido e um plano de ação montado em cima dos números. Não muda KPI, SLA nem classificação — só lê.
+  // ============================================================================
+  var VARR_KEY = 'jt-mrb-varr-turnos-v1';
+  var VARR_PADRAO = { t1ini:'16:00', t1fim:'00:20', t2ini:'19:00', t2fim:'02:33' };
+  var varr = { aberta:false, d:null };
+  var VARR_META_PCT = 0.5;
+
+  function hmParaMin(s){ var m = /^(\d{1,2}):(\d{2})$/.exec(String(s||'').trim()); return (!m || +m[1]>23 || +m[2]>59) ? null : (+m[1])*60+(+m[2]); }
+  function minParaHm(m){ m = ((Math.round(m)%1440)+1440)%1440; return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'); }
+  function varrCfg(){
+    var c = { t1ini:VARR_PADRAO.t1ini, t1fim:VARR_PADRAO.t1fim, t2ini:VARR_PADRAO.t2ini, t2fim:VARR_PADRAO.t2fim };
+    var raw = storeGet(VARR_KEY);
+    if (raw){ try{ var o = JSON.parse(raw); Object.keys(c).forEach(function(k){ if (o && hmParaMin(o[k])!==null) c[k] = o[k]; }); } catch(e){} }
+    c.m1i = hmParaMin(c.t1ini); c.m1f = hmParaMin(c.t1fim); c.m2i = hmParaMin(c.t2ini); c.m2f = hmParaMin(c.t2fim);
+    return c;
+  }
+  // janela [ini, fim) que pode virar a noite
+  function varrNoIntervalo(m, ini, fim){ return ini<=fim ? (m>=ini && m<fim) : (m>=ini || m<fim); }
+  // 't1' = só o 1º turno · 'ov' = sobreposição (responsável: 2º turno, que tem prioridade) · 't2' = só o 2º turno · 'fora' = nenhum turno
+  function varrClasseMin(m, cfg){
+    var a = varrNoIntervalo(m, cfg.m1i, cfg.m1f), b = varrNoIntervalo(m, cfg.m2i, cfg.m2f);
+    return a && b ? 'ov' : (b ? 't2' : (a ? 't1' : 'fora'));
+  }
+  function varrTurnoDe(t, cfg){ return t ? varrClasseMin(t.getHours()*60 + t.getMinutes(), cfg) : 'sem'; }
+  function varrFaixas(k, cfg){
+    var cls = [], m, out = [];
+    for (m=0;m<1440;m++) cls.push(varrClasseMin(m, cfg));
+    var qtd = cls.filter(function(x){ return x===k; }).length;
+    if (!qtd) return '';
+    if (qtd===1440) return '00:00–24:00';
+    for (m=0;m<1440;m++){
+      if (cls[m]!==k || cls[(m+1439)%1440]===k) continue;
+      var e = m; while (cls[(e+1)%1440]===k) e = (e+1)%1440;
+      out.push(minParaHm(m)+'–'+minParaHm(e+1));
+    }
+    return out.join(' + ');
+  }
+  var VARR_NOME_TURNO = { t1:'1º turno (só ele)', ov:'1º + 2º turno · sobreposição → responsável: 2º (prioridade)', t2:'2º turno (só ele)', fora:'Fora de turno · sem equipe escalada', sem:'Sem horário' };
+  var VARR_NOME_CURTO = { t1:'1º turno', ov:'Sobreposição (2º tem prioridade)', t2:'2º turno', fora:'Fora de turno', sem:'Sem horário' };
+
+  var VARR_EVID = {
+    descarga:  { rot:'Descarregou, mas sem bipe de chegada', cor:'warn' },
+    invertida: { rot:'Descarga bipada DEPOIS do lote/expedição (sequência invertida)', cor:'warn' },
+    poscorte:  { rot:'Descarga bipada depois do lote e depois do fim do arquivo de chegada', cor:'info' },
+    anterior:  { rot:'1º bipe antes do início do arquivo de chegada (ciclo/arquivo anterior)', cor:'info' },
+    sem:       { rot:'Sem chegada e sem descarga — conferir no físico', cor:'bad' }
+  };
+  function varrSlotRot(k){
+    var a = new Date(k*1800000), b = new Date(k*1800000+1800000);
+    return String(a.getDate()).padStart(2,'0')+'/'+String(a.getMonth()+1).padStart(2,'0')+' '+hhmm(a)+'–'+hhmm(b);
+  }
+  function varrHm(t){ return t ? hhmm(t) : '—'; }
+  function varrDm(t){ return t ? (String(t.getDate()).padStart(2,'0')+'/'+String(t.getMonth()+1).padStart(2,'0')+' '+hhmm(t)) : '—'; }
+  function varrPct(n, total){ return total ? pctBR(n/total*100)+'%' : '—'; }
+
+  function computeVarredura(){
+    var cfg = varrCfg(), ind = computeFaltaBipagemIndicador();
+    var d = { cfg:cfg, ind:ind, U:ind.total, ch:derived.length, pronto:false, temDesc:descargaLoaded, fe:[], fr:[], viagens:[], turnos:{}, slots:[], bases:[], lotes:[], evid:{},
+      tIni:null, tFim:null, semViagem:0, janela:null, fora:null };
+    var expMap = expedicaoConfirmMap || new Map(), saidaMap = saidaCargaLoaded ? saidaCargaData : new Map(), loteMap = loteConfirmMap || new Map();
+    d.pronto = !!(rawPedidos.length && derived.length && (expedicaoLoaded || saidaCargaLoaded));
+    if (!d.pronto) return d;
+    function zt(){ return { ch:0, fe:0, fr:0, feLote:0, feSem:0 }; }
+    var turn = { t1:zt(), ov:zt(), t2:zt(), fora:zt(), sem:zt() };
+    var viag = new Map(), slots = new Map(), chegSet = new Set();
+    function vget(id){
+      var g = viag.get(id);
+      if (!g){ g = { id:id, tipo:tipoViagem(id)==='troncal' ? 'troncal' : 'sec', n:0, ini:null, fim:null, orig:Object.create(null), fe:0, feLote:0, feSem:0, feRem:0, frConf:0, frProv:0, slotsFe:Object.create(null) }; viag.set(id, g); }
+      return g;
+    }
+    function sget(k){ var s = slots.get(k); if (!s){ s = { k:k, ch:0, fe:0, fr:0 }; slots.set(k, s); } return s; }
+    var tIni = null, tFim = null, i;
+    for (i=0;i<derived.length;i++){
+      var r = derived[i], j = r.jms, id = r.viagem || '(sem ID de viagem)', g = vget(id), ts = r.tempo, tk = varrTurnoDe(ts, cfg);
+      chegSet.add(j);
+      g.n++; turn[tk].ch++;
+      if (ts){
+        var tt = ts.getTime();
+        if (g.ini===null || tt<g.ini) g.ini = tt;
+        if (g.fim===null || tt>g.fim) g.fim = tt;
+        if (tIni===null || tt<tIni) tIni = tt;
+        if (tFim===null || tt>tFim) tFim = tt;
+        sget(Math.floor(tt/1800000)).ch++;
+      }
+      if (r.origem) g.orig[r.origem] = (g.orig[r.origem]||0)+1;
+      if (expMap.has(j) || saidaMap.has(j)) continue;
+      var sit = r.removidoDoLote ? 'removido' : (r.status==='lote' ? 'lote' : 'semlote');
+      d.fe.push({ t:'fe', jms:j, base:r.baseDestino||'(sem base)', viagem:id, tipoV:g.tipo, origem:r.origem||'', tempo:ts, turno:tk, sit:sit, lote:(sit==='lote' ? (r.loteAtual||r.lote||'') : ''), tLote:r.tempoLote||null });
+      g.fe++; turn[tk].fe++;
+      if (sit==='lote'){ g.feLote++; turn[tk].feLote++; } else if (sit==='removido'){ g.feRem++; turn[tk].feSem++; } else { g.feSem++; turn[tk].feSem++; }
+      if (ts){ var sk = Math.floor(ts.getTime()/1800000); sget(sk).fe++; g.slotsFe[sk] = (g.slotsFe[sk]||0)+1; }
+    }
+    d.tIni = tIni ? new Date(tIni) : null; d.tFim = tFim ? new Date(tFim) : null;
+
+    // ---- falta de recebimento: está em lote/expedição/carregamento mas não tem chegada ----
+    var troncais = Array.from(viag.values()).filter(function(x){ return x.tipo==='troncal' && x.ini!==null; }).sort(function(a,b){ return a.ini-b.ini; });
+    function provavel(t){ var best = null; for (var q=0;q<troncais.length;q++){ if (troncais[q].ini<=t) best = troncais[q]; } return best; }
+    var visto = new Set();
+    function addFr(j){
+      if (chegSet.has(j) || visto.has(j)) return;
+      visto.add(j);
+      var rl = loteMap.get(j), re = expMap.get(j), rc = saidaMap.get(j);
+      var tp = null, etapas = [];
+      if (rl){ etapas.push('lote'); if (rl.tempo && (!tp || rl.tempo<tp)) tp = rl.tempo; }
+      if (re){ etapas.push('expedição'); if (re.tempo && (!tp || re.tempo<tp)) tp = re.tempo; }
+      if (rc){ etapas.push('carregamento'); if (rc.tempo && (!tp || rc.tempo<tp)) tp = rc.tempo; }
+      var dsc = descargaMap ? descargaMap.get(j) : null;
+      var base = (rl && rl.baseDestino) || (re && re.baseDestino) || (rc && rc.baseDestino) || '(sem base)';
+      var ev, viagem = '', prov = '', origem = '', tRef = tp;
+      if (dsc){
+        viagem = dsc.viagem || ''; origem = dsc.parada || '';
+        if (dsc.tempo && (!tRef || dsc.tempo<tRef)) tRef = dsc.tempo;
+        if (dsc.tempo && tFim && dsc.tempo.getTime()>tFim) ev = 'poscorte';
+        else if (dsc.tempo && tp && dsc.tempo>tp) ev = 'invertida';
+        else ev = 'descarga';
+      } else if (tIni && tp && tp.getTime()<tIni) ev = 'anterior';
+      else ev = 'sem';
+      var tk = varrTurnoDe(tRef, cfg);
+      if (viagem){ vget(viagem).frConf++; }
+      else if (ev!=='anterior' && tRef){ var pv = provavel(tRef.getTime()); if (pv){ prov = pv.id; pv.frProv++; } }
+      if (!viagem && !prov) d.semViagem++;
+      d.fr.push({ t:'fr', jms:j, base:base, viagem:viagem, viagemProv:prov, origem:origem, tempo:tRef, tp:tp, tDesc:dsc?dsc.tempo:null, turno:tk, ev:ev, etapas:etapas.join(' + ') });
+      turn[tk].fr++;
+      d.evid[ev] = (d.evid[ev]||0)+1;
+      if (tRef) sget(Math.floor(tRef.getTime()/1800000)).fr++;
+    }
+    loteMap.forEach(function(_r, j){ addFr(j); });
+    expMap.forEach(function(_r, j){ addFr(j); });
+    saidaMap.forEach(function(_r, j){ addFr(j); });
+
+    // ---- viagens ----
+    var U = d.U || 1;
+    viag.forEach(function(g){
+      var o = Object.keys(g.orig).sort(function(a,b){ return g.orig[b]-g.orig[a]; });
+      g.origem = o.slice(0,2).join(' / ');
+      g.taxaFe = g.n ? g.fe/g.n*100 : 0;
+      g.ppFe = g.fe/U*50; g.ppFr = (g.frConf+g.frProv)/U*50;
+      var pk = null; Object.keys(g.slotsFe).forEach(function(k){ if (!pk || g.slotsFe[k]>g.slotsFe[pk]) pk = k; });
+      g.pico = pk!==null ? +pk : null;
+      var kk = Object.keys(g.slotsFe).map(Number).sort(function(a,b){ return a-b; });
+      g.feIni = kk.length ? kk[0]*1800000 : null; g.feFim = kk.length ? (kk[kk.length-1]+1)*1800000 : null;
+      d.viagens.push(g);
+    });
+    d.viagens.sort(function(a,b){
+      if (a.tipo!==b.tipo) return a.tipo==='troncal' ? -1 : 1;
+      if (a.tipo==='troncal') return (a.ini||0)-(b.ini||0);
+      return (b.fe-a.fe) || (b.n-a.n) || (a.id<b.id ? -1 : 1);
+    });
+    d.turnos = turn;
+    d.slots = Array.from(slots.values()).sort(function(a,b){ return a.k-b.k; });
+    d.slots.forEach(function(s){ s.taxa = s.ch ? s.fe/s.ch*100 : 0; });
+
+    // ---- bases ----
+    var bm = new Map();
+    function bget(b){ var x = bm.get(b); if (!x){ x = { base:b, fe:0, fr:0 }; bm.set(b, x); } return x; }
+    d.fe.forEach(function(it){ bget(it.base).fe++; });
+    d.fr.forEach(function(it){ bget(it.base).fr++; });
+    d.bases = Array.from(bm.values()).sort(function(a,b){ return (b.fe+b.fr)-(a.fe+a.fr) || (a.base<b.base?-1:1); });
+    d.bases.forEach(function(b){ b.doca = b.base==='(sem base)' ? '' : (docaOfBaseDestino(b.base)||''); });
+
+    // ---- lotes parados (falta de expedição dentro de lote aberto) ----
+    var lm = new Map();
+    d.fe.forEach(function(it){
+      if (it.sit!=='lote') return;
+      var k = it.lote || '(lote não informado)', x = lm.get(k);
+      if (!x){ x = { lote:k, n:0, bases:Object.create(null), tLote:null, tCh:null }; lm.set(k, x); }
+      x.n++; x.bases[it.base] = (x.bases[it.base]||0)+1;
+      if (it.tLote && (!x.tLote || it.tLote<x.tLote)) x.tLote = it.tLote;
+      if (it.tempo && (!x.tCh || it.tempo<x.tCh)) x.tCh = it.tempo;
+    });
+    d.lotes = Array.from(lm.values()).sort(function(a,b){ return b.n-a.n || (a.lote<b.lote?-1:1); });
+    d.lotes.forEach(function(l){ var bs = Object.keys(l.bases).sort(function(a,b){ return l.bases[b]-l.bases[a]; }); l.base = bs[0]||''; l.nBases = bs.length; });
+
+    // ---- idade dos lotes parados (até o fim dos dados) ----
+    var refT = tFim || 0;
+    d.fe.forEach(function(it){ if (it.tLote && it.tLote.getTime()>refT) refT = it.tLote.getTime(); });
+    d.refT = refT;
+    d.idade = { h1:0, h2:0, h4:0, h4p:0, semHora:0 };
+    d.fe.forEach(function(it){
+      if (it.sit!=='lote') return;
+      if (!it.tLote){ d.idade.semHora++; return; }
+      var hh = (refT - it.tLote.getTime())/3600000;
+      if (hh<1) d.idade.h1++; else if (hh<2) d.idade.h2++; else if (hh<4) d.idade.h4++; else d.idade.h4p++;
+    });
+    d.lotes.forEach(function(l){ l.idadeMin = l.tLote ? Math.max(0, Math.round((refT - l.tLote.getTime())/60000)) : null; });
+
+    // ---- apagões de chegada: meias-horas em que boa parte do que estava no centro (lote/expedição) não tem chegada bipada ----
+    var ap = [], cur2 = null;
+    d.slots.forEach(function(s2){
+      var tot = s2.ch + s2.fr, ruim2 = s2.fr>=10 && tot>0 && s2.fr/tot >= 0.15;
+      s2.pctFr = tot ? s2.fr/tot*100 : 0;
+      if (ruim2 && cur2 && s2.k===cur2.fimK+1){ cur2.fimK = s2.k; cur2.fr += s2.fr; cur2.ch += s2.ch; }
+      else { if (cur2) ap.push(cur2); cur2 = ruim2 ? { iniK:s2.k, fimK:s2.k, fr:s2.fr, ch:s2.ch } : null; }
+    });
+    if (cur2) ap.push(cur2);
+    ap.forEach(function(a){ a.ini = new Date(a.iniK*1800000); a.fim = new Date((a.fimK+1)*1800000); a.pct = (a.fr+a.ch) ? a.fr/(a.fr+a.ch)*100 : 0; });
+    d.apagoes = ap.sort(function(a,b){ return b.fr-a.fr; });
+
+    // ---- faixa crítica: sequência de meias-horas com taxa >= 2× a média e pelo menos 30 chegadas ----
+    var feTot = d.fe.length, taxaMed = d.ch ? feTot/d.ch : 0, melhor = null, cur = null;
+    d.slots.forEach(function(s){
+      var ruim = s.ch>=30 && taxaMed>0 && (s.fe/s.ch) >= 2*taxaMed;
+      if (ruim && cur && s.k===cur.fimK+1){ cur.fimK = s.k; cur.fe += s.fe; cur.ch += s.ch; }
+      else {
+        if (cur && (!melhor || cur.fe>melhor.fe)) melhor = cur;
+        cur = ruim ? { iniK:s.k, fimK:s.k, fe:s.fe, ch:s.ch } : null;
+      }
+    });
+    if (cur && (!melhor || cur.fe>melhor.fe)) melhor = cur;
+    if (melhor){ melhor.taxa = melhor.ch ? melhor.fe/melhor.ch*100 : 0; melhor.ini = new Date(melhor.iniK*1800000); melhor.fim = new Date((melhor.fimK+1)*1800000); }
+    d.janela = melhor;
+    return d;
+  }
+
+  // ----------------------------------------------------------------------------
+  // Plano de ação + achados — tudo gerado dos números (nenhum texto fixo sobre quantidade).
+  // ----------------------------------------------------------------------------
+  function varrPlano(d){
+    var FE = d.fe.length, FR = d.fr.length, U = d.U || 1, acoes = [], achados = [];
+    var ci = null; try { ci = cicloInfo(); } catch(e){}
+    var janelaTxt = (ci && ci.fim) ? ('antes da janela das '+hhmm(ci.fim)) : 'antes da próxima janela de saída';
+    function pp(n){ return n/U*50; }
+    function ppTxt(n){ return '−'+pctBR(pp(n))+' p.p.'; }
+    var limite = Math.floor(U*0.01), gap = Math.max(0, FE+FR-limite);
+    d.limite = limite; d.gap = gap;
+    var feLote = d.fe.filter(function(x){ return x.sit==='lote'; }).length;
+    var feSem = d.fe.filter(function(x){ return x.sit==='semlote'; }).length;
+    var feRem = d.fe.filter(function(x){ return x.sit==='removido'; }).length;
+
+    // --- achados ---
+    var taxaG = d.ind.taxaGeral;
+    achados.push('Indicador geral em <b>'+pctBR(taxaG)+'%</b> contra a meta de <b>0,50%</b>. Para a meta, a soma das faltas (recebimento + expedição) não pode passar de <b>'+fmtInt(limite)+'</b> pedidos (1% do universo de '+fmtInt(U)+', ou 0,5% em cada componente). Hoje são <b>'+fmtInt(FE+FR)+'</b> — faltam eliminar <b>'+fmtInt(gap)+'</b>.');
+    if (FE+FR){
+      var pFe = FE/(FE+FR)*100;
+      achados.push(pctBR(pFe)+'% das faltas são de <b>bipe de expedição</b> ('+fmtInt(FE)+' pedidos, '+varrPct(FE,U)+' do universo) e '+pctBR(100-pFe)+'% são de <b>recebimento</b> ('+fmtInt(FR)+', '+varrPct(FR,U)+'). '+(pFe>=60 ? 'O problema está na saída — é onde está o ganho.' : (pFe<=40 ? 'O problema está na chegada.' : 'As duas pontas pesam parecido.')));
+    }
+    var tr = d.viagens.filter(function(g){ return g.tipo==='troncal'; }), sec = d.viagens.filter(function(g){ return g.tipo!=='troncal'; });
+    var trN = tr.reduce(function(s,g){ return s+g.n; },0), trFe = tr.reduce(function(s,g){ return s+g.fe; },0);
+    var scN = sec.reduce(function(s,g){ return s+g.n; },0), scFe = sec.reduce(function(s,g){ return s+g.fe; },0);
+    d.tot = { trN:trN, trFe:trFe, scN:scN, scFe:scFe };
+    if (tr.length){
+      var pior = tr.slice().sort(function(a,b){ return b.fe-a.fe; })[0];
+      achados.push('<b>Troncais (BRE):</b> '+fmtInt(trFe)+' faltas de expedição em '+fmtInt(trN)+' recebidos ('+varrPct(trFe,trN)+'). Pior viagem: <b>'+escapeHtml(pior.id)+'</b> — '+fmtInt(pior.fe)+' pedidos ('+pctBR(pior.taxaFe)+'%)'+
+        (pior.feIni!==null ? ', faltas concentradas entre '+hhmm(new Date(pior.feIni))+' e '+hhmm(new Date(pior.feFim))+(pior.pico!==null ? ' (pico '+varrSlotRot(pior.pico).replace(/^\d\d\/\d\d /,'')+')' : '') : '')+'.');
+    }
+    if (sec.length){
+      achados.push('<b>Linhas secundárias:</b> '+fmtInt(scN)+' pedidos em '+fmtInt(sec.length)+' viagem(ns), '+fmtInt(scFe)+' sem bipe de expedição ('+varrPct(scFe,scN)+') — '+(scN && scFe/scN*100<=VARR_META_PCT ? 'dentro da meta.' : (scFe ? 'acima da meta.' : 'sem falta.')));
+    }
+    if (d.janela){
+      var w = d.janela;
+      achados.push('<b>Faixa crítica de horário:</b> chegadas entre <b>'+varrDm(w.ini)+'</b> e <b>'+varrDm(w.fim)+'</b> concentram '+fmtInt(w.fe)+' faltas ('+varrPct(w.fe,FE)+' de todas) com taxa de '+pctBR(w.taxa)+'% — mais que o dobro da média ('+pctBR(d.ch?FE/d.ch*100:0)+'%).');
+    }
+    var tf = d.turnos.fora, taxaMedFe = d.ch ? FE/d.ch*100 : 0;
+    var foraFeAlto = tf.ch>0 && (tf.fe/tf.ch*100) > taxaMedFe;
+    var foraFrAlto = FR>=20 && tf.fr>=10 && (tf.fr/FR) > 2*(d.ch ? tf.ch/d.ch : 0);
+    if (tf.ch || tf.fr){
+      achados.push('<b>Horário sem turno</b> ('+varrFaixas('fora', d.cfg)+'): '+fmtInt(tf.ch)+' chegadas ('+varrPct(tf.ch,d.ch)+' do volume) · '+fmtInt(tf.fe)+' sem bipe de expedição ('+varrPct(tf.fe,tf.ch)+', média geral '+pctBR(taxaMedFe)+'%) · <b>'+fmtInt(tf.fr)+' sem bipe de chegada = '+varrPct(tf.fr,FR)+' de toda a falta de recebimento</b>.'+(foraFrAlto ? ' É aqui que a chegada deixa de ser bipada.' : ''));
+    }
+    if (d.apagoes.length){
+      achados.push('<b>Horários em que a chegada não foi bipada:</b> '+d.apagoes.slice(0,3).map(function(a){ return '<b>'+varrDm(a.ini)+' → '+varrDm(a.fim)+'</b> ('+fmtInt(a.fr)+' pedidos já no lote/expedição sem chegada, '+pctBR(a.pct)+'% do movimento)'; }).join(' · ')+'.');
+    }
+    var sl2 = d.slots.filter(function(x){ return x.ch>=200 && varrTurnoDe(new Date(x.k*1800000+900000), d.cfg)!=='fora'; });
+    if (!d.janela && sl2.length>=4){
+      var tx = sl2.map(function(x){ return x.taxa; }), mn = Math.min.apply(null, tx), mx = Math.max.apply(null, tx);
+      if (mn>0 && mx/mn<=1.8){
+        d.sistemico = { mn:mn, mx:mx };
+        achados.push('<b>Falha de processo, não de horário:</b> dentro dos turnos a falta de expedição fica entre '+pctBR(mn)+'% e '+pctBR(mx)+'% em TODAS as meias-horas com volume (sem pico). Os pedidos são recebidos e lotados, mas a saída não está sendo bipada de forma sistemática.');
+      }
+    }
+    if (d.lotes.length){
+      var id = d.idade;
+      achados.push('<b>Idade dos lotes parados</b> (até '+varrDm(new Date(d.refT))+', fim dos dados): '+fmtInt(id.h1)+' com menos de 1h · '+fmtInt(id.h2)+' de 1 a 2h · '+fmtInt(id.h4)+' de 2 a 4h · '+fmtInt(id.h4p)+' há mais de 4h'+(id.semHora ? ' · '+fmtInt(id.semHora)+' sem horário' : '')+'. '+((id.h4+id.h4p) ? 'Os de mais de 2h já passaram do tempo normal de espera pelo caminhão.' : 'Tudo ainda dentro do tempo normal de espera pelo caminhão.'));
+    }
+    if (d.lotes.length){
+      var top5 = d.lotes.slice(0,5).reduce(function(s,l){ return s+l.n; },0);
+      achados.push('<b>Concentração:</b> '+fmtInt(feLote)+' das faltas de expedição estão em <b>'+fmtInt(d.lotes.length)+' lote(s) aberto(s)</b>; os 5 maiores têm '+fmtInt(top5)+' ('+varrPct(top5,feLote)+'). Expedir esses lotes resolve a maior parte do indicador de uma vez.');
+    }
+    if (d.bases.length>=3 && FE){
+      var feB = d.bases.slice().sort(function(a,b){ return b.fe-a.fe; }).slice(0,3);
+      var s3 = feB.reduce(function(s,b){ return s+b.fe; },0);
+      achados.push('<b>Bases:</b> '+feB.map(function(b){ return escapeHtml(b.base)+' ('+fmtInt(b.fe)+')'; }).join(', ')+' somam '+varrPct(s3,FE)+' da falta de expedição.');
+    }
+    if (FR){
+      var ev = d.evid, partes = [];
+      ['poscorte','descarga','invertida','anterior','sem'].forEach(function(k){ if (ev[k]) partes.push(fmtInt(ev[k])+' '+VARR_EVID[k].rot.toLowerCase()); });
+      achados.push('<b>Falta de recebimento ('+fmtInt(FR)+'):</b> '+partes.join(' · ')+'.'+(d.temDesc ? '' : ' Carregue o arquivo de <b>descarga</b> para descobrir a viagem de cada um.'));
+    }
+
+    // --- plano de ação ---
+    if (feLote){
+      var topL = d.lotes.slice(0,3).map(function(l){ return escapeHtml(l.lote)+' ('+fmtInt(l.n)+(l.base ? ' → '+escapeHtml(l.base) : '')+')'; }).join(' · ');
+      acoes.push({ nivel:'urgente', titulo:'Expedir os '+fmtInt(d.lotes.length)+' lote(s) parado(s) com pedidos já recebidos', qtd:feLote, pp:pp(feLote),
+        det:'Maiores: '+topL+'. '+((d.idade.h4+d.idade.h4p) ? fmtInt(d.idade.h4+d.idade.h4p)+' pedidos estão em lotes parados há mais de 2h — esses primeiro. ' : '')+'Conferir a doca de cada lote, bipar a expedição na saída do veículo e confirmar o carregamento.', quem:'Líder da expedição + conferente de doca', quando:'Agora — '+janelaTxt, ver:'fe|sit|lote' });
+    }
+    if (feSem){
+      var vv = new Map(); d.fe.forEach(function(x){ if (x.sit==='semlote') vv.set(x.viagem, (vv.get(x.viagem)||0)+1); });
+      var vtop = Array.from(vv.entries()).sort(function(a,b){ return b[1]-a[1]; }).slice(0,3).map(function(e){ return escapeHtml(e[0])+' ('+fmtInt(e[1])+')'; }).join(' · ');
+      acoes.push({ nivel:'urgente', titulo:'Varredura física do piso: '+fmtInt(feSem)+' pedido(s) chegaram e não entraram em lote nem saíram', qtd:feSem, pp:pp(feSem),
+        det:'Por viagem: '+vtop+'. Rodar coletor por doca/base de destino, bipar lote + expedição (ou carregar direto) e registrar o que não for encontrado como extravio.', quem:'Líder do turno + auxiliares de piso', quando:'Agora — '+janelaTxt, ver:'fe|sit|semlote' });
+    }
+    if (feRem){
+      acoes.push({ nivel:'urgente', titulo:fmtInt(feRem)+' pedido(s) removido(s) do lote sem novo bipe de saída', qtd:feRem, pp:pp(feRem),
+        det:'Foram tirados do lote e não voltaram a ser bipados: recolocar em lote ou expedir.', quem:'Conferente de lote', quando:'Agora', ver:'fe|sit|removido' });
+    }
+    var ev = d.evid;
+    if (ev.poscorte){
+      acoes.push({ nivel:'alta', titulo:fmtInt(ev.poscorte)+' pedido(s) lotados antes da descarga — a chegada só foi bipada depois do fim do arquivo', qtd:ev.poscorte, pp:pp(ev.poscorte),
+        det:'A descarga deles foi bipada depois do bipe de lote e depois de '+varrDm(d.tFim)+' (último bipe do arquivo de chegada): a chegada existe, mas fora do arquivo, e o processo está invertido. (1) Exporte a chegada até o fim da descarga da viagem — ou acumule os arquivos em vez de substituir. (2) Orientar: descarregar e bipar a chegada ANTES de lotar.', quem:'Líder de descarga + quem extrai o relatório', quando:'Próxima extração / hoje', ver:'fr|ev|poscorte' });
+    }
+    if (ev.descarga || ev.invertida){
+      var n2 = (ev.descarga||0)+(ev.invertida||0);
+      acoes.push({ nivel:'alta', titulo:fmtInt(n2)+' pedido(s) descarregado(s) sem bipe de chegada'+(ev.invertida ? ' ('+fmtInt(ev.invertida)+' com descarga depois do lote)' : ''), qtd:n2, pp:pp(n2),
+        det:'Existe digitalização de descarga, mas não o "Chegada ao centro". Regularizar o bipe (retroativo/ajuste no JMS) e revisar com quem descarregou nesse horário: bipe fora de ordem ou leitura pulada.', quem:'Líder de descarga + supervisor do turno', quando:'Hoje', ver:'fr|ev|descarga' });
+    }
+    if (ev.anterior){
+      acoes.push({ nivel:'alta', titulo:fmtInt(ev.anterior)+' pedido(s) com 1º bipe antes do início do arquivo de chegada ('+varrDm(d.tIni)+')', qtd:ev.anterior, pp:pp(ev.anterior),
+        det:'Provável chegada do ciclo/arquivo anterior que ainda estava no centro. Cruzar com a chegada do dia anterior antes de tratar como falha.', quem:'Analista de dados', quando:'Hoje', ver:'fr|ev|anterior' });
+    }
+    if (ev.sem){
+      acoes.push({ nivel:'alta', titulo:fmtInt(ev.sem)+' pedido(s) sem chegada e sem descarga em nenhuma viagem', qtd:ev.sem, pp:pp(ev.sem),
+        det:(d.temDesc ? '' : 'Sem o arquivo de descarga não dá para separar quem foi descarregado sem bipe. ')+'Conferir no físico e no manifesto da origem (SP BRE): se estão no centro, bipar a chegada agora; se não, abrir ocorrência de extravio.', quem:'Supervisor do turno + torre de controle', quando:'Hoje', ver:'fr|ev|sem' });
+    }
+    if (d.janela){
+      acoes.push({ nivel:'alta', titulo:'Reforço de bipe de expedição das '+hhmm(d.janela.ini)+' às '+hhmm(d.janela.fim)+' (faixa crítica)', qtd:d.janela.fe, pp:pp(d.janela.fe),
+        det:'Taxa de falta '+pctBR(d.janela.taxa)+'% nesse horário. Colocar +1 conferente de expedição por doca na faixa, checkpoint a cada 30 min com esta varredura e não liberar o veículo com falta de bipe aberta.', quem:'Líder do 2º turno (prioridade)', quando:'Próxima operação', ver:'fe|faixa|'+d.janela.iniK+'-'+d.janela.fimK });
+    }
+    if (foraFrAlto || foraFeAlto){
+      var qtdF = tf.fr + (foraFeAlto ? tf.fe : 0);
+      acoes.push({ nivel:'alta', titulo:'Cobrir o horário sem turno ('+varrFaixas('fora', d.cfg)+'): '+fmtInt(tf.fr)+' sem chegada bipada'+(foraFeAlto ? ' e '+fmtInt(tf.fe)+' sem expedição' : ''), qtd:qtdF, pp:pp(qtdF),
+        det:'A viagem segue descarregando depois do fim do 2º turno ('+d.cfg.t2fim+'): '+fmtInt(tf.ch)+' chegadas ('+varrPct(tf.ch,d.ch)+' do volume) e '+varrPct(tf.fr,FR)+' das faltas de recebimento. Estender o 2º turno ou escalar equipe de madrugada só para bipe de chegada e expedição até o fim da descarga.', quem:'Gerência de operação', quando:'Escala da próxima semana', ver:'all|turno|fora' });
+    }
+    d.apagoes.slice(0,2).forEach(function(a){
+      acoes.push({ nivel:'alta', titulo:'Chegada sem bipe entre '+hhmm(a.ini)+' e '+hhmm(a.fim)+' ('+varrDm(a.ini).slice(0,5)+')', qtd:a.fr, pp:pp(a.fr),
+        det:fmtInt(a.fr)+' pedidos já estavam em lote/expedição sem chegada bipada nesse intervalo ('+pctBR(a.pct)+'% do movimento). Levantar com a doca de descarga o que parou (coletor, sinal, equipe, ordem do processo) e bipar a chegada retroativa.', quem:'Líder de descarga', quando:'Hoje', ver:'fr|faixa|'+a.iniK+'-'+a.fimK });
+    });
+    if (d.sistemico){
+      acoes.push({ nivel:'alta', titulo:'Tratar a falta de expedição como falha de processo (≈'+pctBR((d.sistemico.mn+d.sistemico.mx)/2)+'% em qualquer horário dentro dos turnos)', qtd:0, pp:0,
+        det:'Sem pico de horário: a saída simplesmente não está sendo bipada de forma sistemática. Regra sugerida: lote só fecha com expedição bipada, carregador não carrega pedido sem bipe e o conferente de doca fecha o veículo com o painel (falta = 0 na doca).', quem:'Gerência + líderes de doca', quando:'Já no próximo ciclo', ver:'' });
+    }
+    if (sec.length && scFe>=3){
+      acoes.push({ nivel:'media', titulo:'Linhas secundárias: '+fmtInt(scFe)+' pedido(s) sem bipe de expedição', qtd:scFe, pp:pp(scFe),
+        det:'Taxa '+varrPct(scFe,scN)+' ('+(scN && scFe/scN*100<=VARR_META_PCT ? 'dentro' : 'acima')+' da meta). Conferir a saída direta/carregamento dessas viagens.', quem:'Conferente da linha secundária', quando:'Hoje', ver:'fe|tipo|sec' });
+    }
+    acoes.push({ nivel:'media', titulo:'Fechamento de viagem com meta de 0,50% por viagem', qtd:0, pp:0,
+      det:'Ao terminar a descarga de cada troncal (+30 min), abrir esta varredura. Viagem com falta acima de 0,5% = supervisor aciona a doca antes de liberar o turno. Registrar o indicador por turno para virar rotina e não só correção.', quem:'Supervisor de cada turno', quando:'Todo ciclo', ver:'' });
+    var ord = { urgente:0, alta:1, media:2 };
+    acoes.sort(function(a,b){ return ord[a.nivel]-ord[b.nivel] || b.pp-a.pp; });
+    return { acoes:acoes, achados:achados };
+  }
+
+  // ----------------------------------------------------------------------------
+  // Listas de pedidos (reaproveita o modal de lista já existente)
+  // ----------------------------------------------------------------------------
+  function varrItem(it){
+    var det;
+    if (it.t==='fe'){
+      det = 'Falta de expedição · '+it.viagem+(it.origem ? ' ('+it.origem+')' : '')+' · chegou '+varrDm(it.tempo)+' · '+VARR_NOME_CURTO[it.turno]+' · '+
+        (it.sit==='lote' ? 'em lote'+(it.lote ? ' '+it.lote : '')+', aguardando expedição' : (it.sit==='removido' ? 'removido do lote' : 'sem lote'));
+    } else {
+      det = 'Falta de recebimento · '+(it.viagem ? it.viagem+' (descarga '+varrDm(it.tDesc)+')' : (it.viagemProv ? 'provável '+it.viagemProv : 'viagem não identificada'))+' · 1º bipe '+varrDm(it.tp||it.tempo)+' ('+it.etapas+') · '+VARR_EVID[it.ev].rot;
+    }
+    return { jms:it.jms, base:it.base, det:det };
+  }
+  function varrLista(spec){
+    var d = varr.d; if (!d) return;
+    var p = spec.split('|'), tipo = p[0], campo = p[1], val = p[2]!==undefined ? decodeURIComponent(p[2]) : '';
+    var src = tipo==='fe' ? d.fe : (tipo==='fr' ? d.fr : d.fe.concat(d.fr));
+    var titulo = tipo==='fe' ? 'Falta de expedição' : (tipo==='fr' ? 'Falta de recebimento' : 'Falta de bipagem'), desc = '';
+    var rng = null;
+    if (campo==='faixa'){ var q = val.split('-'); rng = [ +q[0], +q[1] ]; }
+    var itens = src.filter(function(it){
+      switch (campo){
+        case 'todos': return true;
+        case 'viagem': return it.viagem===val || (it.t==='fr' && !it.viagem && it.viagemProv===val);
+        case 'semviagem': return it.t==='fr' && !it.viagem && !it.viagemProv;
+        case 'turno': return it.turno===val;
+        case 'sit': return it.sit===val;
+        case 'ev': return it.ev===val || (val==='descarga' && it.ev==='invertida');
+        case 'tipo': return it.t==='fe' && it.tipoV===val;
+        case 'base': return it.base===val;
+        case 'lote': return it.lote===val;
+        case 'slot': { if (!it.tempo) return false; var k = Math.floor(it.tempo.getTime()/1800000); return k===+val; }
+        case 'faixa': { if (!it.tempo) return false; var k2 = Math.floor(it.tempo.getTime()/1800000); return k2>=rng[0] && k2<=rng[1]; }
+      }
+      return false;
+    });
+    if (campo==='viagem'){ titulo += ' — '+val; desc = 'Pedidos ligados à viagem de chegada '+val+'.'; }
+    else if (campo==='semviagem'){ titulo += ' — sem viagem identificada'; desc = 'Sem descarga e fora de qualquer janela de viagem troncal.'; }
+    else if (campo==='turno'){ titulo += ' — '+VARR_NOME_CURTO[val]; desc = 'Pelo horário de referência do pedido ('+varrFaixas(val, d.cfg)+').'; }
+    else if (campo==='sit'){ titulo += ' — '+(val==='lote' ? 'em lote aguardando expedição' : (val==='semlote' ? 'sem lote' : 'removidos do lote')); }
+    else if (campo==='ev'){ titulo += ' — '+VARR_EVID[val].rot; }
+    else if (campo==='tipo'){ titulo += ' — linhas secundárias'; }
+    else if (campo==='lote'){ titulo += ' — lote '+val; }
+    else if (campo==='slot'){ titulo += ' — '+varrSlotRot(+val); }
+    else if (campo==='faixa'){ titulo += ' — faixa crítica '+varrSlotRot(rng[0]).split('–')[0]+' → '+varrSlotRot(rng[1]).split('–')[1]; }
+    else if (campo==='base'){ titulo += ' — '+val; }
+    openFbListModal(itens.map(varrItem), titulo, desc || 'Horário de referência: chegada ao centro (expedição) ou 1º bipe no centro (recebimento).');
+  }
+
+  // ----------------------------------------------------------------------------
+  // Tela
+  // ----------------------------------------------------------------------------
+  function varrBar(v, max, cls){ return '<span class="varr-bar'+(cls ? ' '+cls : '')+'"><i style="width:'+(max ? Math.min(100, v/max*100) : 0).toFixed(1)+'%"></i></span>'; }
+  function vlBtn(spec, txt){ return '<button class="btn-ghost btn-small varr-ver" data-vl="'+escapeHtml(spec)+'">'+txt+'</button>'; }
+  function vlSpec(tipo, campo, val){ return tipo+'|'+campo+'|'+encodeURIComponent(val); }
+  function varrTaxaCls(p){ return p<=VARR_META_PCT ? 'ok' : (p<=2 ? 'warn' : 'bad'); }
+
+  function renderVarredura(){
+    var body = $('varrBody'); if (!body) return;
+    var keep = $('varrOverlay').querySelector('.modal').scrollTop;
+    var d = computeVarredura(); varr.d = d;
+    if (!d.pronto){
+      body.innerHTML = '<div class="varr-vazio">Carregue o arquivo de <b>Chegada ao centro</b> e o <b>Bipe de expedição</b> (ou o Carregamento) para rodar a varredura.</div>';
+      return;
+    }
+    var pl = varrPlano(d), FE = d.fe.length, FR = d.fr.length, U = d.U, h = [];
+    var taxaG = d.ind.taxaGeral, okMeta = taxaG<=VARR_META_PCT;
+
+    // resumo
+    h.push('<div class="varr-resumo">'+
+      '<div class="varr-tile '+(okMeta?'ok':'bad')+'"><span>Taxa geral</span><b>'+pctBR(taxaG)+'%</b><em>meta 0,50% · '+(okMeta?'dentro':'acima')+'</em></div>'+
+      '<div class="varr-tile"><span>Falta de expedição</span><b>'+fmtInt(FE)+'</b><em>'+varrPct(FE,U)+' do universo · '+vlBtn('fe|todos|','ver')+'</em></div>'+
+      '<div class="varr-tile"><span>Falta de recebimento</span><b>'+fmtInt(FR)+'</b><em>'+varrPct(FR,U)+' do universo · '+vlBtn('fr|todos|','ver')+'</em></div>'+
+      '<div class="varr-tile '+(d.gap?'bad':'ok')+'"><span>Para bater a meta</span><b>'+(d.gap ? '−'+fmtInt(d.gap) : '✓')+'</b><em>'+(d.gap ? 'pedidos a eliminar (limite '+fmtInt(d.limite)+')' : 'dentro do limite de '+fmtInt(d.limite))+'</em></div>'+
+    '</div>');
+    h.push('<div class="varr-nota">Universo: '+fmtInt(U)+' pedidos · arquivo de chegada de <b>'+varrDm(d.tIni)+'</b> a <b>'+varrDm(d.tFim)+'</b> · '+
+      (d.temDesc ? 'descarga carregada ('+fmtInt(descargaMap.size)+' pedidos) — viagem dos pedidos sem chegada identificada pela descarga' : 'descarga <b>não carregada</b> — viagem dos pedidos sem chegada estimada só pelo horário (carregue "📤 Descarga" para confirmar)')+'.</div>');
+
+    // ações do rodapé do topo
+    h.push('<div class="copy-actions varr-acoes">'+
+      '<button class="btn-primary btn-small" id="btnVarrCopiar">📋 Copiar resumo</button>'+
+      '<a class="btn-ghost btn-small" id="btnVarrWhats" href="#" target="_blank" rel="noopener">💬 Enviar no WhatsApp</a>'+
+      '<button class="btn-ghost btn-small" id="btnVarrCsvViagens">⬇ CSV por viagem</button>'+
+      '<button class="btn-ghost btn-small" id="btnVarrCsvPedidos">⬇ CSV de todos os pedidos</button>'+
+      '<span class="copy-feedback" id="varrFeedback"></span></div>');
+
+    // plano de ação
+    h.push('<section class="varr-sec"><h4>🚨 Plano de ação urgente</h4><div class="varr-plano">'+
+      pl.acoes.map(function(a, i){
+        var ico = a.nivel==='urgente' ? '🔴 URGENTE' : (a.nivel==='alta' ? '🟠 ALTA' : '🟡 ROTINA');
+        return '<div class="varr-acao n-'+a.nivel+'"><div class="va-top"><span class="va-nivel">'+ico+'</span><b>'+(i+1)+'. '+a.titulo+'</b></div>'+
+          '<div class="va-det">'+a.det+'</div>'+
+          '<div class="va-meta"><span>👤 '+escapeHtml(a.quem)+'</span><span>⏱ '+escapeHtml(a.quando)+'</span>'+(a.qtd ? '<span>📦 '+fmtInt(a.qtd)+' pedidos</span><span class="va-ganho">▼ '+pctBR(a.pp)+' p.p. no indicador</span>' : '')+(a.ver ? vlBtn(a.ver, 'Ver pedidos') : '')+'</div></div>';
+      }).join('')+'</div></section>');
+
+    // achados
+    h.push('<section class="varr-sec"><h4>🧠 Achados da análise de dados</h4><ul class="varr-achados">'+pl.achados.map(function(a){ return '<li>'+a+'</li>'; }).join('')+'</ul></section>');
+
+    // por viagem
+    function linhaV(g){
+      var o = g.origem || '—';
+      var conf = g.frConf, prov = g.frProv;
+      var frTxt = (conf||prov) ? (fmtInt(conf)+(prov ? ' <small>+ '+fmtInt(prov)+' prov.</small>' : '')) : '0';
+      var janela = g.ini!==null ? varrDm(new Date(g.ini))+' → '+varrDm(new Date(g.fim)) : '—';
+      var pico = g.pico!==null ? varrSlotRot(g.pico).replace(/^\d\d\/\d\d /,'') : '—';
+      var cls = g.n ? varrTaxaCls(g.taxaFe) : '';
+      return '<tr><td>'+escapeHtml(g.id)+'<span class="tag '+(g.tipo==='troncal'?'':'sec')+'">'+(g.tipo==='troncal'?'troncal':'secundária')+'</span></td><td class="l">'+escapeHtml(o)+'</td><td>'+janela+'</td><td>'+fmtInt(g.n)+'</td>'+
+        '<td class="'+cls+'"><b>'+fmtInt(g.fe)+'</b></td><td class="'+cls+'"><span class="varr-cel">'+varrBar(g.taxaFe, 40, cls)+pctBR(g.taxaFe)+'%</span></td><td>'+fmtInt(g.feLote)+'</td><td>'+fmtInt(g.feSem+g.feRem)+'</td>'+
+        '<td>'+frTxt+'</td><td>'+pctBR(g.ppFe+g.ppFr)+'</td><td>'+pico+'</td>'+
+        '<td class="l">'+(g.fe ? vlBtn(vlSpec('fe','viagem',g.id),'Falta exp.') : '')+((conf||prov) ? ' '+vlBtn(vlSpec('fr','viagem',g.id),'Falta rec.') : '')+'</td></tr>';
+    }
+    var tr = d.viagens.filter(function(g){ return g.tipo==='troncal'; }), sec = d.viagens.filter(function(g){ return g.tipo!=='troncal'; });
+    function sub(rot, arr, clsRow){
+      var n = arr.reduce(function(s,g){ return s+g.n; },0), fe = arr.reduce(function(s,g){ return s+g.fe; },0), lo = arr.reduce(function(s,g){ return s+g.feLote; },0);
+      var se = arr.reduce(function(s,g){ return s+g.feSem+g.feRem; },0), fc = arr.reduce(function(s,g){ return s+g.frConf; },0), fp = arr.reduce(function(s,g){ return s+g.frProv; },0);
+      var pe = arr.reduce(function(s,g){ return s+g.ppFe+g.ppFr; },0), p = n ? fe/n*100 : 0, cls = n ? varrTaxaCls(p) : '';
+      return '<tr class="tot '+(clsRow||'')+'"><td>'+rot+'</td><td class="l"></td><td></td><td>'+fmtInt(n)+'</td><td class="'+cls+'"><b>'+fmtInt(fe)+'</b></td><td class="'+cls+'">'+pctBR(p)+'%</td><td>'+fmtInt(lo)+'</td><td>'+fmtInt(se)+'</td><td>'+fmtInt(fc)+(fp ? ' <small>+ '+fmtInt(fp)+' prov.</small>' : '')+'</td><td>'+pctBR(pe)+'</td><td></td><td></td></tr>';
+    }
+    var semV = d.semViagem;
+    h.push('<section class="varr-sec"><h4>🚛 Por viagem de chegada <small>troncal (SP BRE) e linhas secundárias</small></h4>'+
+      '<div class="varr-wrap"><table class="varr-table"><thead><tr><th>Viagem</th><th class="l">Origem</th><th>Chegada (1º → último bipe)</th><th>Recebidos</th><th>Falta exp.</th><th>% da viagem</th><th>Em lote</th><th>Sem lote</th><th>Falta rec.</th><th>Contribuição (p.p.)</th><th>Pico das faltas</th><th class="l"></th></tr></thead><tbody>'+
+      tr.map(linhaV).join('')+(tr.length>1 ? sub('Troncais — total', tr) : '')+
+      sec.map(linhaV).join('')+(sec.length>1 ? sub('Secundárias — total', sec) : '')+
+      (semV ? '<tr><td>(viagem não identificada)</td><td class="l"></td><td></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>'+fmtInt(semV)+'</td><td>'+pctBR(semV/(U||1)*50)+'</td><td></td><td class="l">'+vlBtn('fr|semviagem|','Falta rec.')+'</td></tr>' : '')+
+      '<tr class="tot"><td>Total geral</td><td class="l"></td><td></td><td>'+fmtInt(d.ch)+'</td><td><b>'+fmtInt(FE)+'</b></td><td>'+varrPct(FE,d.ch)+'</td><td>'+fmtInt(d.fe.filter(function(x){return x.sit==='lote';}).length)+'</td><td>'+fmtInt(d.fe.filter(function(x){return x.sit!=='lote';}).length)+'</td><td>'+fmtInt(FR)+'</td><td>'+pctBR(taxaG)+'</td><td></td><td></td></tr>'+
+      '</tbody></table></div>'+
+      '<div class="varr-leg">Contribuição = quanto cada viagem pesa na taxa geral (a soma dá a taxa do card). Falta rec. "prov." = estimada pelo horário do 1º bipe (viagem troncal em andamento) quando não há descarga.</div></section>');
+
+    // por turno
+    var cfg = d.cfg, T = d.turnos, ordem = ['t1','ov','t2','fora','sem'];
+    var maxTurno = Math.max(1, Math.max.apply(null, ordem.map(function(k){ return T[k].fe+T[k].fr; })));
+    h.push('<section class="varr-sec"><h4>🕒 Por turno <small>pelo horário em que o pedido chegou ao centro</small></h4>'+
+      '<div class="varr-cfg"><span>1º turno</span><input type="time" data-vt="t1ini" value="'+cfg.t1ini+'"><span>às</span><input type="time" data-vt="t1fim" value="'+cfg.t1fim+'">'+
+      '<span class="sep">·</span><span>2º turno (prioridade)</span><input type="time" data-vt="t2ini" value="'+cfg.t2ini+'"><span>às</span><input type="time" data-vt="t2fim" value="'+cfg.t2fim+'">'+
+      '<button class="btn-ghost btn-small" id="btnVarrTurnoPadrao">Restaurar</button></div>'+
+      '<div class="varr-wrap"><table class="varr-table"><thead><tr><th class="l">Turno</th><th class="l">Faixa</th><th>Chegaram</th><th>Falta exp.</th><th>% dos chegados</th><th>Falta rec.</th><th>Total de faltas</th><th>% das faltas</th><th class="l"></th></tr></thead><tbody>'+
+      ordem.filter(function(k){ return k==='sem' ? (T.sem.ch||T.sem.fe||T.sem.fr) : (varrFaixas(k,cfg) || T[k].ch || T[k].fe || T[k].fr); }).map(function(k){
+        var x = T[k], tot = x.fe+x.fr, pe = x.ch ? x.fe/x.ch*100 : 0, cls = x.ch ? varrTaxaCls(pe) : '';
+        return '<tr class="'+(k==='t2'||k==='ov' ? 'prio' : '')+(k==='fora' ? ' semturno' : '')+'"><td class="l">'+escapeHtml(VARR_NOME_TURNO[k])+'</td><td class="l">'+(k==='sem' ? '—' : escapeHtml(varrFaixas(k,cfg)||'—'))+'</td><td>'+fmtInt(x.ch)+'</td><td class="'+cls+'"><b>'+fmtInt(x.fe)+'</b></td><td class="'+cls+'">'+(x.ch ? pctBR(pe)+'%' : '—')+'</td><td>'+fmtInt(x.fr)+'</td>'+
+          '<td><span class="varr-cel">'+varrBar(tot, maxTurno, cls)+fmtInt(tot)+'</span></td><td>'+varrPct(tot, FE+FR)+'</td><td class="l">'+(x.fe ? vlBtn(vlSpec('fe','turno',k),'Falta exp.') : '')+(x.fr ? ' '+vlBtn(vlSpec('fr','turno',k),'Falta rec.') : '')+'</td></tr>';
+      }).join('')+'</tbody></table></div>'+
+      '<div class="varr-leg">Visão por equipe: <b>1º turno ('+cfg.t1ini+'–'+cfg.t1fim+')</b> = '+fmtInt(T.t1.fe+T.ov.fe)+' falta(s) de expedição e '+fmtInt(T.t1.fr+T.ov.fr)+' de recebimento · <b>2º turno ('+cfg.t2ini+'–'+cfg.t2fim+')</b> = '+fmtInt(T.ov.fe+T.t2.fe)+' e '+fmtInt(T.ov.fr+T.t2.fr)+'. Na sobreposição a responsabilidade fica com o 2º turno (prioridade).</div></section>');
+
+    // por horário
+    var maxSlot = Math.max(1, Math.max.apply(null, d.slots.map(function(s){ return s.fe+s.fr; }).concat([1])));
+    var win = d.janela;
+    h.push('<section class="varr-sec"><h4>⏱ Por horário <small>meia em meia hora — quando a bipagem falhou</small></h4><div class="varr-wrap"><table class="varr-table"><thead><tr><th class="l">Faixa</th><th class="l">Turno</th><th>Chegaram</th><th>Falta exp.</th><th>% dos chegados</th><th>Falta rec.</th><th>% sem chegada</th><th class="l">Faltas</th><th class="l"></th></tr></thead><tbody>'+
+      d.slots.map(function(s){
+        var tk = varrTurnoDe(new Date(s.k*1800000+900000), cfg), cls = s.ch ? varrTaxaCls(s.taxa) : '', crit = win && s.k>=win.iniK && s.k<=win.fimK;
+        return '<tr class="'+(crit ? 'crit' : '')+'"><td class="l">'+varrSlotRot(s.k)+(crit ? ' <span class="tag crit">faixa crítica</span>' : '')+'</td><td class="l">'+escapeHtml(VARR_NOME_CURTO[tk])+'</td><td>'+fmtInt(s.ch)+'</td><td class="'+cls+'"><b>'+fmtInt(s.fe)+'</b></td><td class="'+cls+'">'+(s.ch ? pctBR(s.taxa)+'%' : '—')+'</td><td>'+fmtInt(s.fr)+'</td><td class="'+((s.fr>=10 && s.pctFr>=15) ? 'bad' : '')+'">'+((s.ch+s.fr) ? pctBR(s.pctFr)+'%' : '—')+'</td><td class="l">'+varrBar(s.fe+s.fr, maxSlot, cls)+'</td>'+
+          '<td class="l">'+((s.fe||s.fr) ? vlBtn('all|slot|'+s.k,'Ver') : '')+'</td></tr>';
+      }).join('')+'</tbody></table></div></section>');
+
+    // falta de recebimento por evidência + bases + lotes
+    var evOrd = ['poscorte','descarga','invertida','anterior','sem'];
+    h.push('<section class="varr-sec"><h4>📥 Falta de recebimento — o que aconteceu com cada um</h4><div class="varr-wrap"><table class="varr-table"><thead><tr><th class="l">Situação</th><th>Pedidos</th><th>% das faltas de recebimento</th><th class="l"></th></tr></thead><tbody>'+
+      (FR ? evOrd.filter(function(k){ return d.evid[k]; }).map(function(k){
+        return '<tr><td class="l"><span class="varr-pill '+VARR_EVID[k].cor+'"></span> '+escapeHtml(VARR_EVID[k].rot)+'</td><td><b>'+fmtInt(d.evid[k])+'</b></td><td>'+varrPct(d.evid[k],FR)+'</td><td class="l">'+vlBtn(vlSpec('fr','ev',k),'Ver pedidos')+'</td></tr>';
+      }).join('') : '<tr><td class="l" colspan="4">Nenhum pedido com falta de recebimento.</td></tr>')+'</tbody></table></div></section>');
+
+    h.push('<div class="varr-duas">'+
+      '<section class="varr-sec"><h4>📦 Lotes parados (maiores)</h4><div class="varr-wrap"><table class="varr-table"><thead><tr><th class="l">Lote</th><th class="l">Destino</th><th>Pedidos</th><th>Bipe de lote</th><th>Parado há</th><th class="l"></th></tr></thead><tbody>'+
+      (d.lotes.length ? d.lotes.slice(0,10).map(function(l){ return '<tr><td class="l">'+escapeHtml(l.lote)+'</td><td class="l">'+escapeHtml(l.base||'—')+(l.nBases>1 ? ' +'+(l.nBases-1) : '')+'</td><td><b>'+fmtInt(l.n)+'</b></td><td>'+varrDm(l.tLote)+'</td><td>'+(l.idadeMin!==null ? fmtDur(l.idadeMin) : '—')+'</td><td class="l">'+vlBtn(vlSpec('fe','lote',l.lote),'Ver')+'</td></tr>'; }).join('') : '<tr><td class="l" colspan="6">Nenhum lote aberto com pedido sem expedição.</td></tr>')+
+      '</tbody></table></div>'+(d.lotes.length>10 ? '<div class="varr-leg">+ '+fmtInt(d.lotes.length-10)+' lote(s) menores — use "CSV de todos os pedidos".</div>' : '')+'</section>'+
+      '<section class="varr-sec"><h4>📍 Bases com mais falta</h4><div class="varr-wrap"><table class="varr-table"><thead><tr><th class="l">Base destino</th><th class="l">Doca</th><th>Falta exp.</th><th>Falta rec.</th><th class="l"></th></tr></thead><tbody>'+
+      d.bases.slice(0,10).map(function(b){ return '<tr><td class="l">'+escapeHtml(b.base)+'</td><td class="l">'+escapeHtml(b.doca||'—')+'</td><td><b>'+fmtInt(b.fe)+'</b></td><td>'+fmtInt(b.fr)+'</td><td class="l">'+vlBtn(vlSpec('all','base',b.base),'Ver')+'</td></tr>'; }).join('')+
+      '</tbody></table></div></section></div>');
+
+    body.innerHTML = h.join('');
+    varrLigarAcoes(pl);
+    $('varrOverlay').querySelector('.modal').scrollTop = keep;
+  }
+
+  function varrTexto(pl){
+    var d = varr.d, now = new Date(), FE = d.fe.length, FR = d.fr.length, L = [];
+    L.push('*VARREDURA — FALTA DE BIPAGEM · '+BASE_PROPRIA_PADRAO+'*');
+    L.push(nomeDoDia(now)+' · '+hhmm(now));
+    L.push('');
+    L.push('*Taxa geral: '+pctBR(d.ind.taxaGeral)+'%* (meta 0,50%) '+(d.ind.taxaGeral<=VARR_META_PCT ? '✅' : '⚠️'));
+    L.push('• Falta de expedição: '+fmtInt(FE)+' ('+varrPct(FE,d.U)+') · Falta de recebimento: '+fmtInt(FR)+' ('+varrPct(FR,d.U)+')');
+    L.push('• Para a meta: eliminar '+fmtInt(d.gap)+' pedidos (limite '+fmtInt(d.limite)+')');
+    L.push('');
+    L.push('*Por viagem de chegada*');
+    d.viagens.filter(function(g){ return g.fe || g.frConf || g.frProv; }).slice(0,8).forEach(function(g){
+      L.push('• '+g.id+(g.tipo==='troncal' ? ' (troncal)' : '')+': '+fmtInt(g.fe)+' sem expedição de '+fmtInt(g.n)+' ('+pctBR(g.taxaFe)+'%)'+((g.frConf+g.frProv) ? ' · '+fmtInt(g.frConf+g.frProv)+' sem chegada' : ''));
+    });
+    L.push('');
+    L.push('*Por turno*');
+    ['t1','ov','t2','fora'].forEach(function(k){ var x = d.turnos[k]; if (x.fe||x.fr) L.push('• '+VARR_NOME_CURTO[k]+' ('+varrFaixas(k,d.cfg)+'): '+fmtInt(x.fe)+' exp. · '+fmtInt(x.fr)+' rec.'); });
+    if (d.janela) L.push('• Faixa crítica: '+varrDm(d.janela.ini)+' → '+varrDm(d.janela.fim)+' ('+fmtInt(d.janela.fe)+' faltas, taxa '+pctBR(d.janela.taxa)+'%)');
+    L.push('');
+    L.push('*Plano de ação*');
+    pl.acoes.filter(function(a){ return a.nivel!=='media'; }).slice(0,6).forEach(function(a, i){
+      L.push((i+1)+'. '+(a.nivel==='urgente' ? '🔴 ' : '🟠 ')+a.titulo.replace(/<[^>]+>/g,'')+' — '+a.quem+' · '+a.quando);
+    });
+    return L.join('\n');
+  }
+
+  function varrCsvPedidos(){
+    var d = varr.d; if (!d) return;
+    var lin = ['Numero_Pedido_JMS;Tipo_Falta;Viagem_Chegada;Tipo_Viagem;Origem;Turno;Horario_Referencia;Situacao;Lote;Base_Destino;Doca'];
+    d.fe.forEach(function(it){
+      lin.push([it.jms,'Falta de expedição',it.viagem,it.tipoV==='troncal'?'troncal':'secundária',it.origem,VARR_NOME_CURTO[it.turno],varrDm(it.tempo),
+        (it.sit==='lote'?'em lote aguardando expedição':(it.sit==='removido'?'removido do lote':'sem lote')),it.lote,it.base,it.base==='(sem base)'?'':docaOfBaseDestino(it.base)].map(csvCell).join(';'));
+    });
+    d.fr.forEach(function(it){
+      lin.push([it.jms,'Falta de recebimento',it.viagem||(it.viagemProv ? it.viagemProv+' (provável)' : ''),(it.viagem||it.viagemProv) ? (tipoViagem(it.viagem||it.viagemProv)==='troncal'?'troncal':'secundária') : '',it.origem,VARR_NOME_CURTO[it.turno],varrDm(it.tempo),
+        VARR_EVID[it.ev].rot+' ('+it.etapas+')','',it.base,it.base==='(sem base)'?'':docaOfBaseDestino(it.base)].map(csvCell).join(';'));
+    });
+    downloadCsvLines(lin, 'varredura-falta-bipagem-pedidos-'+csvStamp()+'.csv');
+  }
+  function varrCsvViagens(){
+    var d = varr.d; if (!d) return;
+    var lin = ['Viagem;Tipo;Origem;Primeiro_bipe;Ultimo_bipe;Recebidos;Falta_expedicao;Taxa_falta_exp_pct;Em_lote;Sem_lote;Falta_recebimento_descarga;Falta_recebimento_provavel;Contribuicao_pp'];
+    d.viagens.forEach(function(g){
+      lin.push([g.id,g.tipo==='troncal'?'troncal':'secundária',g.origem,g.ini!==null?varrDm(new Date(g.ini)):'',g.fim!==null?varrDm(new Date(g.fim)):'',g.n,g.fe,pctBR(g.taxaFe),g.feLote,g.feSem+g.feRem,g.frConf,g.frProv,pctBR(g.ppFe+g.ppFr)].map(csvCell).join(';'));
+    });
+    downloadCsvLines(lin, 'varredura-falta-bipagem-viagens-'+csvStamp()+'.csv');
+  }
+
+  function varrLigarAcoes(pl){
+    var txt = varrTexto(pl);
+    var w = $('btnVarrWhats'); if (w) w.href = whatsLink(txt);
+    var c = $('btnVarrCopiar'); if (c) c.onclick = function(){ copyTextToClipboard(txt, function(ok){ $('varrFeedback').textContent = ok ? 'Copiado! ✓' : 'Não deu pra copiar — selecione e use Ctrl+C.'; setTimeout(function(){ var f = $('varrFeedback'); if (f) f.textContent=''; }, 3000); }); };
+    var a = $('btnVarrCsvViagens'); if (a) a.onclick = varrCsvViagens;
+    var b = $('btnVarrCsvPedidos'); if (b) b.onclick = varrCsvPedidos;
+    var p = $('btnVarrTurnoPadrao'); if (p) p.onclick = function(){ storeSet(VARR_KEY, JSON.stringify(VARR_PADRAO)); renderVarredura(); };
+  }
+  function varrAbrir(){ varr.aberta = true; $('varrOverlay').hidden = false; renderVarredura(); }
+  function varrFechar(){ varr.aberta = false; var o = $('varrOverlay'); if (o) o.hidden = true; varr.d = null; }
+  function varrAtualizarSeAberta(){ if (varr.aberta) renderVarredura(); }
+  $('btnVarredura').addEventListener('click', varrAbrir);
+  $('btnVarredura2').addEventListener('click', varrAbrir);
+  $('btnVarrFechar').addEventListener('click', varrFechar);
+  $('varrOverlay').addEventListener('click', function(e){ if (e.target===this) varrFechar(); });
+  $('varrBody').addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-vl]') : null;
+    if (b) varrLista(b.getAttribute('data-vl'));
+  });
+  $('varrBody').addEventListener('change', function(e){
+    var t = e.target, k = t && t.getAttribute ? t.getAttribute('data-vt') : null;
+    if (!k) return;
+    var cfg = varrCfg(), o = { t1ini:cfg.t1ini, t1fim:cfg.t1fim, t2ini:cfg.t2ini, t2fim:cfg.t2fim };
+    if (hmParaMin(t.value)===null){ renderVarredura(); return; }
+    o[k] = t.value; storeSet(VARR_KEY, JSON.stringify(o));
+    renderVarredura();
   });
 
   // ---------- 3) comparativo entre dias ----------
@@ -9273,6 +10540,13 @@
     lsSet(ALL_CODES_MODE_KEY, v);
     renderAllCodesGrid();
   });
+  $('btnAutoPlay').addEventListener('click', function(){ if (autoRunning) autoParar('Passagem automática pausada.'); else autoIniciar(); });
+  $('autoVel').addEventListener('input', function(){ autoRotulos(); });
+  $('autoVel').addEventListener('change', function(){ autoSalvar(); if (autoRunning) autoAgendar(); });
+  $('autoAcc').addEventListener('input', function(){ autoRotulos(); });
+  $('autoAcc').addEventListener('change', function(){ autoSalvar(); if (autoRunning){ autoT0 = Date.now(); autoAgendar(); } });
+  $('autoLoop').addEventListener('change', autoSalvar);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden && autoRunning) autoWake(true); });
   $('btnCodePrev').addEventListener('click', function(){ stepAllCodes(-1); });
   $('btnCodeNext').addEventListener('click', function(){ stepAllCodes(1); });
   document.addEventListener('keydown', function(e){
@@ -9280,6 +10554,14 @@
     var t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
     if (e.key==='ArrowRight'){ e.preventDefault(); stepAllCodes(1); }
     else if (e.key==='ArrowLeft'){ e.preventDefault(); stepAllCodes(-1); }
+    else if (e.key===' '){ e.preventDefault(); $('btnAutoPlay').click(); }   // espaço liga/pausa mesmo com o foco em outro botão
+    else if (e.key==='Escape'){ autoParar(); }
+  });
+  // o botão focado só "clica" com o espaço quando solta a tecla — barra isso para não passar o código sem querer
+  document.addEventListener('keyup', function(e){
+    if (e.key!==' ' || $('allCodesModalOverlay').hidden || !allCodesPager) return;
+    var t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    e.preventDefault();
   });
 
   $('btnOpenCrossCheck').addEventListener('click', openCrossCheckModal);
@@ -9426,6 +10708,247 @@
     });
   };
   window.__refreshCrossCheckLiveBadge = function(){ updateCrossCheckLiveBadge(); updateDailySummary(); };
+
+  // ---------- Sincronização com o Google Drive ----------
+  // O painel entra no Google (login do próprio navegador), lista a pasta escolhida e carrega sozinho o arquivo mais recente
+  // de cada tipo (chegada, lote, expedição, carregamento). A cada N minutos olha de novo e só baixa o que mudou: se mudou
+  // só o lote/expedição/carregamento, atualiza só esse cruzamento; se mudou a chegada, recarrega o conjunto. O token do
+  // Google fica só na memória da aba. Arquivo sem nome reconhecível é identificado pelo conteúdo ("Tipo de bipagem").
+  var DRIVE_KEY = 'jt-mrb-drive-v1', DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.readonly';
+  var DRIVE_XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+  var drv = { clientId:'', pasta:'', pastaId:'', min:5, ligado:false, token:'', tokenAte:0, gis:null, gisCliente:'', espera:null,
+              timer:null, ocupado:false, carregado:{}, cand:{}, cache:{}, tipoPorId:{}, ultimo:null, proximo:null,
+              fase:'off', msg:'', cliqueArmado:false };
+  function driveCarregarCfg(){
+    try { var o = JSON.parse(lsGet(DRIVE_KEY)||'null'); if (o){ drv.clientId = o.clientId||''; drv.pasta = o.pasta||''; drv.min = parseInt(o.min,10)||5; } } catch(e){}
+    drv.pastaId = drivePastaId(drv.pasta);
+  }
+  function driveSalvarCfg(){ lsSet(DRIVE_KEY, JSON.stringify({ clientId:drv.clientId, pasta:drv.pasta, min:drv.min })); }
+  function drivePastaId(txt){
+    txt = String(txt||'').trim(); if (!txt) return '';
+    var m = txt.match(/\/folders\/([A-Za-z0-9_-]{10,})/) || txt.match(/[?&]id=([A-Za-z0-9_-]{10,})/);
+    if (m) return m[1];
+    return /^[A-Za-z0-9_-]{10,}$/.test(txt) ? txt : '';
+  }
+  function driveHHMM(d){ return d ? hhmm(d) : '—'; }
+  function driveStatus(fase, msg){ drv.fase = fase; drv.msg = msg||''; driveRender(); }
+  function driveRender(){
+    var dot = $('driveDot'); if (!dot) return;
+    dot.className = 'drive-dot ' + ({ off:'off', conectando:'warn', ok:'ok', sessao:'warn', erro:'err' }[drv.fase]||'off');
+    var tip = { off:'Google Drive: desconectado', conectando:'Google Drive: sincronizando…', ok:'Google Drive: sincronizado às '+driveHHMM(drv.ultimo)+(drv.proximo ? ' · próxima checagem às '+driveHHMM(drv.proximo) : ''),
+                sessao:'Google Drive: a sessão do Google venceu — clique em qualquer lugar para renovar', erro:'Google Drive: '+drv.msg }[drv.fase];
+    $('btnDrive').title = tip;
+    $('btnDriveLanding').textContent = drv.ligado ? '☁ Google Drive — '+({ ok:'sincronizado', conectando:'sincronizando…', sessao:'renovar login', erro:'ver problema' }[drv.fase]||'abrir') : (drv.clientId && drv.pastaId ? '☁ Sincronizar com o Google Drive' : '☁ Carregar do Google Drive');
+    $('driveLandingHint').textContent = drv.ligado ? (drv.msg || '') : 'pega o arquivo mais recente de cada tipo e atualiza sozinho';
+    var m = $('driveMsg'); m.textContent = drv.msg; m.className = 'drive-msg ' + ({ ok:'ok', sessao:'warn', erro:'err', conectando:'warn' }[drv.fase]||'');
+    $('btnDriveAgora').disabled = !drv.ligado || drv.ocupado;
+    $('btnDriveDesligar').hidden = !drv.ligado;
+    $('btnDriveConectar').textContent = drv.ligado ? '☁ Salvar e sincronizar' : '☁ Entrar com Google e sincronizar';
+    var now = Date.now(), linhas = '';
+    KIND_ORDER.forEach(function(k){
+      var c = drv.cand[k], a = drv.carregado[k], est = '', cls = '', arq = '—';
+      if (drv.ligado && drv.ultimo){
+        if (!c){ est = KIND_OPCIONAL[k] ? 'opcional — não achei na pasta' : 'não achei na pasta'; cls = (k==='chegada' ? 'err' : (KIND_OPCIONAL[k] ? '' : 'warn')); }
+        else {
+          arq = c.name; var idade = Math.round((now - Date.parse(c.modifiedTime))/60000);
+          var carregado = a && a.id===c.id && a.modifiedTime===c.modifiedTime;
+          est = (carregado ? '✓ carregado' : '⏳ novo') + ' · salvo há '+fmtDur(idade);
+          cls = idade>12*60 ? 'warn' : 'ok'; if (idade>12*60) est += ' · arquivo antigo, exporte um novo';
+        }
+      }
+      linhas += '<div class="drive-linha"><span class="dl-tipo">'+escapeHtml(KIND_LABELS[k])+'</span><span class="dl-arq">'+escapeHtml(arq)+'</span><span class="dl-est '+cls+'">'+escapeHtml(est)+'</span></div>';
+    });
+    $('driveTabela').innerHTML = drv.ligado ? linhas : '';
+  }
+  function driveCarregarGis(cb){
+    if (window.google && google.accounts && google.accounts.oauth2){ cb(true); return; }
+    var sc = document.createElement('script'); sc.src = 'https://accounts.google.com/gsi/client'; sc.async = true;
+    sc.onload = function(){ cb(!!(window.google && google.accounts && google.accounts.oauth2)); };
+    sc.onerror = function(){ if (sc.parentNode) sc.parentNode.removeChild(sc); cb(false); };
+    document.head.appendChild(sc);
+  }
+  function driveTokenValido(){ return !!drv.token && Date.now() < drv.tokenAte; }
+  function driveObterToken(prompt){
+    return new Promise(function(res){ driveCarregarGis(res); }).then(function(ok){
+      if (!ok){ var e = new Error('Não consegui carregar o login do Google — confira a internet.'); e.code='rede'; throw e; }
+      return new Promise(function(resolve, reject){
+        var tm = setTimeout(function(){ drv.espera = null; reject(new Error('O login do Google não respondeu.')); }, 120000);
+        drv.espera = { resolve:function(t){ clearTimeout(tm); resolve(t); }, reject:function(er){ clearTimeout(tm); reject(er); } };
+        if (!drv.gis || drv.gisCliente!==drv.clientId){
+          drv.gis = google.accounts.oauth2.initTokenClient({
+            client_id: drv.clientId, scope: DRIVE_SCOPE,
+            callback: function(r){
+              var w = drv.espera; drv.espera = null; if (!w) return;
+              if (r && r.access_token){ drv.token = r.access_token; drv.tokenAte = Date.now() + (Math.max(120, parseInt(r.expires_in,10)||3600) - 60)*1000; w.resolve(r.access_token); }
+              else { var er = new Error((r && (r.error_description || r.error)) || 'O Google não liberou o acesso.'); er.code='login'; w.reject(er); }
+            },
+            error_callback: function(er){
+              var w = drv.espera; drv.espera = null; if (!w) return;
+              var t = er && er.type, e2 = new Error(t==='popup_closed' ? 'Login cancelado.' : (t==='popup_failed_to_open' ? 'O navegador bloqueou a janela de login do Google.' : 'Não foi possível entrar no Google.'));
+              e2.code = 'login'; w.reject(e2);
+            }
+          });
+          drv.gisCliente = drv.clientId;
+        }
+        drv.gis.requestAccessToken({ prompt: prompt });
+      });
+    });
+  }
+  async function driveApi(url, tipo){
+    var r = await fetch(url, { headers:{ Authorization:'Bearer '+drv.token } }), e;
+    if (r.status===401){ drv.token = ''; e = new Error('sessão'); e.code = 'sessao'; throw e; }
+    if (r.status===404){ e = new Error('Não achei essa pasta — confira o link e se ela está compartilhada com a conta que entrou.'); e.code = 'pasta'; throw e; }
+    if (r.status===403){ e = new Error('O Google negou o acesso (403) — confira se a Google Drive API está ativada no projeto e se a conta está como usuário de teste.'); e.code = 'negado'; throw e; }
+    if (!r.ok){ e = new Error('O Google respondeu '+r.status+'.'); e.code = 'http'; throw e; }
+    return tipo==='blob' ? r.blob() : r.json();
+  }
+  async function driveListar(){
+    var q = "'"+drv.pastaId+"' in parents and trashed=false and (mimeType='"+DRIVE_XLSX+"' or mimeType='application/vnd.ms-excel')";
+    var url = 'https://www.googleapis.com/drive/v3/files?q='+encodeURIComponent(q)+'&orderBy='+encodeURIComponent('modifiedTime desc')+'&pageSize=100&fields='+encodeURIComponent('files(id,name,mimeType,modifiedTime,size)')+'&supportsAllDrives=true&includeItemsFromAllDrives=true';
+    var j = await driveApi(url); return j.files || [];
+  }
+  async function driveBaixar(it){
+    var blob = await driveApi('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(it.id)+'?alt=media&supportsAllDrives=true', 'blob');
+    return new File([blob], it.name, { type: it.mimeType || DRIVE_XLSX, lastModified: Date.parse(it.modifiedTime) || Date.now() });
+  }
+  function driveTipoPorConteudo(file){
+    return new Promise(function(res){ readWorkbookRows(file, function(rows){ res(classifyFileContent(rows)); }, function(){ res(null); }); });
+  }
+  // Escolhe o arquivo mais novo de cada tipo (a lista já vem do mais novo para o mais antigo). Nome não reconhecido →
+  // lê o conteúdo, mas só para tipos que ficaram sem arquivo, no máximo 3 por checagem e 12 por sessão.
+  async function driveEscolher(lista){
+    var cand = {}, desconhecidos = [];
+    lista.forEach(function(it){
+      var k = classifyFileByName(it.name);
+      if (!k && drv.tipoPorId[it.id]!==undefined) k = drv.tipoPorId[it.id];
+      if (k==='ignorar') return;
+      if (!k){ desconhecidos.push(it); return; }
+      if (!cand[k]) cand[k] = it;
+    });
+    var faltam = KIND_ORDER.filter(function(k){ return !cand[k] && !KIND_OPCIONAL[k]; });
+    if (faltam.length && desconhecidos.length){
+      var n = 0;
+      for (var i=0; i<desconhecidos.length && n<3 && Object.keys(drv.tipoPorId).length<12; i++, n++){
+        var it = desconhecidos[i], f = await driveBaixar(it), k = await driveTipoPorConteudo(f);
+        drv.tipoPorId[it.id] = k ? k : 'ignorar';
+        if (k && !cand[k]){ cand[k] = it; drv.cache[k] = { id:it.id, modifiedTime:it.modifiedTime, file:f }; }
+      }
+    }
+    return cand;
+  }
+  function driveCarregadoItem(it){ return { id:it.id, name:it.name, modifiedTime:it.modifiedTime }; }
+  function driveParaTimer(){ if (drv.timer){ clearInterval(drv.timer); drv.timer = null; } drv.proximo = null; }
+  function driveIniciarTimer(){
+    driveParaTimer();
+    drv.timer = setInterval(function(){ driveSincronizar(false); }, drv.min*60000);
+    drv.proximo = new Date(Date.now() + drv.min*60000);
+  }
+  function driveSessaoExpirou(){
+    driveStatus('sessao', 'A sessão do Google venceu — clique em qualquer lugar do painel para renovar e continuar sincronizando.');
+    if (!drv.cliqueArmado){ drv.cliqueArmado = true; document.addEventListener('click', driveCliqueRenova, true); }
+  }
+  function driveCliqueRenova(e){
+    if (e && e.target && e.target.closest && e.target.closest('#driveModalOverlay')) return;   // dentro da janela do Drive o usuário usa os botões dela
+    document.removeEventListener('click', driveCliqueRenova, true); drv.cliqueArmado = false;
+    if (drv.ligado) driveSincronizar(true);   // é um clique do usuário: o navegador libera a janela do Google
+  }
+  async function driveSincronizar(manual){
+    if (drv.ocupado) return;
+    if (!drv.clientId || !drv.pastaId){ driveStatus('erro', 'Preencha o ID do cliente e a pasta do Drive.'); return; }
+    drv.ocupado = true; driveStatus('conectando', 'Sincronizando com o Google Drive…');
+    try {
+      if (!driveTokenValido()){
+        try { await driveObterToken(''); }
+        catch(e){ if (manual){ throw e; } driveSessaoExpirou(); return; }
+      }
+      var lista = await driveListar();
+      var cand = await driveEscolher(lista);
+      drv.cand = cand; drv.ultimo = new Date();
+      var mudou = {};
+      KIND_ORDER.forEach(function(k){ var c = cand[k], a = drv.carregado[k]; if (c && (!a || a.id!==c.id || a.modifiedTime!==c.modifiedTime)) mudou[k] = c; });
+      if (!cand.chegada && !rawPedidos.length){ driveStatus('erro', 'Não achei o arquivo de "Chegada ao centro" nessa pasta — salve o export do JMS na pasta e sincronize de novo.'); return; }
+      if (!Object.keys(mudou).length){ driveStatus('ok', 'Tudo em dia às '+driveHHMM(drv.ultimo)+' — o arquivo mais recente de cada tipo já está no painel.'); return; }
+      var recarregarTudo = !!mudou.chegada || !rawPedidos.length;
+      var baixar = recarregarTudo ? KIND_ORDER.filter(function(k){ return cand[k]; }) : Object.keys(mudou);
+      var arquivos = {};
+      for (var i=0; i<baixar.length; i++){
+        var k = baixar[i], c = cand[k], e = drv.cache[k];
+        if (!e || e.id!==c.id || e.modifiedTime!==c.modifiedTime){
+          driveStatus('conectando', 'Baixando "'+KIND_LABELS[k]+'"'+(c.size ? ' ('+(c.size/1048576).toFixed(1).replace('.',',')+' MB)' : '')+'…');
+          e = { id:c.id, modifiedTime:c.modifiedTime, file: await driveBaixar(c) }; drv.cache[k] = e;
+        }
+        arquivos[k] = e.file;
+      }
+      if (recarregarTudo){
+        handleMultiFiles(KIND_ORDER.filter(function(k){ return arquivos[k]; }).map(function(k){ return arquivos[k]; }));
+        KIND_ORDER.forEach(function(k){ if (cand[k]) drv.carregado[k] = driveCarregadoItem(cand[k]); });
+      } else {
+        Object.keys(mudou).forEach(function(k){
+          var f = arquivos[k];
+          if (k==='lote') handleFile2(f); else if (k==='exped') handleFile3(f); else if (k==='carga') handleFile4(f);
+          markPillDone(k, f.name); drv.carregado[k] = driveCarregadoItem(cand[k]);
+        });
+      }
+      var qtd = Object.keys(mudou).map(function(k){ return KIND_LABELS[k]; }).join(', ');
+      driveStatus('ok', 'Sincronizado às '+driveHHMM(drv.ultimo)+' — atualizado: '+qtd+'.');
+    } catch(e){
+      if (e && e.code==='sessao'){ driveSessaoExpirou(); }
+      else {
+        var fatal = e && (e.code==='pasta' || e.code==='negado');
+        driveStatus('erro', (e && e.message) || 'Não consegui sincronizar agora.');
+        if (fatal){ drv.ligado = false; driveParaTimer(); }
+      }
+    } finally {
+      drv.ocupado = false;
+      if (drv.ligado && drv.timer) drv.proximo = new Date(Date.now() + drv.min*60000);
+      driveRender();
+    }
+  }
+  function driveDesligar(){
+    drv.ligado = false; driveParaTimer();
+    if (drv.cliqueArmado){ document.removeEventListener('click', driveCliqueRenova, true); drv.cliqueArmado = false; }
+    try { if (drv.token && window.google && google.accounts && google.accounts.oauth2 && google.accounts.oauth2.revoke) google.accounts.oauth2.revoke(drv.token, function(){}); } catch(e){}
+    drv.token = ''; drv.tokenAte = 0; drv.espera = null;
+    driveStatus('off', '');
+  }
+  // "Limpeza geral" / "Carregar novo arquivo": o painel volta ao zero, então a sincronização para (a configuração fica salva)
+  function driveReset(){
+    drv.ligado = false; driveParaTimer(); drv.carregado = {}; drv.cand = {}; drv.cache = {};
+    if (drv.cliqueArmado){ document.removeEventListener('click', driveCliqueRenova, true); drv.cliqueArmado = false; }
+    driveStatus('off', '');
+  }
+  function driveAbrir(){
+    $('driveClientId').value = drv.clientId; $('drivePasta').value = drv.pasta; $('driveMin').value = String(drv.min);
+    var av = $('driveAviso');
+    if (location.protocol==='file:'){
+      av.hidden = false;
+      av.textContent = 'Você abriu o painel como arquivo do computador. O Google só libera o login em um endereço https — publique o painel (por exemplo no Netlify) e abra por esse endereço para a sincronização funcionar.';
+    } else av.hidden = true;
+    driveRender();
+    $('driveModalOverlay').hidden = false;
+  }
+  $('btnDrive').addEventListener('click', driveAbrir);
+  $('btnDriveLanding').addEventListener('click', driveAbrir);
+  $('btnCloseDriveModal').addEventListener('click', function(){ $('driveModalOverlay').hidden = true; });
+  $('driveModalOverlay').addEventListener('click', function(e){ if (e.target===this) this.hidden = true; });
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape') $('driveModalOverlay').hidden = true; });
+  $('btnDriveConectar').addEventListener('click', function(){
+    var cid = $('driveClientId').value.trim(), pasta = $('drivePasta').value.trim(), pid = drivePastaId(pasta);
+    if (!/\.apps\.googleusercontent\.com$/.test(cid)){ driveStatus(drv.ligado ? drv.fase : 'erro', 'O ID do cliente termina com ".apps.googleusercontent.com" — copie de Credenciais, no Google Cloud (passo a passo abaixo).'); return; }
+    if (!pid){ driveStatus(drv.ligado ? drv.fase : 'erro', 'Cole o link da pasta do Drive (o endereço tem "/folders/…") ou só o ID dela.'); return; }
+    var mudouCfg = cid!==drv.clientId || pid!==drv.pastaId;
+    drv.clientId = cid; drv.pasta = pasta; drv.pastaId = pid; drv.min = parseInt($('driveMin').value,10)||5;
+    if (mudouCfg){ drv.carregado = {}; drv.cache = {}; drv.tipoPorId = {}; drv.gis = null; drv.token = ''; drv.tokenAte = 0; }
+    driveSalvarCfg(); drv.ligado = true;
+    driveSincronizar(true).then(function(){ if (drv.ligado) driveIniciarTimer(); driveRender(); });
+  });
+  $('btnDriveAgora').addEventListener('click', function(){ if (drv.ligado) driveSincronizar(true); });
+  $('btnDriveDesligar').addEventListener('click', driveDesligar);
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden || !drv.ligado || !drv.ultimo) return;
+    if (Date.now() - drv.ultimo.getTime() >= drv.min*60000) driveSincronizar(false);   // aba dormiu: o navegador segura os timers
+  });
+  driveCarregarCfg(); driveRender();
 
 })();
 </script>
